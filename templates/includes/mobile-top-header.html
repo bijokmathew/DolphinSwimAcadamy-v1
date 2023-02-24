@@ -1,0 +1,66 @@
+<div class="flex-grow-1 ">
+<ul class="d-inline-flex d-lg-none justify-content-between w-100">
+<li class="list-inline-item">
+    <a href="#" class="nav-link text-light-blue d-block d-lg-none" id="mobile-search" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+        <div class="text-center">
+            <div><i class="fas fa-search fa-lg"></i></div>
+            <p class="my-0">Search</p>
+        </div>
+    </a>
+    <div class="dropdown-menu border-0 w-99" aria-labelledby="mobile-search">
+        <form method="GET" action="">
+            <div class="input-group my-2">
+              <input class="form-control border border-black rounded-0" type="text" name="q"
+                placeholder="Search our sites">
+              <div class="input-group-append">
+                <button class="form-control btn btn-black border border-black rounded-0" type="submit" aria-label="search">
+                  <span class="icon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+    </div>
+</li>
+<li class="list-inline-item dropdown p-0 d-block d-lg-none text-right">
+    <a href="#" class="nav-link" id="user_options" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      <div class="text-center text-light-blue mr-0">
+        <div><i class="fas fa-user fa-lg"></i></div>
+        <p class="my-0 ">My Account</p>
+      </div>
+    </a>
+    <div class="dropdown-menu border-0" aria-labelledby="user_options">
+      {% if request.user.is_authenticated %}
+        {% if request.use.is_superuser %}
+          <a href="#" class="dropdown-item text-light-blue">Product Managment</a>
+        {% endif %}
+        <a href="#" class="dropdown-item text-light-blue">My Profile</a>
+        <a href="{% url 'account_logout' %}"
+        class="dropdown-item text-light-blue font-weight-bold">Logout</a>
+      {% else %}
+        <a href="{% url 'account_signup' %}"
+        class="dropdown-item text-light-blue font-weight-bold">Register</a>
+        <a href="{% url 'account_login' %}"
+        class="dropdown-item text-light-blue font-weight-bold">Login</a>
+      {% endif %}
+    </div>
+  </li>
+  <li class="list-inline-item p-0 d-block d-lg-none text-right">
+    <a href=""
+      class="{% if grand_total %} text-info {% else %}text-black{% endif %} nav-link">
+      <div class="text-center text-light-blue">
+        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+        <p class="my-0">
+          {% if grand_total %}
+            ${{grand_total| floatformat:2}}
+          {% else %}
+            $0.00
+          {% endif %}
+        </p>
+      </div>
+    </a>
+  </li>
+</ul>
+</div>
