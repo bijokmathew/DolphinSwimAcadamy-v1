@@ -1,12 +1,70 @@
+
+/* root colors and styles */
+:root {
+    --body-font:'Urbanist', sans-serif;
+    --body-weight: 200;
+    --heading-weight: 600;
+    --heading-font: 'Urbanist', sans-serif;
+    --nav-color:#1FD6FF;
+    --text-color:#0000;
+    --button-color:#733600;
+    --theme-1:#015E73;
+    --theme-2:#BF5C04;
+    --theme-3:#049DBF;
+}
+
 html {
     height: 100%;
 }
 
-navbar {
-    height: 75px;
+/* ------ general style */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--heading-weight);
 }
+
+.bg-theme1 {
+    background-color: var(--theme-1);
+}
+.text-black {
+    color: #0000;
+}
+.text-light-blue {
+    color: #5065A8;
+}
+.btn-light-blue {
+    background: #5065A8;
+    color: white;
+}
+
+.border {
+    border: 1px solid white
+}
+
+/* from bluma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.btn-bg-brown {
+    background: var(--button-color);
+    color: white;
+}
+
 .logo {
     height: 70px;
+}
+
+.navbar1 {
+    height: 75px;
 }
 
 /* override nav items default text color */
@@ -33,30 +91,57 @@ navbar {
     color: #a1b0e1;
 }
 
-.text-light-blue {
-    color: #5065A8;
+.header-container {
+    padding-top: 100px;
 }
 
-/* from bluma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+.hero-img {
+    height: calc(100vh - 100px);
+    background-size: cover;
+}
+.display-top {
+    z-index: 10;
 }
 
-.btn-light-blue {
-    background: #5065A8;
-    color: white;
+.overlay {
+    position: absolute;
+    bottom: 1%;
+    left: 4%;
+    z-index: 10;
+    padding: 30px;
+    padding-bottom:10px;
+    color: #0000;
+    text-align: center;
 }
 
-.border {
-    border: 0
+.hero-title-bg {
+    background:rgba(31, 214, 255, 0.4);
+    z-index: 10
 }
 
+.hero-text {
+    color: var(--theme-2);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
 
+.hero-btn:hover {
+    background-color: aliceblue;
+    color:var(--button-color); 
+}
 
+/* ---------Media query */
+ 
+
+/* Container width should be max for smaller screen */
+
+@media (min-width: 576px) {
+
+    .container, 
+    .container-sm {
+        max-width: 100%;
+    }
+}
 
 /* No padding for small screen topbar items */
 
