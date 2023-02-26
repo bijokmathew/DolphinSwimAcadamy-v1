@@ -36,9 +36,15 @@ h6 {
 .text-light-blue {
     color: #5065A8;
 }
+
 .btn-light-blue {
     background: #5065A8;
     color: white;
+}
+
+.btn-light-blue:hover {
+    background: white;
+    color: #5065A8;
 }
 
 .border {
