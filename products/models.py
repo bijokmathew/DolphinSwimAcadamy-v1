@@ -5,7 +5,7 @@ Products app related models
 
 # -----------------------------------------------------------------
 # 3rd Party
-
+import random
 from django.db import models
 
 # internal
@@ -52,35 +52,27 @@ class Product(models.Model):
         blank=True,
         null=True
     )
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True
-    )
+    category = models.ManyToManyField(Category)
+    # category = models.ForeignKey(
+    #     Category,
+    #     related_name='category',
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=True
+    # )
     slug = models.SlugField()
 
-
-class Inventory(models.Model):
-    """
-    Class for inventory model
-    This model contains products retated to different
-    attributes
-    """
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE
-    )
-    attribute_values = models.ManyToManyField(AttributeValues)
-    price = models.DecimalField()
-    date_added = models.DateTimeField()
-    sku = models.UUIDField()
+    def __str__(self):
+        """
+        This functions returs the product name
+        """
+        return self.name
 
 
-class Attributes(models.Model):
+class Attribute(models.Model):
     """
     Attributes model class
-    This model describe the product attributes like 
+    This model describe the product attribute like
     size, color etc
     """
     name = models.CharField(
@@ -88,20 +80,88 @@ class Attributes(models.Model):
     )
     description = models.TextField()
 
+    def __str__(self):
+        """
+        This functions returs the attribute name
+        """
+        return self.name
 
-class AttributeValues(models.Model):
+
+class AttributeValue(models.Model):
     """
-    ArrributeValues model class
-    This model conatins values for attributes 
+    ArrributeValue model class
+    This model conatins values for attribute
     like red, green for color etc
     """
     value = models.CharField(
         max_length=256
     )
-    attributes = models.ForeignKey(
-        Attributes,
-        on_delete=models.SET_NULL
+    attribute = models.ForeignKey(
+        Attribute,
+        related_name='attribute',
+        on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        """
+        This functions returs the atribute name
+        and its value
+        """
+        return f"{self.attribute.name} : {self.value}"
+
+
+class Inventory(models.Model):
+    """
+    Class for inventory model
+    This model contains products retated to different
+    attribute
+    """
+    product = models.ForeignKey(
+        Product,
+        related_name='product',
+        on_delete=models.CASCADE
+    )
+    attribute_value = models.ManyToManyField(AttributeValue)
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
+    date_added = models.DateTimeField(
+        auto_now_add=True,
+        editable=False
+    )
+    is_active = models.BooleanField(
+        default=False
+    )
+
+    def generate_sku():
+        """
+        This function generate unique sku number
+        for each inventory item
+        """
+        unique = True
+        while unique:
+            sku_ref = 'pp'+str(random.randint(1010201, 1011031))+'de'
+            unique = False
+            if not Inventory.objects.filter(sku_ref=sku):
+                unique = False
+        return str(sku_ref)
+
+    sku = models.CharField(
+        max_length=50,
+        unique=True,
+        editable=False,
+        default=generate_sku,
+    )
+
+    def __str__(self):
+        """
+        This functions returs the product name
+        """
+        return self.product.name
+    
+    def get_attributes_values(self):
+        return "\n".join([a.value for a in self.attribute_value.all()])
 
 
 class Image(models.Model):
@@ -110,20 +170,21 @@ class Image(models.Model):
     This model contain all the product 
     image name and url
     """
-    name = models.CharField(
-        max_length=254
-    )
-    url = models.ImageField(
-        upload_to='/products',
-        blank=True,
-        null=True
-    )
     inventory = models.ForeignKey(
         Inventory,
-        on_delete=models.SET_NULL
+        on_delete=models.CASCADE
     )
     alternative_text = models.CharField(
         max_length=256
+    )
+    image_url = models.URLField(
+        max_length=1024,
+        null=True,
+        blank=True
+    )
+    image = models.ImageField(
+        null=True,
+        blank=True
     )
 
 
@@ -137,5 +198,10 @@ class StockControl(models.Model):
         Inventory,
         on_delete=models.CASCADE
     )
-    units = models.PositiveIntegerField()
-    date_chacked = models.DateTimeField()
+    units = models.PositiveIntegerField(
+        default=0
+    )
+    last_checked = models.DateTimeField(
+        auto_now=True,
+        editable=False
+    )
