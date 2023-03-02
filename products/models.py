@@ -142,8 +142,7 @@ class Inventory(models.Model):
         unique = True
         while unique:
             sku_ref = 'pp'+str(random.randint(1010201, 1011031))+'de'
-            unique = False
-            if not Inventory.objects.filter(sku_ref=sku):
+            if not Inventory.objects.filter(sku=sku_ref):
                 unique = False
         return str(sku_ref)
 
@@ -159,7 +158,7 @@ class Inventory(models.Model):
         This functions returs the product name
         """
         return self.product.name
-    
+
     def get_attributes_values(self):
         return "\n".join([a.value for a in self.attribute_value.all()])
 
@@ -167,7 +166,7 @@ class Inventory(models.Model):
 class Image(models.Model):
     """
     Image model class
-    This model contain all the product 
+    This model contain all the product
     image name and url
     """
     inventory = models.ForeignKey(
