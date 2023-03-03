@@ -38,6 +38,22 @@ class Category(models.Model):
         return self.friendly_name
 
 
+# class Image(models.Model):
+#     """
+#     Image model class
+#     This model contain all the product
+#     image name and url
+#     """
+#     alternative_text = models.CharField(
+#         max_length=256
+#     )
+#     image = models.ImageField(
+#         upload_to='products/',
+#         null=True,
+#         blank=True
+#     )
+
+
 class Product(models.Model):
     """
     Class for product model
@@ -52,7 +68,28 @@ class Product(models.Model):
         blank=True,
         null=True
     )
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(
+        Category
+    )
+    image = models.ImageField(
+        upload_to='products/',
+        null=True,
+        blank=True
+    )
+    rating = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+    is_active = models.BooleanField(
+        default=False
+    )
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
+
     # category = models.ForeignKey(
     #     Category,
     #     related_name='category',
@@ -67,6 +104,9 @@ class Product(models.Model):
         This functions returs the product name
         """
         return self.name
+
+    def get_categories(self):
+        return "\n".join([cat.name for cat in self.category.all()])
 
 
 class Attribute(models.Model):
@@ -121,19 +161,17 @@ class Inventory(models.Model):
         related_name='product',
         on_delete=models.CASCADE
     )
-    attribute_value = models.ManyToManyField(AttributeValue)
-    price = models.DecimalField(
-        max_digits=5,
-        decimal_places=2
+    attribute_value = models.ManyToManyField(
+        AttributeValue
     )
     date_added = models.DateTimeField(
         auto_now_add=True,
         editable=False
     )
-    is_active = models.BooleanField(
-        default=False
+    units = models.PositiveIntegerField(
+        default=0
     )
-
+    
     def generate_sku():
         """
         This function generate unique sku number
@@ -163,44 +201,18 @@ class Inventory(models.Model):
         return "\n".join([a.value for a in self.attribute_value.all()])
 
 
-class Image(models.Model):
-    """
-    Image model class
-    This model contain all the product
-    image name and url
-    """
-    inventory = models.ForeignKey(
-        Inventory,
-        on_delete=models.CASCADE
-    )
-    alternative_text = models.CharField(
-        max_length=256
-    )
-    image_url = models.URLField(
-        max_length=1024,
-        null=True,
-        blank=True
-    )
-    image = models.ImageField(
-        null=True,
-        blank=True
-    )
-
-
-class StockControl(models.Model):
-    """
-    StockControl model class
-    This model contains quatity of the 
-    products
-    """
-    inventory = models.OneToOneField(
-        Inventory,
-        on_delete=models.CASCADE
-    )
-    units = models.PositiveIntegerField(
-        default=0
-    )
-    last_checked = models.DateTimeField(
-        auto_now=True,
-        editable=False
-    )
+# class StockControl(models.Model):
+#     """
+#     StockControl model class
+#     This model contains quatity of the
+#     products
+#     """
+#     inventory = models.OneToOneField(
+#         Inventory,
+#         on_delete=models.CASCADE
+#     )
+      
+#     last_checked = models.DateTimeField(
+#         auto_now=True,
+#         editable=False
+#     )

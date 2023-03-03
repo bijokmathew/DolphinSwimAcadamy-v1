@@ -10,8 +10,6 @@ from .models import (
     Attribute,
     AttributeValue,
     Inventory,
-    Image,
-    StockControl
 )
 # ------------------------------------------------------------------
 
@@ -38,6 +36,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'description',
+        'price',
+        'get_categories',
         'slug',
     )
     prepopulated_fields = {
@@ -65,7 +65,6 @@ class AttributeAdmin(admin.ModelAdmin):
         AttributeValueInline,
     )
 
-
 # @admin.register(AttributeValue)
 # class AttributeValueAdmin(admin.ModelAdmin):
 #     """
@@ -77,20 +76,6 @@ class AttributeAdmin(admin.ModelAdmin):
 #     )
 
 
-class ProductImageInline(admin.TabularInline):
-    """
-    TabularInlineAdmin class for Image model
-    """
-    model = Image
-
-
-class StockControlInline(admin.TabularInline):
-    """
-    TabularInlineAdmin class for StockControl model
-    """
-    model = StockControl
-
-
 @admin.register(Inventory)
 class InventoryAdmin(admin.ModelAdmin):
     """
@@ -100,13 +85,8 @@ class InventoryAdmin(admin.ModelAdmin):
         'sku',
         'product',
         'get_attributes_values',
-        'price',
+        'units',
         'date_added',
-        'is_active',
-    )
-    inlines = (
-        ProductImageInline,
-        StockControlInline,
     )
 
 # @admin.register(Image)
