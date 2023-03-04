@@ -25,8 +25,16 @@ def all_products(request):
     """
     products = Product.objects.all()
     categories = Category.objects.all()
+    query = None
+    category_list = None
 
     if request.GET:
+        if 'category' in request.GET:
+            category_list = request.GET['category'].split(',')
+            products = Product.objects.filter(category__slug__in=category_list)
+            print('category_list =', category_list)
+            category_list = Category.objects.filter(slug__in=category_list)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -35,13 +43,13 @@ def all_products(request):
                 )
                 redirect(reverse('products'))
             else:
-              
                 queries = Q(name__icontains=query) | Q(description__icontains=query)
                 products = Product.objects.filter(queries)
 
     context = {
         'products': products,
-        'categories': categories
+        'categories': categories,
+        'current_category': category_list
     }
     return render(request, 'products/products.html', context=context)
 

@@ -12,15 +12,18 @@
               Shop
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-              <a class="dropdown-item text-light-blue" href="#">Swimsuits</a>
-              <a class="dropdown-item text-light-blue" href="#">Shorts</a>
-              <a class="dropdown-item text-light-blue" href="#">Swim Gloves</a>
-              <a class="dropdown-item text-light-blue" href="#">Caps & Bags</a>
-              <a class="dropdown-item text-light-blue" href="#">Ear & Nose Plugs</a>
-              <a class="dropdown-item text-light-blue" href="#">Goggles</a>
-              <a class="dropdown-item text-light-blue" href="#">Armbands</a>
-              <a class="dropdown-item text-light-blue" href="#">Inflatables</a>
-              <a class="dropdown-item text-light-blue" href="{% url 'products' %}">All Products</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=swim-wear">Swimsuits</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=shorts">Shorts</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=swim_gloves">Swim Gloves</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=caps_bags">Caps & Bags</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=ear_nose_plug">Ear & Nose Plugs</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=goggles">Goggles</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=armbands">Armbands</a>
+              <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=inflatables">Inflatables</a>
+              <a class="dropdown-item text-light-blue" 
+                href="{% url 'products'%}?category=swim-wear,shorts,swim_gloves,cap_bags,ear_nose_plug,goggles,armbands,inflatables">
+                All Products
+              </a>
             </div>
           </li>
         <li class="nav-item dropdown">
@@ -28,9 +31,9 @@
                 Categories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="categories-link">
-                <a class="dropdown-item text-light-blue" href="#">Mens</a>
-                <a class="dropdown-item text-light-blue" href="#">Women</a>
-                <a class="dropdown-item text-light-blue" href="#">Kids</a>
+                <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=mens">Mens</a>
+                <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=womens">Women</a>
+                <a class="dropdown-item text-light-blue" href="{% url 'products'%}?category=kids">Kids</a>
             </div>
         </li>
         <li class="nav-item dropdown">
