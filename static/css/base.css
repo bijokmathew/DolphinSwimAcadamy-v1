@@ -8,6 +8,7 @@
     --heading-weight: 600;
     --heading-font: 'Urbanist', sans-serif;
     --nav-color:#1FD6FF;
+    --nav-font-weight:800;
     --text-color:#0000;
     --button-color:#733600;
     --theme-1:#015E73;
@@ -43,7 +44,7 @@ h6 {
 .search-icon,
 .nav-link p,
 .navbar-nav a{
-    font-weight:800;
+    font-weight:var(--nav-font-weight);
     font-family: var(--body-font);
 }
 
