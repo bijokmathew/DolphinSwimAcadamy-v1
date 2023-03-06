@@ -32,6 +32,12 @@ def all_products(request):
 
     if request.GET:
 
+        if 'category' in request.GET:
+            category_list = request.GET['category'].split(',')
+            products = Product.objects.filter(category__slug__in=category_list)
+            print('category_list =', category_list)
+            category_list = Category.objects.filter(slug__in=category_list)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -58,12 +64,6 @@ def all_products(request):
                 if direction == 'desc':
                     sort_key = f'-{sort_key}'
             products = products.order_by(sort_key)
-
-        if 'category' in request.GET:
-            category_list = request.GET['category'].split(',')
-            products = Product.objects.filter(category__slug__in=category_list)
-            print('category_list =', category_list)
-            category_list = Category.objects.filter(slug__in=category_list)
 
     current_sorting = f'{sort}_{direction}'
     context = {
