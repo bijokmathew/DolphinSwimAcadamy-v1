@@ -175,7 +175,7 @@ h6 {
     background-repeat: no-repeat;
     background-position: center;
     background-position: center;
-    background-size: 98%;
+    background-size: 99% 100%;
 } 
 
 .bg-img-holder-home {
@@ -287,11 +287,26 @@ h6 {
 
 /* Container width should be max for smaller screen */
 
-@media (min-width: 576px) {
+/* slightly larger container on xl screen */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+
+@media (max-width: 576px) {
 
     .container, 
     .container-sm {
         max-width: 100%;
+    }
+    .navbar {
+        padding: 0px;
+    }
+    .col-12 {
+        padding-right: 5px;
     }
 }
 

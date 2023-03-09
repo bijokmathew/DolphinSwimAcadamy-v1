@@ -171,7 +171,7 @@ class Inventory(models.Model):
     units = models.PositiveIntegerField(
         default=0
     )
-    
+
     def generate_sku():
         """
         This function generate unique sku number
