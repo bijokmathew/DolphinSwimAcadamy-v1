@@ -41,6 +41,7 @@
                                         </td>
                                         <td class="py-3">
                                             <p class="fw-bold fs-6 my-0">{{item.product.name}}</p>
+                                            <p class="my-2"><strong>Size: </strong>{% if item.size != 'None' %} {{item.size|upper}} {% else %} N/A {% endif %}</p>
                                             <p class="lead text-muted">{{item.product.sku}}</p>
                                         </td>
                                         <td class="py-3">
