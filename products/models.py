@@ -138,16 +138,21 @@ class AttributeValue(models.Model):
     )
     attribute = models.ForeignKey(
         Attribute,
-        related_name='attribute',
         on_delete=models.CASCADE
     )
 
     def __str__(self):
         """
-        This functions returs the atribute name
+        This functions returns the atribute name
         and its value
         """
         return f"{self.attribute.name} : {self.value}"
+
+    def get_attribute_name(self):
+        """
+        This function returns the attribue name 
+        """
+        return self.attribute.name
 
 
 class Inventory(models.Model):
@@ -158,7 +163,6 @@ class Inventory(models.Model):
     """
     product = models.ForeignKey(
         Product,
-        related_name='product',
         on_delete=models.CASCADE
     )
     attribute_value = models.ManyToManyField(
@@ -198,7 +202,20 @@ class Inventory(models.Model):
         return self.product.name
 
     def get_attributes_values(self):
-        return "\n".join([a.value for a in self.attribute_value.all()])
+        """
+        This function return list of all attribute values
+        belongs to the specific product
+        """
+        print("aa",  self.attribute_value.all()[0].get_attribute_name())
+        print("bb", list([a for a in self.attribute_value.all()]))
+        return list([a.value for a in self.attribute_value.all()])
+
+    def get_attributes_name(self):
+        """
+        This function return list of all attribute name
+        belongs to the attribute value
+        """
+        return list([a.get_attribute_name() for a in self.attribute_value.all()])
 
 
 # class StockControl(models.Model):

@@ -81,7 +81,22 @@ def product_detail(request, product_id):
     the profuct list
     """
     product = get_object_or_404(Product, id=product_id)
+    print("BKM p-->", product)
+    sub_products = product.inventory_set.all()
+    print("BKM sub--", sub_products)
+    
+    for sub in sub_products:
+        print(sub.attribute_value.all())
+        print("sub-val", sub.get_attributes_values())
+        print("sub-name", sub.get_attributes_name())
+        for u in sub.attribute_value.all():
+            print(u.get_attribute_name())
+            if u.get_attribute_name() == "Size":
+                print("size : =", u.value)
+            
+        print("--------------")
     context = {
         'product': product,
+        'sub_products': sub_products,
     }
     return render(request, 'products/product_detail.html', context=context)
