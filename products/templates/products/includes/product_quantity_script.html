@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  
+    handleDisableEnable()
+    $('.qty-input').change(function(){
+        handleDisableEnable();
+    })
+
+    // disable and enable increment/decrement button
+    function handleDisableEnable(){
+        var currentValue = parseInt($('.qty-input').val());
+        var disableMinus = currentValue < 2;
+        var disablePlus = currentValue > 98 ;
+        console.log("bb decrement",disableMinus );
+        $('#btn-incr').prop('disabled',disablePlus);
+        $('#btn-dcr').prop('disabled', disableMinus);
+    }
+    
+    // Decrement product quatity 
+    $('.decrement-qty').click(function(e){
+        e.preventDefault();
+        var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+        currentValue = parseInt($(currentPos).val());
+        $(currentPos).val(currentValue-1);
+        handleDisableEnable();
+    })
+
+    // Increment product quantity
+    $('.increment-qty').click(function(e){
+        e.preventDefault();
+        currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+        currentValue = parseInt($(currentPos).val());
+        $(currentPos).val(currentValue+1);
+        handleDisableEnable();
+    })
+</script>

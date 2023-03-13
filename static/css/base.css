@@ -65,6 +65,7 @@ h6 {
     border: solid 1px var(--light-blue) ;
 }
 
+.btn-light-blue-nhover,
 .btn-light-blue {
     background:var(--light-blue);
     color: white;
