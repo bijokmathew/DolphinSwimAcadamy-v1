@@ -18,7 +18,6 @@
         var currentValue = parseInt($(`#id_qty_${itemId}`).val());
         var disableMinus = currentValue < 2;
         var disablePlus = currentValue > 98 ;
-        console.log("bb decrement",disableMinus );
         $(`#increment_qty_${itemId}`).prop('disabled',disablePlus);
         $(`#decrement_qty_${itemId}`).prop('disabled', disableMinus);
     }
@@ -31,6 +30,9 @@
         $(currentPos).val(currentValue-1);
         var itemId = $(this).data('item_id')
         handleDisableEnable(itemId);
+        if ($(this).data('form_id') =='bag'){
+            saveFormToServer($(this));
+        }
     })
 
     // Increment product quantity
@@ -41,5 +43,14 @@
         $(currentPos).val(currentValue+1);
         var itemId = $(this).data('item_id')
         handleDisableEnable(itemId);
+        if ($(this).data('form_id') =='bag'){
+            saveFormToServer(this);
+        }
     })
+
+    //  update the bage items quatity to the server
+    function saveFormToServer(thisObj){
+        var form = $(thisObj).closest('form');
+            form.submit();
+    }
 </script>

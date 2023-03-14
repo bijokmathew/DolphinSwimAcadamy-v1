@@ -22,7 +22,6 @@ def bag_contents(request):
     Add shopping bag items, quantity, total etc
      from session to context processor
     """
-    print("bag_contents")
     bag_items = []
     total = 0
     product_count = 0

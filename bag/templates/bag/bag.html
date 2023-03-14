@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col">    
+            <div class="col">
             </div>
         </div>
     </div>
@@ -26,10 +27,10 @@
                         <table class="table-sm table-borderless table align-top">
                             <thead>
                                 <tr>
-                                  <th scope="col">Item</th>
+                                  <th scope="col" class="text-center">Item</th>
                                   <th scope="col"></th>
                                   <th scope="col">Price</th>
-                                  <th scope="col">Qty</th>
+                                  <th scope="col" class="text-center">Qty</th>
                                   <th scope="col">Total</th>
                                 </tr>
                               </thead>
@@ -47,11 +48,41 @@
                                         <td class="py-3">
                                             <p class="my-0">{{item.product.price}}</p>
                                         </td>
-                                        <td class="py-3 w-25">
-                                            <p class="my-0">{{item.quantity}}</p>
+                                        <td class="py-3 w-25 px-lg-4">
+                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                                {% csrf_token %}
+                                                <div class="input-group mx-auto">
+                                                    <span>
+                                                        <button class="btn btn-sm rounded-0 btn-light-blue-nhover decrement-qty"
+                                                            data-item_id="{{item.item_id}}" id="decrement_qty_{{item.item_id}}"
+                                                            data-form_id="bag">
+                                                            <span><i class="fa fa-minus fa-sm"></i></span>
+                                                        </button>
+                                                    </span>
+                                                    <input class="form-control form-control-sm qty-input" type="number" name="quantity"
+                                                        value="{{item.quantity}}" min="1" max="99" id="id_qty_{{item.item_id}}"
+                                                        data-item_id="{{item.item_id}}">
+                                                    <span>
+                                                        <button class="btn btn-sm btn-light-blue-nhover rounded-0 increment-qty" 
+                                                            id="increment_qty_{{item.item_id}}" data-item_id="{{item.item_id}}"
+                                                            data-form_id="bag">
+                                                            <span><i class="fa fa-plus fa-sm"></i></span>
+                                                        </button>
+                                                    </span>
+                                                    {% if s %}
+                                                        <input type="hidden" name="product_size" value="{{item.size}}">
+                                                    {% endif %}
+                                                </div>
+                                            </form>
                                         </td>
                                         <td class="py-3">
-                                            <p>{{total}}</p>
+                                            <p>{{item.product.price | calc_subtotal:item.quantity}}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <a class="my-0 remove-link" data-product_size="{{item.size}}" 
+                                                id="remove_{{item.item_id}}">
+                                                <i class="fa fa-trash text-light-blue"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -78,24 +109,40 @@
                                         </a>
                                     </td>
                                 </tr>
-                               
                               </tbody>
                         </table>
-
                     </div>
-
                 {% else %}
                     <p class="mb-5 lead">Your bag is empty</p>
                     <a href="{% url 'products' %}" class="btn btn-lg rounded-0">
-                        <!-- <span class="icon"> -->
+                        <span class="icon">
                             <i class="fas fa-chevron-left" ></i>
-                        <!-- </span> -->
+                        </span>
                         <span class="text-uppercase">Keep shopping</span>
                     </a>
                 {% endif %}
             </div>
         </div>
-
     </div>
-        
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super}}
+    {% include 'products/includes/product_quantity_script.html' %}
+    <script type="text/javascript">
+        // remove an item from the shopping bag
+        $('.remove-link').click(function(e){
+            var csrfToken = "{{csrf_token}}";
+            var size = $(this).data('product_size');
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var url = `/bag/remove/${itemId}/`;
+            var data = {
+                'csrfmiddlewaretoken': csrfToken,
+                'product_size': size,
+            }
+            $.post(url,data)
+                .done(function(){
+                    location.reload()
+                })
+        })
+    </script>
 {% endblock %}
