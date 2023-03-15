@@ -4,7 +4,7 @@
 /* root colors and styles */
 :root {
     --body-font:'Urbanist', sans-serif;
-    --body-weight: 200;
+    --body-weight: 400;
     --heading-weight: 600;
     --heading-font: 'Urbanist', sans-serif;
     --nav-color:#1FD6FF;
@@ -283,6 +283,19 @@ h6 {
     color:white;
 }
 
+/* message style */
+.toast-capper {
+    height: 2px;
+}
+.custom-toast {
+    overflow: visible;
+}
+.message-container {
+    position: fixed;
+    top:76px;
+    right: 15px;
+    z-index: 99999;
+}
 
 /* ---------Media query */
 
