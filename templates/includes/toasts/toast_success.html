@@ -6,6 +6,48 @@
       <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
-        {{message}}
+      <div class="row">
+        <div class="col">
+          {{message}}
+          <hr class="mt-1 mb-3">
+        </div>
+      </div>
+      {% if grand_total %}
+        <p class="text-uppercase">Your Cart Contains : {{product_count}} items </p>
+        <div class="bag-notification-wrapper">
+          {% for item in bag_items %}
+            <div class="row">
+              <div class="col-3">
+                <img class="w-100" src="{{item.product.image.url}}" alt="">
+              </div>
+              <div class="col-9">
+                <p><strong>{{item.product.name}}</strong></p>
+                <p>Size:item.size | upper</p>
+                <p>Qty: {{item.quantity}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div class="col">
+            <strong>
+              <p>
+                Total:
+                <span class="float-end">
+                  Total: ${{total| floatformat:2}};
+                </span>
+              </p>  
+            </strong>
+            <div class="d-grid">
+              <a href="{% url 'view_bag' %}" class="btn btn-block rounded-0 btn-light-blue">
+                <span class="text-uppercase">Go To Secure Checkout</span>
+                <span class="icon">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
