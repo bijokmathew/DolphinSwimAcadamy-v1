@@ -297,8 +297,8 @@ h6 {
 }
 .message-container {
     position: fixed;
-    top:76px;
-    right: 15px;
+    top:90px;
+    right: 35px;
     z-index: 99999;
 }
 /* arrow style taken from https://css-tricks.com/snippets/css/css-triangle/ */
@@ -310,7 +310,7 @@ h6 {
     border-right: 5px solid transparent;
     border-bottom: 5px solid black;
     position: absolute;
-    right: 25px;
+    right: 75px;
     top: -10px;
 }
 
