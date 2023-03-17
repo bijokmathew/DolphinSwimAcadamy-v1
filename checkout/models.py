@@ -151,7 +151,7 @@ class OrderLineItem(models.Model):
         blank=False,
         null=False
     )
-    quantity = models.ImageField(
+    quantity = models.IntegerField(
         blank=False,
         null=False,
         default=0
