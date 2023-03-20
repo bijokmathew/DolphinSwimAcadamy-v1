@@ -16,7 +16,7 @@ from django.shortcuts import (
 from django.contrib import messages
 
 # internal
-from .models import Order, OrderLineItem
+from .forms import OrderForm
 # ------------------------------------------------------------------
 
 
