@@ -78,7 +78,7 @@
                     <div class="col-3">
                         <p class="my-0">${{total | floatformat:2 }}</p>
                         <p class="my-0">${{delivery | floatformat:2 }}</p>
-                        <p class="my-0">${{grand_total | floatformat:2 }}</p>
+                        <p class="my-0"><strong>${{grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -86,15 +86,15 @@
             <div class="col-12 col-lg-6">
                 <h3 class="fs-6">PAYMENT DETAILS</h4>
                 <p class="text-muted">Please fill out the form below to complete your order</p>
-                <form action="{% url 'checkout' %}" method="POST" id="payment_form">
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="col-12 mb-5 px-3 rounded">
-                        <legend class="small fieldset-label text-black w-auto">Details</legend>
+                        <legend class="small fieldset-label text-black px-2 w-auto">Details</legend>
                         {{order_form.full_name | as_crispy_field}}
                         {{order_form.email | as_crispy_field}}
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label small text-dark w-auto">Delivery</legend>
+                        <legend class="fieldset-label small text-dark px-2 w-auto">Delivery</legend>
                         {{order_form.phone_number | as_crispy_field}}
                         {{order_form.country | as_crispy_field}}
                         {{order_form.postcode | as_crispy_field}}
@@ -117,7 +117,7 @@
                     <fieldset class="px-3">
                         <legend class="small fieldset-label text-black px-2 w-auto">Payment</legend>
                         <!-- A stripe card element  -->
-                        <div class="mb-3" id="card-element"></div>
+                        <div class="mb-3" id="card-payment"></div>
                         <!-- used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors"></div>
                     </fieldset>
