@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
   {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
@@ -37,6 +36,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
     </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
   {% endblock %}
 
   {% block extra_js %}
@@ -163,8 +164,5 @@
       $('.toast').toast('show')
     </script>
   {% endblock %}
-
-
 </body>
-
 </html>

@@ -117,7 +117,7 @@
                     <fieldset class="px-3">
                         <legend class="small fieldset-label text-black px-2 w-auto">Payment</legend>
                         <!-- A stripe card element  -->
-                        <div class="mb-3" id="card-payment"></div>
+                        <div class="mb-3" id="card-element"></div>
                         <!-- used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors"></div>
                     </fieldset>
@@ -145,4 +145,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block postloadjs %}
+    {{stripe_public_key|json_script:"id_stripe_public_key"}}
+    {{client_secret|json_script:"id_client_secret"}}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
