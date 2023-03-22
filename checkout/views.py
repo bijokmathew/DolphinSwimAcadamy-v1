@@ -33,7 +33,8 @@ def checkout(request):
     Args:
         request (object)
     Returns:
-        The request object, the checkout template and the context.
+        The request object, the checkout template, checkout_success template 
+        and the context.
     """
     # Get the stripe secret and public key from settings
     stripePublicKey = settings.STRIPE_PUBLIC_KEY
@@ -43,7 +44,7 @@ def checkout(request):
     if not bag:
         messages.error(request, "There is nothing in your bag at the momemt!")
         return redirect(reverse('products'))
-    if request.method == POST:
+    if request.method == 'POST':
         form_data = {
             "full_name": request.POST['full_name'],
             'email': request.POST['email'],
@@ -77,10 +78,9 @@ def checkout(request):
                             )
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the product in your bag was not found in our database."
-                        "Please call us for assistance!"
-                    ))
+                    messages.error(request, "One of the product in your bag \
+                        was not found in our database. \
+                        Please call us for assistance!")
                     order.delete()
                     return redirect(reverse('view_bag'))
             request.session['save_info'] = 'save-info' in request.POST
@@ -99,7 +99,7 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY
         )
-    if not stripe_public_key:
+    if not stripePublicKey:
         messages.warning(request, "Stripe public key is missing. \
                           Did you forget to set it in to your enviroment")
     order_form = OrderForm()
@@ -116,6 +116,10 @@ def checkout(request):
 def checkout_success(request, order_number):
     """
     Handle checkout success message
+    Args:
+        request (object, order_number)
+    Returns:
+        The request object, the checkout_success template and order.
     """
     save_info = request.session['save_info']
     order = get_object_or_404(Order, order_number=order_number)
