@@ -163,7 +163,8 @@ class Inventory(models.Model):
     """
     product = models.ForeignKey(
         Product,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='inventory_product',
     )
     attribute_value = models.ManyToManyField(
         AttributeValue

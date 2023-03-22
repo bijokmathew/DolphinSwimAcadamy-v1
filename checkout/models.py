@@ -105,9 +105,9 @@ class Order(models.Model):
         Calculate the total amount of each order,
         and grand total
         """
-        self.order_total = self.lineitem.aggregate(
-            Sum('lineItem_total'))['lineItem_total__sum']
-        if order_total < settings.FREE_DELIVERY_THRESHOLD:
+        self.order_total = self.lineItems.aggregate(
+            Sum('lineItem_total'))['lineItem_total__sum'] or 0
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total *\
                  settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
@@ -122,7 +122,7 @@ class Order(models.Model):
         already
         """
         if not self.order_number:
-            self.order_number = self.__generate_order_number(self)
+            self.order_number = self.__generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -143,7 +143,7 @@ class OrderLineItem(models.Model):
         on_delete=models.CASCADE,
         blank=False,
         null=False,
-        related_name='lineitem'
+        related_name='lineItems'
     )
     product = models.ForeignKey(
         Product,
@@ -162,26 +162,25 @@ class OrderLineItem(models.Model):
         null=True
     )
     lineItem_total = models.DecimalField(
-        max_digits=4,
+        max_digits=6,
         decimal_places=2,
         blank=False,
-        name=False,
+        null=False,
         editable=False
     )
 
+    def save(self, *args, **kwargs):
+        """
+        Override the default save method to update the
+        lineitem_total
+        """
+        self.lineItem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
 
-def save(self, *args, **kwargs):
-    """
-    Override the default save method to update the
-    lineitem_total
-    """
-    self.lineItem_total = self.product.price * self.quantity
-    super().save(*args, **kwargs)
-
-
-def __str__(self):
-    """
-    Override the __str__() to return order number and
-    product sku
-    """
-    return f"SKU : {self.product.sku} on order {self.order.order_number}"
+    def __str__(self):
+        """
+        Override the __str__() to return order number and
+        product sku
+        """
+        return f"SKU : {self.product.inventory_product.sku} on order \
+                       {self.order.order_number}"

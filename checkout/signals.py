@@ -19,13 +19,13 @@ def update_on_save(sender, instance, created, **kwargs):
     update order_total, grand_total fields of order model
     when OrderLine model created/updated
     """
-    instance.Order.update_order_total()
+    instance.order.update_order_total()
 
 
 @receiver(post_delete, sender=OrderLineItem)
-def update_on_save(sender, instance, created, **kwargs):
+def delete_on_save(sender, instance, created, **kwargs):
     """
     update order_total, grand_total fields of order model
     when OrderLine model deleted
     """
-    instance.Order.update_order_total()
+    instance.order.update_order_total()

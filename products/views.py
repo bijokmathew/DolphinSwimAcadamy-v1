@@ -82,7 +82,7 @@ def product_detail(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
     print("BKM p-->", product)
-    sub_products = product.inventory_set.all()
+    sub_products = product.inventory_product.all()
     print("BKM sub--", sub_products)
     
     for sub in sub_products:
