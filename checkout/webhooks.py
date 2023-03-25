@@ -10,7 +10,7 @@ handler
 from django.http import HttpResponse
 
 # internal
-from webhook_handler import StripeWHHandler
+from .webhook_handler import StripeWHHandler
 
 # -------------------------------------------------
 
@@ -20,7 +20,7 @@ def webhook(self, request):
     Listen for webhook events from the stripe
     """
     # setup
-    wh_secret = settings.STRIPE_WH_SECRET
+    wh_secret = settings.STRIPE_WEBHOOK_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     # Get the webhook data and verify its signature
@@ -58,5 +58,4 @@ def webhook(self, request):
     event_handler = event_map.get(event_type, handler.handle_event)
     # Call the event handler with the event
     response = event_handler(event)
-
     return response

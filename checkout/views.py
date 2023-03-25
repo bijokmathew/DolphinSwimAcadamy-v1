@@ -13,6 +13,8 @@ from django.shortcuts import (
     reverse,
     get_object_or_404
 )
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse
 from django.contrib import messages
 from django.conf import settings
 
@@ -23,6 +25,35 @@ from products.models import Product
 from .forms import OrderForm
 import stripe
 # ------------------------------------------------------------------
+
+
+@require_POST
+def cache_checkout_date(request):
+    """
+    This function processes post request from checkout.
+    This funtion modify the paymentIntent with bag, saveIfo
+    and user details
+    Args:
+        request (object)
+    Returns:
+       Retun the appropritae http response
+    """
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = client_secret
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, "Sorry!, your payment cannot be processed \
+            right now. Please try again later")
+        return HttpResponse(
+            content=e,
+            status=400
+        )
 
 
 def checkout(request):
