@@ -58,7 +58,8 @@ class StripeWHHandler:
 
         order_exits = False
         try:
-            Order.objects.get(
+            print('handle_payment_intent_succeeded inside try')
+            val = Order.objects.get(
                 street_address1__iexact=shipping_details.address.line1,
                 street_address2__iexact=shipping_details.address.line2,
                 postcode__iexact=shipping_details.address.postal_code,
@@ -69,8 +70,17 @@ class StripeWHHandler:
                 full_name__iexact=shipping_details.name,
                 email__iexact=billing_details.email,
                 grand_total=grand_total,
+                original_bag=bag,
+                stripe_pid=pid,
+            )
+            print('handle_payment_intent_succeeded inside try-val', val)
+            return HttpResponse(
+                content=f'Webhook success recieved: {event["type"]} |'
+                ' Success: Order is already created in webhook ',
+                status=200
             )
         except Order.DoesNotExist:
+            print('handle_payment_intent_succeeded inside DoesNotExist-val')
             order = Order.objects.create(
                 street_address1=shipping_details.address.line1,
                 street_address2=shipping_details.address.line2,
@@ -82,6 +92,8 @@ class StripeWHHandler:
                 full_name=shipping_details.name,
                 email=billing_details.email,
                 grand_total=grand_total,
+                original_bag=bag,
+                stripe_pid=pid,
             )
             for item_id, item_data in json.loads(bag).items():
                 product = Product.objects.get(id=item_id)
@@ -101,11 +113,11 @@ class StripeWHHandler:
                             quantity=quantity,
                         )
                         order_line_item.save()
-        return HttpResponse(
-           content=f'Webhook success recieved: {event["type"]} |'
-           ' Success: created order in webhook ',
-           status=200
-        )
+            return HttpResponse(
+                content=f'Webhook success recieved: {event["type"]} |'
+                ' Success: created order in webhook ',
+                status=200
+            )
 
     def handle_payment_intent_payment_failed(self, event):
         """

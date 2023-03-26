@@ -92,6 +92,17 @@ class Order(models.Model):
         null=False,
         default=0
     )
+    stripe_pid = models.CharField(
+        max_length=254,
+        null=False,
+        blank=False,
+        default=''
+    )
+    original_bag = models.TextField(
+        blank=False,
+        null=False,
+        default=''
+    )
 
     def __generate_order_number(self):
         """
@@ -182,5 +193,5 @@ class OrderLineItem(models.Model):
         Override the __str__() to return order number and
         product sku
         """
-        return f"SKU : {self.product.inventory_product.sku} on order \
+        return f"SKU : {self.product.inventory_product.name} on order \
                        {self.order.order_number}"
