@@ -10,13 +10,13 @@ var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
     base: {
-        color: '#000',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
-        fontSize: '16px',
         '::placeholder': {
             color: '#aab7c4'
-        }
+        },
+        fontSize: '16px',
+        color: '#000',
     },
     invalid: {
         color: '#dc3545',
@@ -52,44 +52,45 @@ form.addEventListener('submit', function(ev) {
     $('#submit-button').attr('disabled', true);
     $('#loading-overlay').fadeToggle(100);
     $('#payment-form').fadeToggle(100);
-    var saveInfo = Boolean($(id-save-info).attr('checked'))
+
+    var saveInfo = Boolean($('id-save-info').attr('checked'))
     // form using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-    postData = {
+    var postData = {
+        'csrfmiddlewaretoken':csrfToken,
         'client_secret': clientSecret,
-        'csrf_token':csrfToken,
         'save_info': saveInfo
     }
     var url = '/checkout/cache_checkout_data/'
     // Post the request to cache_checkout_data
     $.post(url, postData).done(function(){
+        console.log("form addEventListener==Done")
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details:{
+                    phone: $.trim(form.phone_number.value),
                     name: $.trim(form.full_name.value),
-                    email: $.trim(from.email.value),
-                    phone: $.trim(from.phone_number.value),
+                    email: $.trim(form.email.value),
                     address: {
                         line1: $.trim(form.street_address1.value),
-                        line2: $.trim(from.street_address12.value),
+                        line2: $.trim(form.street_address2.value), 
                         city: $.trim(form.town_or_city.value),
-                        state: $.trim(form.county.value),
-                        country: $.trim(from.coutry.value),
-                        postal_code: $.trim(form.postcode)
+                        country: $.trim(form.country.value),
+                        state: $.trim(form.county.value),                           
                     }
                 }
             },
             shipping: {
+                phone: $.trim(form.phone_number.value),
                 name: $.trim(form.full_name.value),
-                phone: $.trim(from.phone_number.value),
                 address: {
                     line1: $.trim(form.street_address1.value),
-                    line2: $.trim(from.street_address12.value),
+                    line2: $.trim(form.street_address2.value), 
+                    postal_code: $.trim(form.postcode.value),
                     city: $.trim(form.town_or_city.value),
+                    country: $.trim(form.country.value),
                     state: $.trim(form.county.value),
-                    country: $.trim(from.coutry.value),
-                    postal_code: $.trim(form.postcode),
                 }
             }
         }).then(function(result) {
@@ -101,10 +102,11 @@ form.addEventListener('submit', function(ev) {
                     </span>
                     <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
+
+                $('#submit-button').attr('disabled', false);
                 $('#loading-overlay').fadeToggle(100);
                 $('#payment-form').fadeToggle(100);
-                card.update({ 'disabled': false});
-                $('#submit-button').attr('disabled', false);
+                card.update({ 'disabled': false});                
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     form.submit();
@@ -115,5 +117,4 @@ form.addEventListener('submit', function(ev) {
         // Just reload the page, the error will be in the django messages
         location.reload()
     })
-    
 });

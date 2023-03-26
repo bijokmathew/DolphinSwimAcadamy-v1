@@ -17,18 +17,19 @@ from django.views.decorators.http import require_POST
 from django.http import HttpResponse
 from django.contrib import messages
 from django.conf import settings
+import stripe
+import json
 
 # internal
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 from products.models import Product
 from .forms import OrderForm
-import stripe
 # ------------------------------------------------------------------
 
 
 @require_POST
-def cache_checkout_date(request):
+def cache_checkout_data(request):
     """
     This function processes post request from checkout.
     This funtion modify the paymentIntent with bag, saveIfo
@@ -40,7 +41,8 @@ def cache_checkout_date(request):
     """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = client_secret
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
@@ -71,21 +73,23 @@ def checkout(request):
     stripePublicKey = settings.STRIPE_PUBLIC_KEY
     clientSecret = settings.STRIPE_SECRET_KEY
     bag = request.session.get('bag', {})
+
     # prevet user to go to checkout by expliciltly typing checkout url
     if not bag:
         messages.error(request, "There is nothing in your bag at the momemt!")
         return redirect(reverse('products'))
+
     if request.method == 'POST':
         form_data = {
-            "full_name": request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
+            'phone_number': request.POST['phone_number'],
+            'town_or_city': request.POST['town_or_city'],
+            "full_name": request.POST['full_name'],
+            'postcode': request.POST['postcode'],
+            'country': request.POST['country'],
             'county': request.POST['county'],
+            'email': request.POST['email'],            
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -105,8 +109,8 @@ def checkout(request):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
+                                product_size=size,
                                 quantity=quantity,
-                                product_size=size
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
@@ -115,6 +119,7 @@ def checkout(request):
                         Please call us for assistance!")
                     order.delete()
                     return redirect(reverse('view_bag'))
+
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]
@@ -124,9 +129,9 @@ def checkout(request):
                 Please double check with your information.")
     else:
         current_bag = bag_contents(request)
-        stripe.api_key = clientSecret
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
+        stripe.api_key = clientSecret
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY
@@ -157,7 +162,7 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f"Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}")
+        email will be sent to {order.email}")     
     if 'bag' in request.session:
         del request.session['bag']
     template = 'checkout/checkout_success.html'
