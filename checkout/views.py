@@ -31,7 +31,7 @@ from .forms import OrderForm
 @require_POST
 def cache_checkout_data(request):
     """
-    This function processes post request from checkout.
+    This function process post request from checkout.
     This funtion modify the paymentIntent with bag, saveIfo
     and user details
     Args:

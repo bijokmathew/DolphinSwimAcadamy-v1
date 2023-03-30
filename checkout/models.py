@@ -13,6 +13,8 @@ from django.db import models
 import uuid
 
 # internal
+
+from profiles.models import UserProfile
 from products.models import Product
 # ------------------------------------------------------------------
 
@@ -27,6 +29,13 @@ class Order(models.Model):
         null=False,
         blank=False,
         editable=False
+    )
+    user_profile = models.ForeignKey(
+        UserProfile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='orders'
     )
     full_name = models.CharField(
         max_length=50,
