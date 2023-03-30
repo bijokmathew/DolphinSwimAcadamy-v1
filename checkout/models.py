@@ -5,6 +5,8 @@ Checkout app related models
 
 # -----------------------------------------------------------------
 # 3rd Party
+
+from django_countries.fields import CountryField
 from django.conf import settings
 from django.db.models import Sum
 from django.db import models
@@ -41,8 +43,8 @@ class Order(models.Model):
         null=False,
         blank=False
     )
-    country = models.CharField(
-        max_length=40,
+    country = CountryField(
+        blank_label='Country*',
         null=False,
         blank=False
     )
