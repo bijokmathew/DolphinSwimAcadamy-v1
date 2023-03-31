@@ -14,7 +14,7 @@ from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     """
-    Create a form for user profiles by 
+    Create a form for user profiles by
     using the userprofile model
     """
     class Meta:

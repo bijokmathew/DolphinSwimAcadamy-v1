@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'profiles',
 
     # Others
-    'crispy_forms',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dolphinswimacadamy.urls'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 TEMPLATES = [
     {

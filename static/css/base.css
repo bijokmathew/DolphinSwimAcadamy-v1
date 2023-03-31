@@ -346,6 +346,55 @@ h6 {
     overflow-y: auto;
 }
 
+/* ------------- Allauth */
+
+.allauth-inner-content p {
+    margin-top: 1.5rem;
+    color: #6c757d;
+}
+.allauth-inner-content input{
+    border-color: #000;
+    border-radius: 0;
+}
+.allauth-inner-content label:not([for="id_remember"]){
+    display: none;
+}
+.allauth-form-inner-content input::placeholder{
+    color: #aab7c4;
+}
+.allauth-inner-content button,
+.allauth-inner-content input[type='submit'] {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(36,47,109,1);
+    border: 1px solid rgba(36,47,109,1);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap button transition */
+    transition: color .15s ease-in-out,  background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.allauth-inner-content button:hover,
+.allauth-inner-content input[type='submit']:hover {
+    color: #fff;
+    background-color: rgba(36,47,109,0.8);
+    border-color: rgba(36,47,109,0.8);
+}
+
+.allauth-inner-content a {
+    color: #17a2b8;
+}
+
 /* ---------Media query */
 
 /* Container width should be max for smaller screen */
@@ -381,5 +430,19 @@ h6 {
     }
     .col-12 {
         padding-right: 5px;
+    }
+}
+
+/* ----------allauth--- */
+@media only screen and (min-width : 992px) {
+    .auth-pages-border {
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    .auth-background {
+        background-image: url(../img/slide-1.png);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 }

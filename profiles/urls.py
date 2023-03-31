@@ -4,7 +4,7 @@ Profiles module url configurations
 
 # ------------------------------------------------
 # 3rd party
-from django.contrib import admin
+from django.urls import path
 
 # internal
 from . import views
