@@ -30,11 +30,26 @@
     right: 0.5rem;
 }
 
+#div_id_country {
+  border: 1px solid black;
+  color: black;
+}
+
 #payment-form .form-control,
 #card-element {
     border: 1px solid black;
     color: black;
 }
+select,
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
 
 #loading-overlay {
   display: none;

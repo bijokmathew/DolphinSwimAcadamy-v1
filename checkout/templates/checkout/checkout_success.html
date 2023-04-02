@@ -171,15 +171,24 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-7 text-end">
-                {% if user.is_authenticated %}
-                    <a href="#" class="btn btn-light-blue-nhover rounded-0 my-2">My Profile</a>
+                {% if from_profile_page %}
+                    <a href="{% url 'user_profile' %}" class="btn btn-light-blue-nhover rounded-0 my-2">
+                        <span class="icon mr-2">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back To Profile</span>
+                    </a>
+                {% else %}
+                    {% if user.is_authenticated %}
+                        <a href="#" class="btn btn-light-blue-nhover rounded-0 my-2">My Profile</a>
+                    {% endif %}
+                    <a href="{% url 'products' %}" class="btn btn-outline-light-blue btn rounded-0 my-2">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep shopping</span>
+                    </a>
                 {% endif %}
-                <a href="{% url 'products' %}" class="btn btn-outline-light-blue btn rounded-0 my-2">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep shopping</span>
-                </a>
             </div>
         </div>
     </div>

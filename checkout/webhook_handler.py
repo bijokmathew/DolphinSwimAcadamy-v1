@@ -51,17 +51,31 @@ class StripeWHHandler:
         shipping_details = intent.shipping
         billing_details = stripe_charge.billing_details
         grand_total = round(stripe_charge.amount / 100, 2)
-        print('handle_payment_intent_succeeded grand_total ==', grand_total, stripe_charge.amount)
+
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
+        
+        # Updated the profile info if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone,
+                profile.default_country = shipping_details.address.country,
+                profile.default_postcode = shipping_details.address.postal_code,
+                profile.default_town_or_city = shipping_details.address.city,
+                profile.default_street_address1 = shipping_details.address.line1,
+                profile.default_street_address2 = shipping_details.address.line2,
+                profile.default_county = shipping_details.address.state,
+                profile.save()   
 
         attempt = 1
         order_exits = False
         while attempt < 5:
             try:
-                print('handle_payment_intent_succeeded inside try')
                 order = Order.objects.get(
                     street_address1__iexact=shipping_details.address.line1,
                     street_address2__iexact=shipping_details.address.line2,
@@ -75,25 +89,19 @@ class StripeWHHandler:
                     grand_total=grand_total,
                     original_bag=bag
                 )
-                print('handle_payment_intent_succeeded inside try-val')
                 order_exits = True
                 break
             except Order.DoesNotExist:
-                print('handle_payment_intent_succeeded inside DoesNotExist-val')
                 order_exits = False
                 attempt += 1
                 time.sleep(1)
-            except Exception as e:
-                print('handle_payment_intent_succeeded inside Exception e==', e)
         if order_exits:
-            print('handle_payment_intent_succeeded oredr exist')
             return HttpResponse(
                 content=f'Webhook success event recieved: {event["type"]} '
                         '| Success: Verified order already in database',
                 status=200
             )
         else:
-            print('handle_payment_intent_succeeded inside DoesNotExist--false')
             order = None
             try:
                 order = Order.objects.create(
@@ -110,7 +118,6 @@ class StripeWHHandler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                print('handle_payment_intent_succeeded DoesNotExist--false order created')
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):

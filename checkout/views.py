@@ -147,7 +147,26 @@ def checkout(request):
     if not stripePublicKey:
         messages.warning(request, "Stripe public key is missing. \
                           Did you forget to set it in to your enviroment")
-    order_form = OrderForm()
+    # If user is authenticated, pre fill the checkout form with
+    # saved profile info
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            order_form = OrderForm(initial={
+                'full_name': user_profile.user.get_full_name(),
+                'email': user_profile.user.email,
+                'phone_number': user_profile.default_phone_number,
+                'street_address1': user_profile.default_street_address1,
+                'street_address2': user_profile.default_street_address2,
+                'town_or_city': user_profile.default_town_or_city,
+                'county': user_profile.default_county,
+                'postcode': user_profile.default_postcode,
+                'country': user_profile.default_country,
+            })
+        except UserProfile.DoesNotExist:
+            order_form = OrderForm()
+    else:
+        order_form = OrderForm()
     template = 'checkout/checkout.html'
 
     context = {
@@ -169,7 +188,7 @@ def checkout_success(request, order_number):
     save_info = request.session['save_info']
     order = get_object_or_404(Order, order_number=order_number)
     # Add user profile to order model
-    if request.user.is_is_authenticated:
+    if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
@@ -180,11 +199,11 @@ def checkout_success(request, order_number):
                 'default_street_address2': order.street_address2,
                 'default_phone_number': order.phone_number,
                 'default_town_or_city': order.town_or_city,
-                'default_postcode': orderpostcode,
+                'default_postcode': order.postcode,
                 'default_country': order.country,
                 'default_county': order.county,
             }
-            user_profile_form = UserProfileForm(profile_data)
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
