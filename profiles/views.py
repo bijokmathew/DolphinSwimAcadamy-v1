@@ -28,15 +28,15 @@ def user_profile(request):
     Returns:
        Retun template and context
     """
-    user_profile = get_object_or_404(UserProfile, request.user)
+    user_profile = get_object_or_404(UserProfile, user=request.user)
     form = UserProfileForm(instance=user_profile)
 
-    order = user_profile.orders.all()
+    orders = user_profile.orders.all()
     template = 'profiles/profile.html'
 
     context = {
         'form': form,
-        'order': order,
+        'orders': orders,
         'on_profile_page': True
     }
 

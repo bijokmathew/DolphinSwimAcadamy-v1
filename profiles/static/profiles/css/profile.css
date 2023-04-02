@@ -1,0 +1,30 @@
+
+/* ---------profile style */
+
+#profile-update-form input::placeholder {
+    color: #aab7c4;
+}
+#profile-update-form .form-control{
+    border-color: black;
+}
+#id_default_country {
+    border-color: #000;
+}
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
+}
+#id_default_country,
+#id_default_country option:first-child {
+    color: #aab7c4;
+}
+
+.btn-ocean-blue{
+    background-color:rgba(36,47,109,1);
+    color: white;
+    border:var(--ocean-blue);
+}
+.btn-ocean-blue:hover {
+    color: #fff;
+    background-color: rgba(36,47,109,0.8);
+}
