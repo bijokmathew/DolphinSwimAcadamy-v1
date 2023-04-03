@@ -90,22 +90,8 @@ class StripeWHHandler:
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
-
-        # Updated the profile info if save_info was checked
-        profile = None
-        username = intent.metadata.username
-        if username != 'AnonymousUser':
-            profile = UserProfile.objects.get(user__username=username)
-            if save_info:
-                profile.default_phone_number = shipping_details.phone,
-                profile.default_country = shipping_details.address.country,
-                profile.default_postcode = shipping_details.address.postal_code,
-                profile.default_town_or_city = shipping_details.address.city,
-                profile.default_street_address1 = shipping_details.address.line1,
-                profile.default_street_address2 = shipping_details.address.line2,
-                profile.default_county = shipping_details.address.state,
-                profile.save()
-
+        print("handler", shipping_details.address.line1)
+        print("handler county", shipping_details.address.state)
         attempt = 1
         order_exits = False
         while attempt < 5:
@@ -133,7 +119,7 @@ class StripeWHHandler:
         if order_exits:
             self._send_confirmation_mail(order)
             return HttpResponse(
-                content=f'Webhook success event recieved: {event["type"]} '
+                content=f'Webhook success event recieved: {event["type"]}'
                         '| Success: Verified order already in database',
                 status=200
             )
@@ -180,6 +166,23 @@ class StripeWHHandler:
                             ' ERROR: {e}',
                     status=200
                 )
+        # Updated the profile info if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            print("********-----handler county save_info-----********", shipping_details.address.state, save_info)
+            if save_info:
+                print("********handler county save_info********", shipping_details.address.state, save_info)
+                profile.default_phone_number = shipping_details.phone,
+                profile.default_country = shipping_details.address.country,
+                profile.default_postcode = shipping_details.address.postal_code,
+                profile.default_town_or_city = shipping_details.address.city,
+                profile.default_street_address1 = shipping_details.address.line1,
+                profile.default_street_address2 = shipping_details.address.line2,
+                profile.default_county = shipping_details.address.state,
+                # profile.save()
+
         self._send_confirmation_mail(order)
         return HttpResponse(
            content=f'Webhook succ recieved: {event["type"]}'

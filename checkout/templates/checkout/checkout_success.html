@@ -180,7 +180,7 @@
                     </a>
                 {% else %}
                     {% if user.is_authenticated %}
-                        <a href="#" class="btn btn-light-blue-nhover rounded-0 my-2">My Profile</a>
+                        <a href="{% url 'user_profile' %}" class="btn btn-light-blue-nhover rounded-0 my-2">My Profile</a>
                     {% endif %}
                     <a href="{% url 'products' %}" class="btn btn-outline-light-blue btn rounded-0 my-2">
                         <span class="icon">

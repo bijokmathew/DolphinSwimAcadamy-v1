@@ -106,7 +106,7 @@
                         <div class="form-check form-check-inline px-0 float-end me-0">
                             {% if user.is_authenticated %}
                                 <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info">
+                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
                             {% else %}
                                 <label class="form-check-label" for="id-save-info">
                                     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
@@ -156,6 +156,7 @@
     </div>
 {% endblock %}
 {% block postloadjs %}
+    {{block.super}}
     {{stripe_public_key|json_script:"id_stripe_public_key"}}
     {{client_secret|json_script:"id_client_secret"}}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>

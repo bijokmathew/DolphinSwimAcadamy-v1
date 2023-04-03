@@ -44,7 +44,7 @@ card.addEventListener('change', function(event){
 
 // Handle form submit
 var form = document.getElementById('payment-form');
-console.log('form,' , form.street_address1.val())
+
 form.addEventListener('submit', function(ev) {
   console.log("form addEventListener")
     ev.preventDefault();
@@ -53,19 +53,21 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
     $('#payment-form').fadeToggle(100);
 
-    var saveInfo = Boolean($('id-save-info').attr('checked'))
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    console.log("saveInfo---", saveInfo);
     // form using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
         'csrfmiddlewaretoken':csrfToken,
         'client_secret': clientSecret,
-        'save_info': saveInfo
+        'save_info': saveInfo,
     }
     var url = '/checkout/cache_checkout_data/'
     // Post the request to cache_checkout_data
     $.post(url, postData).done(function(){
-        console.log("form addEventListener==Done")
-        console.log('form,' , form.street_address1.val())
+        console.log("form addEventListener==---bkm-------Done");
+        console.log("bijo");
+        console.log('form,' , form.street_address1.val);
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -95,7 +97,7 @@ form.addEventListener('submit', function(ev) {
                 }
             }
         }).then(function(result) {
-            console.log("submit--result", result)
+            console.log("submit--result", result);
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
@@ -112,13 +114,13 @@ form.addEventListener('submit', function(ev) {
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     console.log("submit")
-                    form.submit();
+                    //form.submit();
                 }
             }
         });
     }).fail(function(){
         // Just reload the page, the error will be in the django messages
-        console.log("submit-fail")
+        console.log("submit-fail");
         location.reload()
     })
 });
