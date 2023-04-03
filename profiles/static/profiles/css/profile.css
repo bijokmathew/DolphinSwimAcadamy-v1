@@ -28,3 +28,8 @@
     color: #fff;
     background-color: rgba(36,47,109,0.8);
 }
+
+.order-history {
+    max-height: 416px; /* height of the profile form + submit button  */
+    overflow-y: auto;
+}

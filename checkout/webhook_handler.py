@@ -5,13 +5,17 @@ webhook event from stripe
 
 # ------------------------------------------------
 # 3rd party
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.conf import settings
 import stripe
 import json
 import time
 
 # internal
 from .models import Order, OrderLineItem
+from profiles.models import UserProfile
 from products.models import Product
 
 # -------------------------------------------------
@@ -23,6 +27,34 @@ class StripeWHHandler:
     """
     def __init__(self, request):
         self.request = request
+
+    def _send_confirmation_mail(self, order):
+        """
+        This method used to send the order confirmation
+        mail to the customer.
+        """
+        print("_send_confirmation_mail")
+        to_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {
+                'order': order
+            }
+        )
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {
+                'order': order,
+                'contact_email': settings.DEFAULT_FROM_EMAIL
+            }
+        )
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [to_email]
+        )
 
     def handle_event(self, event):
         """
@@ -39,10 +71,12 @@ class StripeWHHandler:
         Handle payment_intent.succeeded webhook
         event from stripe
         """
+        print("handle_payment_intent_succeeded")
+
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
-        saveInfo = intent.metadata.save_info
+        save_info = intent.metadata.save_info
 
         # Get charge object
         stripe_charge = stripe.Charge.retrieve(
@@ -56,7 +90,7 @@ class StripeWHHandler:
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
-        
+
         # Updated the profile info if save_info was checked
         profile = None
         username = intent.metadata.username
@@ -70,7 +104,7 @@ class StripeWHHandler:
                 profile.default_street_address1 = shipping_details.address.line1,
                 profile.default_street_address2 = shipping_details.address.line2,
                 profile.default_county = shipping_details.address.state,
-                profile.save()   
+                profile.save()
 
         attempt = 1
         order_exits = False
@@ -87,6 +121,7 @@ class StripeWHHandler:
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
                     grand_total=grand_total,
+                    stripe_pid=pid,
                     original_bag=bag
                 )
                 order_exits = True
@@ -96,6 +131,7 @@ class StripeWHHandler:
                 attempt += 1
                 time.sleep(1)
         if order_exits:
+            self._send_confirmation_mail(order)
             return HttpResponse(
                 content=f'Webhook success event recieved: {event["type"]} '
                         '| Success: Verified order already in database',
@@ -136,9 +172,7 @@ class StripeWHHandler:
                                 quantity=quantity,
                             )
                             order_line_item.save()
-                    print('handle_payment_intent_succeeded inside order-line created')
             except Exception as e:
-                print('handle_payment_intent_succeeded inside order created Exception-', e)
                 if order:
                     order.delete()
                 return HttpResponse(
@@ -146,6 +180,7 @@ class StripeWHHandler:
                             ' ERROR: {e}',
                     status=200
                 )
+        self._send_confirmation_mail(order)
         return HttpResponse(
            content=f'Webhook succ recieved: {event["type"]}'
                    '| Success: created order in webhook ',

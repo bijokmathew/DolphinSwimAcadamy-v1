@@ -63,7 +63,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         """
-        Override the __str__() to return user name
+        Override the __str__() to return username
         """
         return self.user.username
 

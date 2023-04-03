@@ -50,6 +50,7 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user
         })
+        print("retun 200 cache_checkout_data")
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, "Sorry!, your payment cannot be processed \
@@ -80,7 +81,9 @@ def checkout(request):
     if not bag:
         messages.error(request, "There is nothing in your bag at the momemt!")
         return redirect(reverse('products'))
-
+    print('request.method', request.method)
+    print('stripePublicKey', settings.STRIPE_PUBLIC_KEY)
+    print('clientSecret', settings.STRIPE_SECRET_KEY)
     if request.method == 'POST':
         form_data = {
             'street_address1': request.POST['street_address1'],
@@ -91,7 +94,7 @@ def checkout(request):
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
             'county': request.POST['county'],
-            'email': request.POST['email'],            
+            'email': request.POST['email'],
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
