@@ -63,7 +63,9 @@ h6 {
 .text-light-blue {
     color: var(--light-blue);
 }
-
+.border-black {
+    border: 1px solid black;
+}
 .btn-outline-light-blue {
     background-color: white;
     color: var(--light-blue);

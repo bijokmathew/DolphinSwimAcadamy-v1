@@ -8,6 +8,7 @@
 # 3rd Party
 
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.contrib import messages
 from django.db.models import Q, Max
@@ -15,6 +16,7 @@ from django.views import generic
 
 # internal
 from .models import Inventory, Category, Product
+from .forms import ProductForm
 # ------------------------------------------------------------------
 
 
@@ -100,3 +102,22 @@ def product_detail(request, product_id):
         'sub_products': sub_products,
     }
     return render(request, 'products/product_detail.html', context=context)
+
+
+@login_required
+def product_add(request):
+    """
+    This function create a view for adding the product
+    to the database
+    """
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        return redirect(reverse('home'))
+
+    form = ProductForm()
+    template = 'products/product_add.html'
+
+    context = {
+        'form': form
+    }
+    return render(request, template, context=context)
