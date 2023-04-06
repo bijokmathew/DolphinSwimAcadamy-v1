@@ -9,6 +9,7 @@
     --heading-font: 'Urbanist', sans-serif;
     --nav-color:#1FD6FF;
     --light-blue:#5065A8;
+    --ocean-blue:rgba(36,47,109,1);
     --nav-font-weight:800;
     --text-color:#0000;
     --button-color:#733600;
@@ -104,6 +105,16 @@ h6 {
 .btn-bg-brown:hover {
     background-color: aliceblue;
     color:var(--button-color); 
+}
+
+.btn-ocean-blue{
+    background-color: var(--ocean-blue);
+    color: white;
+    border:var(--ocean-blue);
+}
+.btn-ocean-blue:hover {
+    color: #fff;
+    background-color: rgba(36,47,109,0.8);
 }
 
 .transparent-bg {
@@ -272,11 +283,6 @@ h6 {
 .btn-primary:hover{
     background-color:var(--spume);
     border:var(--spume);
-}
-
-.btn-ocean-blue{
-    background-color:var(--ocean-blue);
-    border:var(--ocean-blue);
 }
 
 .btn-outline-success{

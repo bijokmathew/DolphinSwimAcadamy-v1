@@ -114,7 +114,23 @@ def product_add(request):
         messages.error(request, f"Sorry, You are not autherized to perform this action")
         return redirect(reverse('home'))
 
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(
+                request,
+                f"Successfully ${product.name} added the to the store"
+            )
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(
+                request,
+                f"Sorry!, Failed to add the product. Please ensure the\
+                 form is valid"
+            )
+    else:
+        form = ProductForm()
     template = 'products/product_add.html'
 
     context = {

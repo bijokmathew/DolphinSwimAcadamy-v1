@@ -27,9 +27,13 @@
         </div>
         <div class="row">
             <div class="col col-md-6">
-                <form action="{% url 'product_add' %}" method="POST">
+                <form  class="form mb-4" action="{% url 'product_add' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
+                    <div class="text-end">
+                        <a class="btn btn-outline-light-blue rounded-0" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn rounded-0 btn-ocean-blue" type="submit">Add Product</button>
+                    </div>
                 </form>
             </div>
         </div>
