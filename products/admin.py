@@ -5,11 +5,10 @@
 from django.contrib import admin
 # internal
 from .models import (
+    Inventory,
     Category,
     Product,
-    Attribute,
-    AttributeValue,
-    Inventory,
+    Size
 )
 # ------------------------------------------------------------------
 
@@ -28,6 +27,14 @@ class CategoryAdmin(admin.ModelAdmin):
     }
 
 
+class InventoryInline(admin.TabularInline):
+    """
+    TabularInlineAdmin class for Inventory model
+    """
+    model = Inventory
+    extra = 1
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     """
@@ -35,80 +42,39 @@ class ProductAdmin(admin.ModelAdmin):
     """
     list_display = (
         'name',
-        'description',
-        'price',
         'get_categories',
+        'description',
+        'get_product_size',
+        'price',
+        'is_active',
         'slug',
     )
     prepopulated_fields = {
         "slug": ("name",)
     }
 
+    list_filter = (
+        'category',
+        'is_active',
+    )
 
-class AttributeValueInline(admin.TabularInline):
-    """
-    TabularInlineAdmin class for AttributeValue model
-    """
-    model = AttributeValue
+    search_fields = (
+        'name',
+        'category',
+        'sku'
+    )
+
+    inlines = (
+        InventoryInline,
+    )
 
 
-@admin.register(Attribute)
-class AttributeAdmin(admin.ModelAdmin):
+@admin.register(Size)
+class SizeAdmin(admin.ModelAdmin):
     """
-    Admin class for Product model
+    Admin class for model size
     """
     list_display = (
         'name',
-        'description',
+        'friendly_name'
     )
-    inlines = (
-        AttributeValueInline,
-    )
-
-# @admin.register(AttributeValue)
-# class AttributeValueAdmin(admin.ModelAdmin):
-#     """
-#     Admin class for AttributeValue model
-#     """
-#     list_display = (
-#         'attribute',
-#         'value',
-#     )
-
-
-@admin.register(Inventory)
-class InventoryAdmin(admin.ModelAdmin):
-    """
-    Admin class for Inventory model
-    """
-    list_display = (
-        'sku',
-        'product',
-        'get_attributes_values',
-        'units',
-        'date_added',
-    )
-
-# @admin.register(Image)
-# class ImageAdmin(admin.ModelAdmin):
-#     """
-#     Admin class for Image model
-#     """
-#     list_display = (
-#         'inventory',
-#         'image url',
-#         'image',
-#         'alternative text'
-#     )
-
-
-# @admin.register(StockControl)
-# class StockControlAdmin(admin.ModelAdmin):
-#     """
-#     Admin class for StockControl model
-#     """
-#     list_display = (
-#         'inventory',
-#         'units',
-#         'last checked'
-#     )

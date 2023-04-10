@@ -80,23 +80,23 @@ def all_products(request):
 def product_detail(request, product_id):
     """
     A view to show product detail from the
-    the profuct list
+    the product list
+    Args:
+        request (object): HTTP request object.
+    Returns:
+        Render of products page with context
     """
     product = get_object_or_404(Product, id=product_id)
     print("BKM p-->", product)
-    sub_products = product.inventory_product.all()
+    sub_products = product.inventories.all()
     print("BKM sub--", sub_products)
-    
+    product_attr = {}
+    has_size = False
+    has_color = False
+    has_style = False
     for sub in sub_products:
-        print(sub.attribute_value.all())
-        print("sub-val", sub.get_attributes_values())
-        print("sub-name", sub.get_attributes_name())
-        for u in sub.attribute_value.all():
-            print(u.get_attribute_name())
-            if u.get_attribute_name() == "Size":
-                print("size : =", u.value)
-            
-        print("--------------")
+        print("sub-val", sub.product.name, sub.size, sub.units)
+
     context = {
         'product': product,
         'sub_products': sub_products,

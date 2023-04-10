@@ -12,7 +12,7 @@ from decimal import Decimal
 from django.shortcuts import get_object_or_404
 
 # internal
-from products.models import Product
+from products.models import Inventory
 
 # ------------------------------------------------------------------
 
@@ -27,30 +27,17 @@ def bag_contents(request):
     product_count = 0
 
     bag = request.session.get('bag', {})
-    for item_id, item_data in bag.items():
-        product = get_object_or_404(Product, pk=item_id)
-        if not isinstance(item_data, int):
-            for size, quantity in item_data['item_by_size'].items():
-                total += product.price * quantity
-                product_count += quantity
-                bag_items.append(
-                    {
-                        'product': product,
-                        'size': size,
-                        'item_id': item_id,
-                        'quantity': quantity
-                    }
-                )
-        else:
-            total += product.price * item_data
-            product_count += item_data
-            bag_items.append(
-                {
-                    'product': product,
-                    'item_id': item_id,
-                    'quantity': item_data
-                }
-            )
+    for sku, quantity in bag.items():
+        sub_product = get_object_or_404(In, sku=sku)
+        total += sub_product.product.price * quantity
+        product_count += quantity
+        bag_items.append(
+            {
+                'sub_product': sub_product,
+                'total': total,
+                'quantity': quantity
+            }
+        )
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = round(total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100), 2)
