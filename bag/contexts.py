@@ -7,9 +7,10 @@
 # -----------------------------------------------------------------
 # 3rd Party
 
+from django.shortcuts import get_object_or_404
 from django.conf import settings
 from decimal import Decimal
-from django.shortcuts import get_object_or_404
+
 
 # internal
 from products.models import Inventory
@@ -28,7 +29,7 @@ def bag_contents(request):
 
     bag = request.session.get('bag', {})
     for sku, quantity in bag.items():
-        sub_product = get_object_or_404(In, sku=sku)
+        sub_product = get_object_or_404(Inventory, sku=sku)
         total += sub_product.product.price * quantity
         product_count += quantity
         bag_items.append(

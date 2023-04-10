@@ -9,6 +9,7 @@
     --heading-font: 'Urbanist', sans-serif;
     --nav-color:#1FD6FF;
     --light-blue:#5065A8;
+    --light-ocean-blue:rgba(36,47,109,0.8);
     --ocean-blue:rgba(36,47,109,1);
     --nav-font-weight:800;
     --text-color:#0000;
@@ -67,6 +68,9 @@ h6 {
 .border-black {
     border: 1px solid black;
 }
+.border-ocean-blue {
+    border: 1px solid var(--ocean-blue);
+}
 .btn-outline-light-blue {
     background-color: white;
     color: var(--light-blue);
@@ -114,9 +118,13 @@ h6 {
 }
 .btn-ocean-blue:hover {
     color: #fff;
-    background-color: rgba(36,47,109,0.8);
+    background-color: var(--light-ocean-blue)
 }
-
+.btn-outline-ocean-blue {
+    background-color: white;
+    color: var(--ocean-blue);
+    border: solid 1px var(--ocean-blue) ;
+}
 .transparent-bg {
     background:rgba(31, 214, 255, 0.4);
     z-index: 10
