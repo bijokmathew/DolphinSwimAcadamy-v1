@@ -17,7 +17,7 @@ from django.shortcuts import (
 from django.contrib import messages
 
 # internal
-from products.models import Product
+from products.models import Product, Inventory
 # ------------------------------------------------------------------
 
 
@@ -33,31 +33,24 @@ def add_to_bag(request, item_id):
     Add the quatity of the sepecified item requested by
     the shopper to the shopper bag
     """
-    product = get_object_or_404(Product, pk=item_id)
+    sku = request.POST.get('sku')
+    print("sku==", sku)
+    item = get_object_or_404(Inventory, sku=sku)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect-url')
     bag = request.session.get('bag', {})
-    size = None
-    if 'product_size' in request.POST:
-        size = request.POST.get('product_size')
-    if size:
-        if item_id in list(bag.keys()):
-            if size in bag[item_id]['item_by_size']:
-                bag[item_id]['item_by_size'][size] += quantity
-                messages.success(request, f"Updated size  {size.upper()} {product.name} quantity to {bag[item_id]['item_by_size'][size]}")
-            else:
-                bag[item_id]['item_by_size'][size] = quantity
-                messages.success(request, f"Added size {size.upper()} {product.name} to your shopping cart")
-        else:
-            bag[item_id] = {'item_by_size': {size: quantity}}
-            messages.success(request, f'Added size {size.upper()} {product.name} to your shopping cart')
+
+    if sku in list(bag.keys()):
+        bag[sku] += quantity
+        messages.success(
+            request, f'Updated {item.product.name} quantity to {bag[sku]}'
+        )
     else:
-        if item_id in list(bag.keys()):
-            bag[item_id] += quantity
-            messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
-        else:
-            bag[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your shopping cart')
+        bag[sku] = quantity
+        messages.success(
+            request, f'Added {item.product.name} to your shopping cart'
+        )
+
     request.session['bag'] = bag
     return redirect(redirect_url)
 

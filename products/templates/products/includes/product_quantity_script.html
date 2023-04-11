@@ -1,37 +1,57 @@
 <script type="text/javascript">
   
-    // Handle qty +/- button while loading the page   
-    var allQtyinputs = $('.qty-input')
-    for( var i =0 ; i < allQtyinputs.length; i++) {
-        var itemId = parseInt( $(allQtyinputs[i]).data('item_id'));
-        handleDisableEnable(itemId);
+    // update the product sku
+    function updateProductSku(){
+        $('#sku').val($('option:selected').attr('data-sku'))
     }
 
-    // Check enable/disable every time the input is changed
-    $('.qty-input').change(function(){
-        itemId = $(this).data('item_id');
-        handleDisableEnable(itemId);
+    //  Handle product size select option
+    $('select').change(function(){
+        updateProductSizeOption()
+        updatedProductQuatity()
+        updateProductSku()
     })
 
-    // disable and enable increment/decrement button
-    function handleDisableEnable(itemId){
-        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
-        var disableMinus = currentValue < 2;
-        var disablePlus = currentValue > 98 ;
-        $(`#increment_qty_${itemId}`).prop('disabled',disablePlus);
-        $(`#decrement_qty_${itemId}`).prop('disabled', disableMinus);
+    // update product size  with proper value
+    function updateProductSizeOption() {
+        $('.size-option').each(function(){
+            if( $(this).attr('data-quantity') ==0 ){
+                $(this).attr('disabled', 'disabled');
+                $(this).text($(this).attr('value')+ '( Out of stock )');
+            } else {
+                $(this).removeAttr('disabled');
+                $(this).text($(this).attr('value'));
+            }
+        })
     }
-    
+
+    // populate product quantity with proper value
+    function updatedProductQuatity(){
+        //By default vale to 1
+        $('.qty-input').val(1)
+        var quatity_in_bag = parseInt($('option:selected').attr('data-session-quantity'))
+        if( isNaN(quatity_in_bag)){
+            $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')))
+        } else {
+            $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')) - quatity_in_bag)
+        }
+
+    }
+
+    // Populate with proper value for size and quantity while loading the page  
+    window.onload = function(){
+        updateProductSizeOption()
+        updatedProductQuatity()
+        updateProductSku()
+    }
+
     // Decrement product quatity 
     $('.decrement-qty').click(function(e){
         e.preventDefault();
         var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
         currentValue = parseInt($(currentPos).val());
-        $(currentPos).val(currentValue-1);
-        var itemId = $(this).data('item_id')
-        handleDisableEnable(itemId);
-        if ($(this).data('form_id') =='bag'){
-            saveFormToServer($(this));
+        if( currentValue >1 ){
+            $(currentPos).val(currentValue-1)
         }
     })
 
@@ -40,17 +60,8 @@
         e.preventDefault();
         currentPos = $(this).closest('.input-group').find('.qty-input')[0];
         currentValue = parseInt($(currentPos).val());
-        $(currentPos).val(currentValue+1);
-        var itemId = $(this).data('item_id')
-        handleDisableEnable(itemId);
-        if ($(this).data('form_id') =='bag'){
-            saveFormToServer(this);
+        if(currentValue < parseInt($(currentPos).attr('max'))){
+            $(currentPos).val(currentValue+1)
         }
     })
-
-    //  update the bage items quatity to the server
-    function saveFormToServer(thisObj){
-        var form = $(thisObj).closest('form');
-            form.submit();
-    }
 </script>
