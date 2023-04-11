@@ -34,7 +34,6 @@ def add_to_bag(request, item_id):
     the shopper to the shopper bag
     """
     sku = request.POST.get('sku')
-    print("sku==", sku)
     item = get_object_or_404(Inventory, sku=sku)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect-url')

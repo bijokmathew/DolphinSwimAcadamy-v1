@@ -18,15 +18,15 @@
           {% for item in bag_items %}
             <div class="row">
               <div class="col-3">
-                {% if item.product.image %}
-                  <img class="w-100" src="{{item.product.image.url}}" alt="{{item.product.name}}">
+                {% if item.sub_product.product.image %}
+                  <img class="w-100" src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
                 {% else %}
                   <img class="w-100" src="{{MEDIA_URL}}noimage.png" alt="{{item.product.name}}">
                 {% endif %}
               </div>
               <div class="col-9">
-                <p class="my-0"><strong>{{item.product.name}}</strong></p>
-                <p class="my-0 small">Size:item.size | upper</p>
+                <p class="my-0"><strong>{{item.sub_product.product.name}}</strong></p>
+                <p class="my-0 small">Size:{{item.sub_product.size | upper}}</p>
                 <p class="my-0 text-muted">Qty: {{item.quantity}}</p>
               </div>
             </div>
