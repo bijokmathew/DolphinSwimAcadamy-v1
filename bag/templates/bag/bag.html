@@ -37,37 +37,37 @@
                               <tbody>
                                 {% for item in bag_items %}
                                     <tr>
-                                        <td class="w-25 p-3">
-                                            {% if item.product.image %}
-                                                <img  class="img-fluid my-0 py-0"  src="{{item.product.image.url}}" alt="{{item.product.name}}">
+                                        <td class="w-25 py-3">
+                                            {% if item.sub_product.product.image %}
+                                                <img  class="img-thumbnail border-0 my-0 py-0" style="height: 150px;"  src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
                                             {% else %}
-                                                <img class="img-fluid my-0 py-0" src="{{MEDIA_URL}}noimage.png" alt="{{item.product.name}}">
+                                                <img class="img-thumbnail border-0 my-0 py-0" src="{{MEDIA_URL}}noimage.png" alt="{{item.sub_product.product.name}}">
                                             {% endif %}
                                         </td>
                                         <td class="py-3">
-                                            <p class="fw-bold fs-6 my-0">{{item.product.name}}</p>
-                                            <p class="my-2"><strong>Size: </strong>{% if item.size != 'None' %} {{item.size|upper}} {% else %} N/A {% endif %}</p>
-                                            <p class="lead text-muted">{{item.product.sku}}</p>
+                                            <p class="fw-bold fs-6 my-0">{{item.sub_product.product.name}}</p>
+                                            <p class="my-2"><strong>Size: </strong>{% if item.sub_product.size != 'None' %} {{item.sub_product.size|upper}} {% else %} N/A {% endif %}</p>
+                                            <p class="text-muted">{{item.sub_product.sku | upper}}</p>
                                         </td>
                                         <td class="py-3">
-                                            <p class="my-0">{{item.product.price}}</p>
+                                            <p class="my-0">{{item.sub_product.product.price}}</p>
                                         </td>
                                         <td class="py-3 w-25 px-lg-4">
-                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.sub_product.product.id %}">
                                                 {% csrf_token %}
-                                                <div class="input-group mx-auto">
+                                                <div class="input-group mx-auto justify-content-center">
                                                     <span>
-                                                        <button class="btn btn-sm rounded-0 btn-light-blue-nhover decrement-qty"
+                                                        <button class="btn rounded-0 btn-ocean-blue decrement-qty"
                                                             data-item_id="{{item.item_id}}" id="decrement_qty_{{item.item_id}}"
                                                             data-form_id="bag">
                                                             <span><i class="fa fa-minus fa-sm"></i></span>
                                                         </button>
                                                     </span>
-                                                    <input class="form-control form-control-sm qty-input" type="number" name="quantity"
+                                                    <input class="form-control-sm w-25 border-ocean-blue qty-input" type="number" name="quantity"
                                                         value="{{item.quantity}}" min="1" max="99" id="id_qty_{{item.item_id}}"
                                                         data-item_id="{{item.item_id}}">
                                                     <span>
-                                                        <button class="btn btn-sm btn-light-blue-nhover rounded-0 increment-qty" 
+                                                        <button class="btn btn-ocean-blue rounded-0 increment-qty" 
                                                             id="increment_qty_{{item.item_id}}" data-item_id="{{item.item_id}}"
                                                             data-form_id="bag">
                                                             <span><i class="fa fa-plus fa-sm"></i></span>
@@ -80,32 +80,32 @@
                                             </form>
                                         </td>
                                         <td class="py-3">
-                                            <p>{{item.product.price | calc_subtotal:item.quantity}}</p>
+                                            <p>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
                                         </td>
                                         <td class="py-3">
-                                            <a class="my-0 remove-link" data-product_size="{{item.size}}" 
+                                            <a class="my-0 remove-link" data-product_size="{{item.sub_product.size}}" 
                                                 id="remove_{{item.item_id}}">
-                                                <i class="fa fa-trash text-light-blue"></i>
+                                                <i class="fa fa-trash text-ocean-blue"></i>
                                             </a>
                                         </td>
                                     </tr>
                                 {% endfor %}
                                 <tr>
                                     <td colspan="5" class="text-end pt-0 mt-0">
-                                        <h5> Bag Total: $ {{total}}</h5>
+                                        <h5 class="fs-5"> Bag Total: $ {{total}}</h5>
                                         <p>Delivery: ${{delivery}}</p>
-                                        <h5>Grand Total: ${{grand_total}}</h5>
+                                        <h5 class="fs-5">Grand Total: ${{grand_total}}</h5>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="5" class="text-end">
-                                        <a href="{% url 'products' %}" class="btn btn-lg btn-outline-light-blue rounded-0">
+                                        <a href="{% url 'products' %}" class="btn btn-outline-ocean-blue rounded-0">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left" ></i>
                                             </span>
                                             <span class="text-uppercase">Keep shopping</span>
                                         </a>
-                                        <a href="{% url 'checkout' %}" class="btn btn-lg btn-light-blue rounded-0"> 
+                                        <a href="{% url 'checkout' %}" class="btn btn-ocean-blue rounded-0"> 
                                             <span class="text-uppercase">Secure Checkout</span>
                                             <span class="icon">
                                                 <i class="fas fa-lock" ></i>

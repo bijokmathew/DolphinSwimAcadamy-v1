@@ -62,15 +62,23 @@ h6 {
 .text-black {
     color: #0000;
 }
+
+.text-ocean-blue {
+    color: var(--ocean-blue);
+}
+
 .text-light-blue {
     color: var(--light-blue);
 }
+
 .border-black {
     border: 1px solid black;
 }
+
 .border-ocean-blue {
     border: 1px solid var(--ocean-blue);
 }
+
 .btn-outline-light-blue {
     background-color: white;
     color: var(--light-blue);
@@ -111,15 +119,17 @@ h6 {
     color:var(--button-color); 
 }
 
-.btn-ocean-blue{
+.btn-ocean-blue {
     background-color: var(--ocean-blue);
     color: white;
     border:var(--ocean-blue);
 }
+
 .btn-ocean-blue:hover {
     color: #fff;
     background-color: var(--light-ocean-blue)
 }
+
 .btn-outline-ocean-blue {
     background-color: white;
     color: var(--ocean-blue);

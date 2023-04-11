@@ -25,6 +25,7 @@ def view_bag(request):
     """
     This view render and return the bag conetnts page
     """
+    print("view bag")
     return render(request, 'bag/bag.html')
 
 
