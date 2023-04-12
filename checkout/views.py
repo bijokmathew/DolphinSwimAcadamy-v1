@@ -139,39 +139,39 @@ def checkout(request):
         )
         print("intent.client_secret", intent.client_secret)
         print('clientSecret', settings.STRIPE_SECRET_KEY)
-    if not stripePublicKey:
-        messages.warning(request, "Stripe public key is missing. \
-                          Did you forget to set it in to your enviroment")
-    # If user is authenticated, pre fill the checkout form with
-    # saved profile info
-    if request.user.is_authenticated:
-        try:
-            user_profile = UserProfile.objects.get(user=request.user)
-            print("saved profile checkout, addrees",  user_profile.default_street_address2)
-            order_form = OrderForm(initial={
-                'full_name': user_profile.user.get_full_name(),
-                'email': user_profile.user.email,
-                'phone_number': user_profile.default_phone_number,
-                'street_address1': user_profile.default_street_address1,
-                'street_address2': user_profile.default_street_address2,
-                'town_or_city': user_profile.default_town_or_city,
-                'county': user_profile.default_county,
-                'postcode': user_profile.default_postcode,
-                'country': user_profile.default_country,
-            })
-        except UserProfile.DoesNotExist:
+        if not stripePublicKey:
+            messages.warning(request, "Stripe public key is missing. \
+                            Did you forget to set it in to your enviroment")
+        # If user is authenticated, pre fill the checkout form with
+        # saved profile info
+        if request.user.is_authenticated:
+            try:
+                user_profile = UserProfile.objects.get(user=request.user)
+                print("saved profile checkout, addrees",  user_profile.default_street_address2)
+                order_form = OrderForm(initial={
+                    'full_name': user_profile.user.get_full_name(),
+                    'email': user_profile.user.email,
+                    'phone_number': user_profile.default_phone_number,
+                    'street_address1': user_profile.default_street_address1,
+                    'street_address2': user_profile.default_street_address2,
+                    'town_or_city': user_profile.default_town_or_city,
+                    'county': user_profile.default_county,
+                    'postcode': user_profile.default_postcode,
+                    'country': user_profile.default_country,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            print("....else orderForm")
             order_form = OrderForm()
-    else:
-        print("....else orderForm")
-        order_form = OrderForm()
-    template = 'checkout/checkout.html'
+        template = 'checkout/checkout.html'
 
-    context = {
-        'order_form': order_form,
-        'stripe_public_key': stripePublicKey,
-        'client_secret': intent.client_secret
-    }
-    return render(request, template, context=context)
+        context = {
+            'order_form': order_form,
+            'stripe_public_key': stripePublicKey,
+            'client_secret': intent.client_secret
+        }
+        return render(request, template, context=context)
 
 
 def checkout_success(request, order_number):

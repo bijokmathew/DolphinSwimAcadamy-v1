@@ -26,7 +26,7 @@ def webhook(request):
     Listen for webhook events from the stripe
     """
     # setup
-    wh_secret = 'whsec_2ljjVFXoSJx8d3nCfuvVcoCuLY9KmiuS'  # settings.STRIPE_WEBHOOK_SECRET
+    wh_secret = 'whsec_TAL2OPAH0gaRnloJFjCwP5oLzemBFAZC'  # settings.STRIPE_WEBHOOK_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     # Get the webhook data and verify its signature

@@ -204,5 +204,5 @@ class OrderLineItem(models.Model):
         Override the __str__() to return order number and
         product sku
         """
-        return f"SKU : {self.product.inventory_product.name} on order \
+        return f"SKU : {self.product.inventories.name} on order \
                        {self.order.order_number}"
