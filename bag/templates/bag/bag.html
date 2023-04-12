@@ -27,7 +27,7 @@
                         <table class="table-sm table-borderless table align-top">
                             <thead>
                                 <tr>
-                                  <th scope="col" class="text-center">Item</th>
+                                  <th scope="col" class="">Item</th>
                                   <th scope="col"></th>
                                   <th scope="col">Price</th>
                                   <th scope="col" class="text-center">Qty</th>
@@ -37,7 +37,7 @@
                               <tbody>
                                 {% for item in bag_items %}
                                     <tr>
-                                        <td class="w-25 py-3">
+                                        <td class="w-25 py-3 px-0 ps-0">
                                             {% if item.sub_product.product.image %}
                                                 <img  class="img-thumbnail border-0 my-0 py-0" style="height: 150px;"  src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
                                             {% else %}
@@ -52,29 +52,27 @@
                                         <td class="py-3">
                                             <p class="my-0">{{item.sub_product.product.price}}</p>
                                         </td>
-                                        <td class="py-3 w-25 px-lg-4">
-                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.sub_product.product.id %}">
+                                        <td class="py-3 w-25">
+                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.sub_product.id %}">
                                                 {% csrf_token %}
-                                                <div class="input-group mx-auto justify-content-center">
+                                                <div class="input-group justify-content-center">
                                                     <span>
-                                                        <button class="btn rounded-0 btn-ocean-blue decrement-qty"
-                                                            data-item_id="{{item.item_id}}" id="decrement_qty_{{item.item_id}}"
-                                                            data-form_id="bag">
+                                                        <button class="btn-md btn-lg rounded-0 btn-ocean-blue decrement-qty"
+                                                            data-item_id="{{item.item_id}}" id="decrement-qty-{{item.sub_product.sku}}">
                                                             <span><i class="fa fa-minus fa-sm"></i></span>
                                                         </button>
                                                     </span>
-                                                    <input class="form-control-sm w-25 border-ocean-blue qty-input" type="number" name="quantity"
-                                                        value="{{item.quantity}}" min="1" max="99" id="id_qty_{{item.item_id}}"
-                                                        data-item_id="{{item.item_id}}">
+                                                    <input class="form-control-sm border-ocean-blue qty-input" type="number" name="quantity" data-view_type="bag"
+                                                        value="{{item.quantity}}" min="1" max="99" data-quantity="{{item.sub_product.units}}"
+                                                        id="id_qty_{{item.sub_product.sku}}" data-sku="{{item.sub_product.sku}}">
                                                     <span>
-                                                        <button class="btn btn-ocean-blue rounded-0 increment-qty" 
-                                                            id="increment_qty_{{item.item_id}}" data-item_id="{{item.item_id}}"
-                                                            data-form_id="bag">
+                                                        <button class="btn-md btn-lg btn btn-ocean-blue rounded-0 increment-qty" 
+                                                            id="increment-qty-{{item.sub_product.sku}}" data-item_id="{{item.item_id}}">
                                                             <span><i class="fa fa-plus fa-sm"></i></span>
                                                         </button>
                                                     </span>
                                                     {% if s %}
-                                                        <input type="hidden" name="product_size" value="{{item.size}}">
+                                                        <input type="hidden" name="product_size" value="{{item.sub_product.size}}">
                                                     {% endif %}
                                                 </div>
                                             </form>
@@ -83,9 +81,10 @@
                                             <p>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
                                         </td>
                                         <td class="py-3">
-                                            <a class="my-0 remove-link" data-product_size="{{item.sub_product.size}}" 
+                                            <a class="my-0" href="{% url 'remove_from_bag' item.sub_product.id  %}" 
                                                 id="remove_{{item.item_id}}">
                                                 <i class="fa fa-trash text-ocean-blue"></i>
+                                                <span class = "sr-only">Remove</span>
                                             </a>
                                         </td>
                                     </tr>

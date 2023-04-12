@@ -59,28 +59,25 @@ def adjust_bag(request, item_id):
     """
     Adjust the quatity of the specific product
     """
-    product = get_object_or_404(Product, pk=item_id)
+    sub_product = get_object_or_404(Inventory, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
-    size = None
-    if 'product_size' in request.POST:
-        size = request.POST.get('product_size')
-    if size:
-        if quantity > 0:
-            bag[item_id]['item_by_size'][size] = quantity
-            messages.success(request, f"Updated size {size.upper()} {product.name} quantity to {bag[item_id]['item_by_size'][size]}")
-        else:
-            del bag[item_id]['item_by_size'][size]
-            if not bag[item_id]['item_by_size']:
-                bag.pop(item_id)
-            messages.success(request, f"Removed size  {size.upper()} {product.name} from your bag")
+    product_size = request.session.get('product_size')
+    print("adjust_bag product_size= ", product_size)
+
+    if quantity > 0:
+        bag[sub_product.sku] = quantity
+        messages.success(
+            request,
+            f"Updated {sub_product.product.name}quantity"
+            "to {bag[sub_product.sku]}"
+        )
     else:
-        if quantity > 0:
-            bag[item_id] = quantity
-            messages.success(request, f"Updated {product.name}quantity to {bag[item_id]}")
-        else:
-            bag.pop(item_id)
-            messages.success(request, f"Removed {product.name} from your bag")
+        bag.pop(sub_product.sku)
+        messages.success(
+            request,
+            f"Removed {sub_product.product.name} from your bag"
+        )
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
@@ -92,21 +89,13 @@ def remove_from_bag(request, item_id):
     """
     print('remove_from_bag')
     try:
-        product = get_object_or_404(Product, pk=item_id)
+        sub_product = get_object_or_404(Inventory, pk=item_id)
         bag = request.session.get('bag', {})
-        size = None
-        if 'product_size' in request.POST:
-            size = request.POST.get('product_size')
-        if size:
-            del bag[item_id]['item_by_size'][size]
-            if not bag[item_id]['item_by_size']:
-                bag.pop(item_id)
-            messages.success(request, f"Removed size  {size.upper()} {product.name} from your bag")
-        else:
-            bag.pop(item_id)
-            messages.success(request, f"Removed {product.name} from your bag")
+        size = request.POST.get('product_size')
+        bag.pop(sub_product.sku)
+        messages.success(request, f"Removed {sub_product.product.name} from your bag")
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+        return redirect('view_bag')
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)

@@ -55,7 +55,8 @@
                                         <select class="form-control-sm w-25 border-ocean-blue rounded-0" name="product_size" id="id_product_size">
                                             {% for sub_product in sub_products %}
                                                 <option class="size-option" value="{{sub_product.size}}" data-sku="{{sub_product.sku}}" data-quantity="{{sub_product.units}}" 
-                                                 data-session-quantity-="{% if bag_contents %}{% for item in bag_contents %}{% if item.sub_product.sku == sub_product.sku %}{{item.quantity}}{% endif %}{% endfor %} {% endif %}">
+                                                 data-session-quantity-="{% if bag_contents %}{% for item in bag_contents %}{% if item.sub_product.sku == sub_product.sku %}{{item.quantity}}{% endif %}{% endfor %} {% endif %}"
+                                                 id="id_qty_{{sub_product.sku}}">
                                                     {{sub_product.size}}
                                                 </option>
                                             {% endfor %}
@@ -64,19 +65,19 @@
                                 </div>
                             <div class="col-12">
                                 <p class="mt-3"> <strong>Quantity:</strong></p>
-                                <div class="w-50">
+                                <div class="w-100">
                                     <div class="input-group">
                                         <span>
                                             <button class="btn rounded-0 btn-ocean-blue decrement-qty"
-                                                 id="id_decrement_qty" data-form_id="product_detail">
+                                                 id="decrement-qty-{{sub_product.sku}}" data-form_id="product_detail">
                                                 <span class="icon"><i class="fa fa-minus"></i></span>
                                             </button>
                                         </span>
-                                        <input class="form-control-sm w-25 qty-input border-ocean-blue" type="number" name="quantity"
-                                            value="1" min="1" max="99" id="id_product_qty">
+                                        <input class="form-control-sm  qty-input border-ocean-blue" type="number" name="quantity"
+                                            value="1" min="1" max="99" id="id_qty_{{sub_product.sku}}" data-sku="{{sub_product.sku}}">
                                         <span>
                                             <button class="btn btn-ocean-blue rounded-0 increment-qty" 
-                                                id="id_increment_qty" data-form_id="product_detail">
+                                                id="increment-qty-{{sub_product.sku}}" data-form_id="product_detail">
                                                 <span class="icon"><i class="fa fa-plus"></i></span>
                                             </button>
                                         </span>

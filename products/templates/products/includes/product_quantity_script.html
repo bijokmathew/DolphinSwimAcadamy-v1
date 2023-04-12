@@ -1,5 +1,6 @@
 <script type="text/javascript">
   
+    var view_type = '';
     // update the product sku
     function updateProductSku(){
         $('#sku').val($('option:selected').attr('data-sku'))
@@ -11,6 +12,18 @@
         updatedProductQuatity()
         updateProductSku()
     })
+
+    // Disable +/- buttons ouside the range 1 - available quantity
+    function handleEnableDisable(sku){
+        var currentValue = parseInt($(`#id_qty_${sku}`).val());
+        var maxValue = parseInt(parseInt($('.qty-input').attr('max')));
+        console.log('handleEnableDisable maxValue, currentValue', maxValue, currentValue);
+        var minusDisable = currentValue < 2 ;
+        var plusDisable = currentValue > maxValue-1;
+        $(`#decrement-qty-${sku}`).prop('disabled', minusDisable);
+        $(`#increment-qty-${sku}`).prop('disabled', plusDisable);
+
+    }
 
     // update product size  with proper value
     function updateProductSizeOption() {
@@ -27,11 +40,14 @@
 
     // populate product quantity with proper value
     function updatedProductQuatity(){
-        //By default vale to 1
-        $('.qty-input').val(1)
+        console.log('updatedProductQuatity');
         var quatity_in_bag = parseInt($('option:selected').attr('data-session-quantity'))
         if( isNaN(quatity_in_bag)){
-            $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')))
+            if( view_type == 'bag'){
+                $('.qty-input').attr('max', parseInt($('.qty-input').attr('data-quantity')))
+            } else {
+                $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')))
+            }
         } else {
             $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')) - quatity_in_bag)
         }
@@ -40,28 +56,53 @@
 
     // Populate with proper value for size and quantity while loading the page  
     window.onload = function(){
-        updateProductSizeOption()
+        view_type = $('.qty-input').attr('data-view_type');
+        var sku = $('.qty-input').attr('data-sku');
+        console.log('view_type and sku', view_type, sku);
+        if (view_type != 'bag'){
+            updateProductSizeOption()
+            updateProductSku()
+        }
         updatedProductQuatity()
-        updateProductSku()
+        handleEnableDisable(sku)
+        
     }
 
     // Decrement product quatity 
     $('.decrement-qty').click(function(e){
         e.preventDefault();
         var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+        var sku = $('.qty-input').attr('data-sku');
         currentValue = parseInt($(currentPos).val());
         if( currentValue >1 ){
-            $(currentPos).val(currentValue-1)
+            $(currentPos).val(currentValue-1);
+        }
+        handleEnableDisable(sku);
+        if( view_type == 'bag' ){
+            var form = $(this).closest('.update-form')[0];
+            console.log("submit", form)
+            form.submit();
         }
     })
 
     // Increment product quantity
     $('.increment-qty').click(function(e){
+        
+        var sku = $('.qty-input').attr('data-sku');
         e.preventDefault();
         currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+        console.log("increment-qty", currentPos)
         currentValue = parseInt($(currentPos).val());
+        console.log("increment-qty currentValue=", currentValue)
+        console.log('max val', parseInt($(currentPos).attr('max')))
         if(currentValue < parseInt($(currentPos).attr('max'))){
-            $(currentPos).val(currentValue+1)
+            $(currentPos).val(currentValue+1);
+        }
+        handleEnableDisable(sku);
+        if( view_type == 'bag' ){
+            var form = $(this).closest('.update-form')[0];
+            console.log("submit", form)
+            form.submit();
         }
     })
 </script>
