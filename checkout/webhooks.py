@@ -33,7 +33,7 @@ def webhook(request):
     event = None
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-
+    print("BBBB--------Webhok")
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret

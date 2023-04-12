@@ -42,27 +42,27 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="w-25 p-3">
-                                        <a href="{% url 'product_detail' item.product.id %}">
-                                            {% if item.product.image %}
-                                                <img  class="img-fluid my-0 py-0"  src="{{item.product.image.url}}" alt="{{item.product.name}}">
+                                        <a href="{% url 'product_detail' item.sub_product.product.id %}">
+                                            {% if item.sub_product.product.image %}
+                                                <img  class="img-fluid my-0 py-0"  src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
                                             {% else %}
-                                                <img class="img-fluid my-0 py-0" src="{{MEDIA_URL}}noimage.png" alt="{{item.product.name}}">
+                                                <img class="img-fluid my-0 py-0" src="{{MEDIA_URL}}noimage.png" alt="{{item.sub_product.product.name}}">
                                             {% endif %}
                                         </a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{item.product.name}}</strong></p>
-                                        <p class="my-2 small"><strong>Size: </strong>{% if item.size != 'None' %} {{item.size|upper}} {% else %} N/A {% endif %}</p>
+                                        <p class="my-0"><strong>{{item.sub_product.product.name}}</strong></p>
+                                        <p class="my-2 small"><strong>Size: </strong>{% if item.sub_product.size != 'None' %} {{item.sub_product.size|upper}} {% else %} N/A {% endif %}</p>
                                         <p class="lead text-muted">{{item.product.sku}}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 small ms-3">{{item.product.price}}</p>
+                                        <p class="my-0 small ms-3">{{item.sub_product.product.price}}</p>
                                     </td>
                                     <td class="py-3 w-25 px-lg-4">
                                         <p class="my-0 small text-muted text-center ">{{item.quantity}}</p>
                                     </td>
                                     <td class="py-3 text-center">
-                                        <p>{{item.product.price | calc_subtotal:item.quantity}}</p>
+                                        <p>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -70,7 +70,7 @@
                     </table>
                 </div>
                 <hr class="my-0 ms-4 px-0 me-0">
-                <div class="row text-end text-dark">
+                <div class="row text-end text-ocean-blue">
                     <div class="col-7 offset-2">
                         <p class="my-0">Order Total:</p>
                         <p class="my-0">Delivery:</p>
@@ -123,14 +123,14 @@
                         <div class="mb-3 text-danger" id="card-errors"></div>
                         <input type="hidden" value="{{client_secret}}" name="client_secret">
                     </fieldset>
-                    <div class="submit-button text-end mt-5 mb-2">
-                        <a href="{% url 'view_bag' %}" class="btn btn-outline-light-blue rounded-0">
+                    <div class="submit-button text-end mt-4 mb-2">
+                        <a href="{% url 'view_bag' %}" class="btn btn-outline-ocean-blue rounded-0">
                             <span class="icon">
                                 <i class="fa fa-chevron-left"></i>
                             </span>
                             <span class="font-weight-bold">Adjust Bag</span>
                         </a>
-                        <button class="btn btn-light-blue rounded-0" id="submit-button">
+                        <button class="btn btn-ocean-blue rounded-0" id="submit-button">
                             <span class="font-weight-bold">Complete Order</span>
                             <span class="icon">
                                 <i class="fa fa-lock"></i>

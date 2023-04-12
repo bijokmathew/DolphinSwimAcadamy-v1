@@ -24,8 +24,8 @@ import json
 from profiles.forms import UserProfileForm
 from .models import Order, OrderLineItem
 from profiles.models import UserProfile
+from products.models import Inventory
 from bag.contexts import bag_contents
-from products.models import Product
 from .forms import OrderForm
 # ------------------------------------------------------------------
 
@@ -104,25 +104,15 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
-            for item_id, item_data in bag.items():
+            for sku, quantity in bag.items():
                 try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data
-                        )
-                        order_line_item.save()
-                    else:
-                        for size, quantity in item_data['item_by_size'].items():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                product_size=size,
-                                quantity=quantity,
-                            )
-                            order_line_item.save()
+                    sub_product = Inventory.objects.get(sku=sku)
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=sub_product.product,
+                        quantity=quantity
+                    )
+                    order_line_item.save()
                 except Product.DoesNotExist:
                     print('order form Product.DoesNotExist')
                     messages.error(request, "One of the product in your bag \
@@ -172,6 +162,7 @@ def checkout(request):
         except UserProfile.DoesNotExist:
             order_form = OrderForm()
     else:
+        print("....else orderForm")
         order_form = OrderForm()
     template = 'checkout/checkout.html'
 

@@ -172,7 +172,7 @@
         <div class="row">
             <div class="col-12 col-lg-7 text-end">
                 {% if from_profile_page %}
-                    <a href="{% url 'user_profile' %}" class="btn btn-light-blue-nhover rounded-0 my-2">
+                    <a href="{% url 'user_profile' %}" class="btn btn-ocean-blue rounded-0 my-2">
                         <span class="icon mr-2">
                             <i class="fas fa-angle-left"></i>
                         </span>
@@ -180,9 +180,9 @@
                     </a>
                 {% else %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'user_profile' %}" class="btn btn-light-blue-nhover rounded-0 my-2">My Profile</a>
+                        <a href="{% url 'user_profile' %}" class="btn btn-ocean-blue rounded-0 my-2">My Profile</a>
                     {% endif %}
-                    <a href="{% url 'products' %}" class="btn btn-outline-light-blue btn rounded-0 my-2">
+                    <a href="{% url 'products' %}" class="btn btn-outline-ocean-blue btn rounded-0 my-2">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
