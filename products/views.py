@@ -48,7 +48,9 @@ def all_products(request):
                 )
                 redirect(reverse('products'))
             else:
-                queries = Q(name__icontains=query) | Q(description__icontains=query)
+                queries = (
+                    Q(name__icontains=query) | Q(description__icontains=query)
+                )
                 products = Product.objects.filter(queries)
 
         if 'sort' in request.GET:

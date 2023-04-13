@@ -1,5 +1,5 @@
 """
-Product module url configurations
+Courses module url configurations
 """
 
 # ------------------------------------------------
@@ -12,7 +12,5 @@ from . import views
 # -------------------------------------------------
 
 urlpatterns = [
-    path('', views.all_products, name='products'),
-    path('add/', views.product_add, name='product_add'),
-    path('<product_id>/', views.product_detail, name='product_detail'),
+    path('', views.CourseListView.as_view(), name='courses'),
 ]
