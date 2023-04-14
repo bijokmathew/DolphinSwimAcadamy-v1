@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">    
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 my-5 offset-3">
+                <h1 class="fs-3">
+                    COURSE DETAILS
+                    <hr class="w-50 mb-1">
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- Container for staff update and delete buttons -->
+<div class="row content" style="min-height:50px;">
+    <div class="col">
+        {% if request.user.is_staff %}
+        <hr>
+        <div class="container d-flex align-items-center justify-content-center my-5">
+        <div><strong>Staff Action: </strong></div>
+        <a class="btn btn-primary mx-3" href="#">Update details</a>
+        <a class="btn btn-danger mx-3" href="#">Delete</a>
+        </div>
+        <hr>
+        {% endif %}
+    </div>
+</div>
+<!-- Product Details image container -->
+<div class="content container">
+    <div class="row">
+        <!-- Product image or placeholder text -->
+        <div class="col-12 col-md-6">
+            {% if not object.image %}
+                <img src="{{MEDIA_URL}}noimage.png" class="card-img-top img-fluid" alt="{{object.friendly_name}}">
+            </div>
+            {% else %}
+                <img src="{{ object.image.url }}" alt="{{ object.friendly_name }}" class="img-responsive w-100 mt-3">
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-6 d-flex flex-column">
+            <h2>{{ object.friendly_name }}</h2>
+            <div>{{ object.description | linebreaks}}</div>
+            <div>{{ object.extra_details | linebreaks}}</div>
+            <p><strong>Duration:</strong> {{ object.duration_weeks }} week</p>
+            <p><strong>Price:</strong> ${{object.price}} </p>
+            <div class = "align-self-start">
+                <a class="btn btn-secondary me-3" href = "../">Back</a>
+                <a class = "btn btn-ocean-blue me-3" href="#">Contact now!</a>
+            </div>
+        </div>
+    </div>
+    <div class = "container">
+        <hr>
+    </div>
+</div>
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super}}
+    {% include 'products/includes/product_quantity_script.html' %}
+{% endblock %}

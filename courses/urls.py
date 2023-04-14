@@ -4,13 +4,21 @@ Courses module url configurations
 
 # ------------------------------------------------
 # 3rd party
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
 # internal
 from . import views
 # -------------------------------------------------
 
 urlpatterns = [
-    path('', views.CourseListView.as_view(), name='courses'),
+    path(
+        '',
+        views.CourseListView.as_view(),
+        name='courses'
+    ),
+    path(
+        'course_detail/<slug:slug>',
+        views.CourseDetailView.as_view(),
+        name='course_detail'
+    ),
 ]

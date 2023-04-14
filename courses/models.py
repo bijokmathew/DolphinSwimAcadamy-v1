@@ -24,6 +24,9 @@ class Course(models.Model):
         BEGINNER = "beginner", "Start to Swim"
         INTERMEDIATE = "intermediate", "Learn to Swim"
         ADVANCED = "advanced", "Confident swimmers"
+        LEVEL_1 = "Level-1", "Level-1"
+        LEVEL_2 = "Level-2", "Level-2"
+        LEVEL_3 = "Level-3", "Level-3"
 
     name = models.CharField(
         max_length=254,

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">    
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="product-container mx-5">
+        <div class="row mt-3 pt-3 pt-sm-0 mt-sm-5 mt-lg-0">
+            <div class="col">
+                <h1 class="my-5">
+                    COURSES
+                </h1>
+            </div>
+        </div>
+        {% for object in object_list %}
+            <div class="row d-flex {% if forloop.counter|divisibleby:2 %} flex-row-reverse {% endif %} mb-3">
+                <div class="col-12 col-md-6 d-flex flex-column">
+                    <h2 class="fs-4">{{ object.name }}</h2>
+                    <div>{{ object.description | linebreaks }}</div>
+                    <p><strong>Duration:</strong> {{ object.duration_weeks }} week</p>
+                    <p><strong>Price:</strong><span class="lead"> ${{object.price}} </span></p>
+                    <div class ="align-self-end">
+                    <a class="btn btn-bg-brown rounded-0 me-2" href="#">Enquire now</a>
+                    <a class="btn btn-ocean-blue rounded-0" href="{% url 'course_detail' object.slug %}">More Details</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    {% if not object.image %}
+                        <img src="{{MEDIA_URL}}noimage.png" alt="blank image" class="img-responsive my-3 w-100">
+                    {% else %}
+                        <img src="{{ object.image.url }}" alt="{{ object.friendly_name }}" class="course-list-image img-responsive w-100 my-3">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container content my-3">
+                <hr class="my-3">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

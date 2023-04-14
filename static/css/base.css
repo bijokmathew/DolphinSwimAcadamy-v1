@@ -13,7 +13,8 @@
     --ocean-blue:rgba(36,47,109,1);
     --nav-font-weight:800;
     --text-color:#0000;
-    --button-color:#733600;
+    --button-brown-color:#663103;
+    --button-brown-hover-color:#663103b4;
     --theme-1:#015E73;
     --theme-2:#BF5C04;
     --theme-3:#049DBF;
@@ -110,13 +111,13 @@ h6 {
 }
 
 .btn-bg-brown {
-    background: var(--button-color);
+    background: var(--button-brown-color);
     color: white;
 }
 
 .btn-bg-brown:hover {
-    background-color: aliceblue;
-    color:var(--button-color); 
+    background-color: var(--button-brown-hover-color);
+    color:whitesmoke; 
 }
 
 .btn-ocean-blue {
