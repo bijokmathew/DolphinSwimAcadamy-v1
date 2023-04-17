@@ -422,6 +422,14 @@ h6 {
     color: #17a2b8;
 }
 
+/* Image for contact page */
+.contact-background{
+    background-image: url(../img/slide-1.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
 /* ---------Media query */
 
 /* Container width should be max for smaller screen */
