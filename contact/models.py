@@ -16,8 +16,8 @@ class Contact(models.Model):
     This model describes the contact details
     """
     class Meta:
-        verbose_name = 'Course'
-        verbose_name_plural = 'Courses'
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
 
     class ContactOption(models.TextChoices):
         """

@@ -14,31 +14,29 @@
 
 {% block content %}
 <div class="contact-background d-flex flex-column justify-content-center content align-items-center">
-    <div class="container">
+    <div class="container contact-container">
         <div class="row">
             <div class="col"></div>
-            <!-- Main responsive form container -->
             <div class="col-12 col-md-6 my-sm-5 my-auto bg-light bg-gradient rounded">
                 <h1 class="text-center p-3 fs-3">CONTACT US</h1>
                 <!-- Submitted contact message -->
-                <!-- Borrowed from my own Elgini Restaurant Project-->
-                {% if contacted %}
-                <div class="alert alert-success">
-                    Thank you for your message, we'll be in touch soon!
-                </div>
-                <div>
-                    <!-- Link to shopping pages -->
-                    <a href="{% url 'products' %}" class="btn btn-primary my-3">Back to Shopping</a>
-                </div>
+                {% if is_contacted %}
+                    <div class="alert alert-success">
+                        Thank you for your message, we'll be in touch soon!
+                    </div>
+                    <div>
+                        <!-- Link to home pages -->
+                        <a href="{% url 'home' %}" class="btn btn-ocean-blue my-3">Back to Shopping</a>
+                    </div>
                 {% else %}
-                <!-- Contact Form -->
-                <form method="POST" class="p-3 translucent-body">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <br>
-                    <button class="btn btn-primary me-3" type="submit">Send message</button><a class="btn btn-secondary"
-                        href="{{request.META.HTTP_REFERER|escape}}">Cancel</a>
-                </form>
+                    <!-- Contact Form -->
+                    <form method="POST" class="p-3 translucent-body">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <br>
+                        <button class="btn btn-ocean-blue me-3" type="submit">Send message</button>
+                        <a class="btn btn-secondary"href="{{request.META.HTTP_REFERER|escape}}">Cancel</a>
+                    </form>
                 {% endif %}
             </div>
             <div class="col"></div>
