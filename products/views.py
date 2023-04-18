@@ -141,6 +141,7 @@ def product_add(request):
     return render(request, template, context=context)
 
 
+@login_required
 def product_edit(request, product_id):
     """
     A view to edit the product from the
@@ -152,6 +153,10 @@ def product_edit(request, product_id):
     Returns:
         Render of product edit page with context
     """
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -175,6 +180,7 @@ def product_edit(request, product_id):
     return render(request, template, context=context)
 
 
+@login_required
 def delete_product(request, product_id):
     """
      A view to delete the product from the
@@ -186,6 +192,9 @@ def delete_product(request, product_id):
     Returns:
         Delete the product and return to ptoduct list
     """
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()

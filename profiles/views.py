@@ -6,6 +6,7 @@
 
 # -----------------------------------------------------------------
 # 3rd Party
+from django.utils.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import (
     render,
@@ -19,6 +20,7 @@ from .models import UserProfile
 # ------------------------------------------------------------------
 
 
+@login_required
 def user_profile(request):
     """
     This function return the template and user profile data
