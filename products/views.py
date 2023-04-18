@@ -173,3 +173,21 @@ def product_edit(request, product_id):
         'form': form
     }
     return render(request, template, context=context)
+
+
+def delete_product(request, product_id):
+    """
+     A view to delete the product from the
+    the product list
+    credit from code institute Boutique Ado
+    Args:
+        request (object): HTTP request object
+        and product id.
+    Returns:
+        Delete the product and return to ptoduct list
+    """
+
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, f"Product deleted!")
+    return redirect(reverse('products'))
