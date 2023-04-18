@@ -8,6 +8,7 @@ Form module for products related models
 from django import forms
 
 # internal
+from .widgets import CustomClearableFileInput
 from .models import Product, Category
 # ------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ class ProductForm(forms.ModelForm):
             'price',
             'is_active',
             'rating',
-            'image',
+            'image'
         ]
 
     def __init__(self, *args, **kwargs):
@@ -47,4 +48,10 @@ class ProductForm(forms.ModelForm):
     category = CustomMMCF(
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple
+    )
+    
+    image = forms.ImageField(
+        label='Image',
+        required=False,
+        widget=CustomClearableFileInput
     )

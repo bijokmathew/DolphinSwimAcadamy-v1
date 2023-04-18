@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -68,6 +69,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dolphinswimacadamy.urls'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 TEMPLATES = [
     {
