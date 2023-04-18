@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bag_tools %}
+
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="product-container mx-5 pb-5 " style="background-color:aliceblue;">
+    <div class="row mt-3 pt-3 pt-sm-0 mt-sm-5 mt-lg-0">
+        <div class="col">
+            <h1 class="my-5">
+                ABOUT US
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <img class="img-fluid mt-3" src="{% static 'img/swim_england_learn_to_swim_stage_5_swimmer.jpg' %}" alt="about us">
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2>Who are we?</h2>
+            <p class="mt-4">
+                    The Dolphin swim academy introduce a skill or stroke within the early stages of the Learn to Swim Framework.
+                Once the skill or stroke has been introduced, these should be continually developed throughout the framework and 
+                be mastered alongside the relevant outcomes of each stage.  
+            </p>
+            <p>
+                    The Dolphin swim academy is about building the beginnings of a lifelong love of water.Every child should be 
+                given a chance to learn to swim and feel like they are comfortable and able to do so in any situation.We believe 
+                that the first experiences during a child’s early years, of water and the pool environment, should be positive, 
+                fun and memorable.
+            </p>
+            <p>
+                As an award-winning PADI 5 Star Instructor Development Center, you can expect the best levels of swimming training at Dolphin swim academy, 
+                and you may earn a globally recognised certification ranging from PADI Open Water Diver to PADI Instructor.
+            </p>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
