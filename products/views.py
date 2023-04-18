@@ -139,3 +139,37 @@ def product_add(request):
         'form': form
     }
     return render(request, template, context=context)
+
+
+def product_edit(request, product_id):
+    """
+    A view to edit the product from the
+    the product list
+    credit from code institute Boutique Ado
+    Args:
+        request (object): HTTP request object
+        and product id.
+    Returns:
+        Render of product edit page with context
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Successfully updated the product")
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(
+                request,
+                f"Failed to update the product.Plesae ensure the form is valid"
+            )
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f"You are editing {product.name}")
+    template = 'products/product_edit.html'
+    context = {
+        'product': product,
+        'form': form
+    }
+    return render(request, template, context=context)
