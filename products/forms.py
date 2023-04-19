@@ -1,5 +1,5 @@
 """
-Form module for products related models
+Form module for products models
 """
 # Imports
 
@@ -49,7 +49,7 @@ class ProductForm(forms.ModelForm):
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple
     )
-    
+
     image = forms.ImageField(
         label='Image',
         required=False,

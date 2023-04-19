@@ -7,6 +7,10 @@
     color:blue;
 }
 
+.content {
+    flex: 1 0 auto;
+}
+
 .course-list-image{
     height: 300px;
     object-fit: cover;

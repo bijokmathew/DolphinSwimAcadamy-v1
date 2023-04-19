@@ -6,6 +6,7 @@ Courses app related models
 # -----------------------------------------------------------------
 # 3rd Party
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 # internal
 # ------------------------------------------------------------------

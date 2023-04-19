@@ -122,7 +122,7 @@ def product_add(request):
             product = form.save()
             messages.success(
                 request,
-                f"Successfully ${product.name} added the to the store"
+                f"Successfully {product.name} added to the store"
             )
             return redirect(reverse('product_detail', args=[product.id]))
         else:
