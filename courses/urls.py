@@ -34,4 +34,10 @@ urlpatterns = [
         views.CourseEditView.as_view(),
         name='edit_course'
     ),
+
+    path(
+        'delete/<slug:slug>',
+        views.CourseDeleteView.as_view(),
+        name='delete_course'
+    ),
 ]

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Header -->
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="my-5">
+          DELETE COURSE
+        </h1>
+      </div>
+    </div>
+</div>
+<!--Form to confirm delete-->
+<div class="container d-flex flex-column align-items-center content justify-content-center">
+  <div>
+    <form method='POST'>
+        {% csrf_token %}
+        <p>Are you sure you want to delete {{ object.name }}?</p>
+        <p>
+            <input class = "btn btn-ocean-blue" type = 'submit' value='Yes' />  
+            <a class = "btn btn-secondary" href='../'>Cancel</a>
+        </p>
+    </form>
+</div>
+</div>
+
+{% endblock %}

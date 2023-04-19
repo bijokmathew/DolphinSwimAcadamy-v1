@@ -6,10 +6,11 @@
 
 # -----------------------------------------------------------------
 # 3rd Party
-from django.shortcuts import render, get_object_or_404, reverse, redirect, reverse
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
 from django.contrib import messages
 
 # internal
@@ -146,3 +147,46 @@ class CourseEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
                 f"Successfully {course.name} updated to the store"
         )
         return super().form_valid(form)
+
+
+class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    A class based view to delete a course
+    Args:
+        request (object): HTTP request object.
+    Returns:
+        Deleted course and show alert to the user
+    """
+    model = Course
+    raise_exception = False
+    redirect_field_name = '/'
+    success_url = reverse_lazy('courses')
+    login_url = '/accounts/login'
+    template_name = 'courses/course_confirm_delete.html'
+    permission_denied_message = "Sorry, You are not autherized to \
+        perform this action"
+
+    def test_func(self):
+        """
+        Override the default behavior to check
+        whether the user is admin
+        """
+        return self.request.user.is_superuser
+
+    def get_object(self, queryset=None):
+        """
+        A method to get the object
+        """
+        slug_ = self.kwargs.get('slug')
+        return get_object_or_404(Course, slug=slug_)
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Override the delete function to
+        show custom message
+        """
+        messages.success(
+                self.request,
+                f"Course Deleted!"
+        )
+        return super().delete(request, *args, **kwargs)
