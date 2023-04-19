@@ -28,4 +28,10 @@ urlpatterns = [
         views.CourseAddView.as_view(),
         name='add_course'
     ),
+
+    path(
+        'edit/<slug:slug>',
+        views.CourseEditView.as_view(),
+        name='edit_course'
+    ),
 ]
