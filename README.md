@@ -40,6 +40,12 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
         - [Inventory Model](#inventory-model)
         - [Course Model](#course-model)
         - [Contact Model](#contact-model)
+  - [Scope](#scope)
+      - [**Product Backlog**](#product-backlog)
+    - [User stories:](#user-stories)
+      - [Error Flow](#error-flow)
+  - [Skeleton](#skeleton)
+    - [Wireframes](#wireframes)
 
 # User Experience
 ## Strategy
@@ -191,3 +197,156 @@ Database models contains all fields stored in the database collections with thei
 - The model contains the following fields: subject, full_name, email, phone_number,town_or_city, county, postcode, street_address, country and message.
 
 [Return to Table of Contents](#table-of-content)
+
+## Scope
+
+- The project was developed by using agile methodology. During the design process collect the project requirements and write epics broken down into user stories with well defined acceptance criteria and tasks list. Based on the priority move those user stories in to different project sprint cycle like First cycle, Second cycle and Third Cycle in order to achieve MNP.Once finished the user stories changed the status of specific stories into closed state and if all issues related to the sprint closed then move the sprint cycle also in to closed state. During the development time comming up with an enhancement ideas, create stories and epic for those enhancement ideas and moved in to backlog with priorities.
+  
+![image of user stories](static/docs/images/)
+
+#### **Product Backlog**
+- The product backlog for the project can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/1)
+
+    * Project's all user stories on board can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/issues)
+    * Project all spring cycle can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestones)
+  
+ ![image of the product backlog](static/docs/images/)
+   
+- **First Cycle**
+    * The First Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/2)
+  
+    ![image of the First Cycle board](static/docs/images/)
+
+- **Second Cycle**
+    * The Second Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/3)
+      ![image of the iteration 2 board](static/docs/images/)
+
+- **Third Cycle**
+    * The Third Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/4)
+    ![image of the iteration 3 board](static/docs/images/)
+
+- **Fourth Cycle**
+    * The fourth Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/5)
+    ![image of the iteration 3 board](static/docs/images/)
+### User stories:
+
+1. As an unauthenticated user, I want to be able to navigate the website quickly and easily 
+2. As an unauthenticated user, I want to have the option to view all products on the site
+3. As an unauthenticated user, I want to be able to search the website for specific products
+4. As an unauthenticated user, I want to be able to view detailed descriptions and prices of the products
+5. As an unauthenticated user, I want to be able to sort the products and view by price and alphabetically
+6. As an unauthenticated user, I want to be able to sort and view products by category
+7. As an unauthenticated user, I want to be able to add a product to my bag
+8. As an unauthenticated user, I want to be able to quickly navigate through product listing pages
+9. As an unauthenticated user, I want to be able to view how many products are in my shopping bag at all times
+10. As an unauthenticated user, I want to be able to navigate back to the products page after viewing product details
+11. As an unauthenticated user, I want to be able to view products added to my shopping bag
+12. As an unauthenticated user, I want to be able to increase quantities and remove items from my shopping bag
+13. As an unauthenticated user, I want to be able to checkout and purchase products
+14. As an unauthenticated user, I want to be able to create an account
+15. As an unauthenticated user, I want to be able to log in to / sign out of an existing account
+16. As an unauthenticated user, I want to be able contact the business
+17. As an unauthenticated user, I want to be able to view the business location
+18. As an unauthenticated user, I want to be able to browse available courses
+19. As an unauthenticated user, I want to be able to view course details and contact for reservation
+20. As an authenticated user, I want to be able to view my order history
+21. As an authenticated user, I want confirmation that I have signed out of my account
+22. As a site owner, I want users to be able to navigate the website quickly and easily
+23. As a site owner, I want users to be able to view the business social media
+24. As a site owner, I want to be able to update and edit product descriptions, details and prices
+25. As a site owner, I want to be able to view and update products 
+26. As a site owner, I want to be able to add products
+27. As a site owner, I want to be able to delete products
+28. As a site owner, I want to be able to manage product inventory
+29. As a site owner, I want to make sure that customers aren’t able to purchase more products than what is listed in the inventory
+30. As a site owner, I want to make sure that customers can see which products are out of stock
+31. As a site owner, I want to be able to view and update the courses listed
+32. As a site owner, I want to be able to add a course
+33. As a site owner, I want to be able to delete a course
+34. As a user, I want to have confirmation that my order has been successful
+35. As admin, I want to be able to create batch actions and manipulate all the data tables in one place
+36. As a user, I want to be shown messages that my actions have been successful and unsuccessful*
+
+#### Error Flow
+1.  As a site owner, I want error pages that enables users to be able to return to valid areas of the site without using browser controls.
+
+## Skeleton
+
+### Wireframes
+
+<details><summary>About Us</summary>
+<img src="readme/wireframes/about-us.png">
+</details>
+
+<details><summary>All-course</summary>
+<img src="readme/wireframes/all-courses.png">
+</details>
+
+<details><summary>All-Products</summary>
+<img src="readme/wireframes/all-products.png">
+</details>
+
+<details><summary>Checkout</summary>
+<img src="readme/wireframes/checkout.png">
+</details>
+
+<details><summary>Contact Us</summary>
+<img src="readme/wireframes/contact-us.png">
+</details>
+
+<details><summary>Course Details</summary>
+<img src="readme/wireframes/course-details.png">
+</details>
+
+<details><summary>Error Page</summary>
+<img src="readme/wireframes/error.png">
+</details>
+
+<details><summary>Home</summary>
+<img src="readme/wireframes/home-page.png">
+</details>
+
+<details><summary>Order History</summary>
+<img src="readme/wireframes/order-history.png">
+</details>
+
+<details><summary>Payment Confirmation</summary>
+<img src="readme/wireframes/payment-confirmation.png">
+</details>
+
+<details><summary>Product Details</summary>
+<img src="readme/wireframes/product-details.png">
+</details>
+
+<details><summary>Profile Edit</summary>
+<img src="readme/wireframes/profile-edit.png">
+</details>
+
+<details><summary>Profile</summary>
+<img src="readme/wireframes/profile.png">
+</details>
+
+<details><summary>Register</summary>
+<img src="readme/wireframes/register.png">
+</details>
+
+<details><summary>Cart</summary>
+<img src="readme/wireframes/shopping-cart.png">
+</details>
+
+<details><summary>Sign-in</summary>
+<img src="readme/wireframes/sign-in.png">
+</details>
+
+<details><summary>Sign-out</summary>
+<img src="readme/wireframes/sign-out.png">
+</details>
+
+<details><summary>Manage Categories</summary>
+<img src="readme/wireframes/staff-manage-categories.png">
+</details>
+
+<details><summary>Manage Brands</summary>
+<img src="readme/wireframes/staff-manage-brands.png">
+</details>
+
