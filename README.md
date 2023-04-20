@@ -23,6 +23,10 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [User Goals](#user-goals)
     - [Target Audience](#target-audience)
   - [User Requirements and Expectations](#user-requirements-and-expectations)
+  - [Business Model](#business-model)
+  - [SEO](#seo)
+  - [Marketing](#marketing)
+    - [Facebook Business Page](#facebook-business-page)
 
 # User Experience
 ## Strategy
@@ -64,4 +68,28 @@ The primary goal of the website from the site owners perspective is as follows:
 - Responsive and visually appealing on all devices.
 - Ability to view products and complete purchases
 - Ability to contact the business
-  
+
+## Business Model
+
+For this project, as the primary goal is to sell products direct to consumers. Add all products with image and detailed descriptions, ability to search and ease to purchase, a product inventory with out of stock visibilty, and restrictions on purchasing more items than in stock.
+
+Alternatively, the business could arrange sale or return from the the supplier or sell driect from supplier stock in the online store and carry physical stock in thier own warehouse.
+
+For the nature of this project, the stock is held pysically in the business.
+
+## SEO
+
+Long tag and short tag keyword were searched for in regards to SEO using Google tools and other online resources. These tags have been used in the main HTML head and throughout the project to name images and within main body text.
+
+![SEO keywords HTML](readme/misc/)
+
+## Marketing
+
+### Facebook Business Page
+
+For marketing the website, it has a link to its own social media page in the footer and that has a recipricol link to the site.
+
+Facebook site can be viewed [here](https://www.facebook.com/). 
+
+![Facebook Screenshot](readme/misc/)
+![Facebook Screenshot2](readme/misc/)
