@@ -40,12 +40,15 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
         - [Inventory Model](#inventory-model)
         - [Course Model](#course-model)
         - [Contact Model](#contact-model)
-  - [Scope](#scope)
+    - [Scope](#scope)
       - [**Product Backlog**](#product-backlog)
     - [User stories:](#user-stories)
       - [Error Flow](#error-flow)
-  - [Skeleton](#skeleton)
-    - [Wireframes](#wireframes)
+    - [Design](#design)
+      - [Wireframes](#wireframes)
+      - [Colours](#colours)
+      - [Typography](#typography)
+  - [Features](#features)
 
 # User Experience
 ## Strategy
@@ -138,7 +141,7 @@ It contains a footer with links to external sites.
 - Bag - User can view, add and remove products that they have added to the bag
 - Checkout - Users can use the checkout app to purchase selected items. They can see items in the cart and have the option to save profile information during the checkout process.
 
-To complement the apps there are
+In additions to apps,the following files are included in the projects
 - project: Project level files - settings.py for project level settings and urls.py to route the website URLS
 - templates: Containing the base.html, allauth(django authentication)
 - templates (app level): each app has it's own templates directory for HTML to consider portability and re-use.
@@ -198,7 +201,7 @@ Database models contains all fields stored in the database collections with thei
 
 [Return to Table of Contents](#table-of-content)
 
-## Scope
+### Scope
 
 - The project was developed by using agile methodology. During the design process collect the project requirements and write epics broken down into user stories with well defined acceptance criteria and tasks list. Based on the priority move those user stories in to different project sprint cycle like First cycle, Second cycle and Third Cycle in order to achieve MNP.Once finished the user stories changed the status of specific stories into closed state and if all issues related to the sprint closed then move the sprint cycle also in to closed state. During the development time comming up with an enhancement ideas, create stories and epic for those enhancement ideas and moved in to backlog with priorities.
   
@@ -270,9 +273,11 @@ Database models contains all fields stored in the database collections with thei
 #### Error Flow
 1.  As a site owner, I want error pages that enables users to be able to return to valid areas of the site without using browser controls.
 
-## Skeleton
+### Design
+The aim of the design of the website was to create a clean and modern website, images and themes are used to show business values and create an enticing site that the visitor wants to explore. 
+The fonts are bold, clear and modern, with clear headings to enable easy navigation.
 
-### Wireframes
+#### Wireframes
 
 <details><summary>About Us</summary>
 <img src="readme/wireframes/about-us.png">
@@ -349,4 +354,37 @@ Database models contains all fields stored in the database collections with thei
 <details><summary>Manage Brands</summary>
 <img src="readme/wireframes/staff-manage-brands.png">
 </details>
+
+#### Colours
+The colour scheme is primarily blues to represent water which matches the business theme. 
+#FFFFFF – Titles & subtitles
+#FFFFFF - Body text
+##315673- Buttons
+##5392C2– Button highlight & search bar
+#000000 – Image overlay text
+insert colour palette image
+After choosing a colour scheme I tested a number of palette options to make sure the it met accessibility standards.
+<br>![Color](readme/misc/color.png)
+<br>![Accessible Color](readme/misc/accessible-color.png)
+
+#### Typography
+Poller One is the font uses for the logo, this font is from the Google Fonts.
+Urbanist is the font used across all of the headings and text across the website, it has been used in different 
+weights and different cases to highlight titles. This font is from the Google Fonts Library.
+
+## Features
+
+The site consists of 11 pages, with the features detailed under each page.
+
+1. Home
+2. About
+3. Shop
+4. Categories
+5. Courses
+6. Contact
+7. Log in
+8. Log out
+9. Register
+10. Prduct Managment
+11. Shopping Cart
 
