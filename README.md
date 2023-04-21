@@ -83,6 +83,11 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [About](#about)
     - [Administration](#administration)
     - [Messages](#messages)
+  - [Future Features](#future-features)
+  - [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+      - [Python Libraries](#python-libraries)
+    - [Frameworks \& Tools](#frameworks--tools)
 
 # User Experience
 ## Strategy
@@ -801,3 +806,61 @@ After certain actions, error messages are shown below my account in Navbar to co
 
 This page covers the following user stories:
 *38 As a user, I want to be shown messages that my actions have been successful and unsuccessful*
+
+## Future Features
+ add brand
+ create category, size managment
+ add color option
+ add option to purchase for course
+ add f/q in about page
+## Technologies Used
+
+### Languages
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JS ES6](https://en.wikipedia.org/wiki/JavaScript)
+- [Django](https://www.djangoproject.com/)
+- [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Markdown](https://www.markdownguide.org/getting-started/)
+
+#### Python Libraries
+
+- asgiref==3.6.0
+- crispy-bootstrap5==0.7
+- Django==3.2
+- django-allauth==0.41.0
+- django-countries==7.2.1
+- django-crispy-forms==1.14.0
+- django-filter==23.1
+- oauthlib==3.2.2
+- Pillow==9.4.0
+- python3-openid==3.2.0
+- pytz==2022.7.1
+- requests==2.27.1
+- requests-oauthlib==1.3.1
+- sqlparse==0.4.3
+- stripe==5.2.0
+
+
+### Frameworks & Tools
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0) - for general site layout, grid, flex, carousel.
+- [Bootstrap Icons 1.8](https://getbootstrap.com/) - for various icons in the site
+- [Postgres](https://www.postgresql.org/) - the site is deployed on Heroku using a Postgress database.
+- [SQLLite](https://www.sqlite.org/index.html) - this database was used in local development.
+- [Gitpod](https://gitpod.io/) - IDE of choice for this project.
+- [Github](https://github.com/) - used as the code repository.
+- [Google Fonts](https://fonts.google.com/) - used for the main body font and some headings.
+- [Balsamiq](https://balsamiq.com/) -  used to create the website wireframes.
+- [Font Awesome](https://fontawesome.com/) - Font awesome was used to provide the relevant fonts/icons for the website social media icon links.
+- [JQuery](https://jquery.com) - JQuery was used in some javascript files for DOM manipulation
+- [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - for validation of the css in the project.
+- [HTML Markup Validation Service](https://validator.w3.org/) - for validation the HTML in the project.
+- [Firefox dev tools](https://firefox-source-docs.mozilla.org/devtools-user/index.html) - troubleshooting and debugging of the project code.
+- [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse) - for performance, accessibility, progressive web apps, SEO analysis of the project code.
+- [Responsive Design](http://ami.responsivedesign.is/) - for website mockup.
+- [JSHint](https://jshint.com/) - for javascript validation.
+- [PEP8](https://www.python.org/dev/peps/pep-0008/) - for python validation.
+- [Quick Database diagrams](https://www.quickdatabasediagrams.com)- for the database schema diagram.
+- [Facebook](https://www.facebook.com) - for social media marketing
+- [Stripe](https://stripe.com/gb) - For payments
+- [Amazon Web Services](https://aws.amazon.com/) - For static file hosting
