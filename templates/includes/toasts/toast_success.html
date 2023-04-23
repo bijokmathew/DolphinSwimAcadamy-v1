@@ -12,7 +12,7 @@
           <hr class="mt-1 mb-3">
         </div>
       </div>
-      {% if grand_total %}
+      {% if grand_total and 'from_bag_view' in message.extra_tags %}
         <p class="text-uppercase">Your Cart Contains : {{product_count}} items </p>
         <div class="bag-notification-wrapper">
           {% for item in bag_items %}

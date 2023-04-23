@@ -43,12 +43,16 @@ def add_to_bag(request, item_id):
     if sku in list(bag.keys()):
         bag[sku] += quantity
         messages.success(
-            request, f'Updated {item.product.name} quantity to {bag[sku]}'
+            request,
+            f'Updated {item.product.name} quantity to {bag[sku]}',
+            extra_tags='from_bag_view'
         )
     else:
         bag[sku] = quantity
         messages.success(
-            request, f'Added {item.product.name} to your shopping cart'
+            request,
+            f'Added {item.product.name} to your shopping cart',
+            extra_tags='from_bag_view'
         )
 
     request.session['bag'] = bag
@@ -70,13 +74,15 @@ def adjust_bag(request, item_id):
         messages.success(
             request,
             f"Updated {sub_product.product.name}quantity"
-            "to {bag[sub_product.sku]}"
+            "to {bag[sub_product.sku]}",
+            extra_tags='from_bag_view'
         )
     else:
         bag.pop(sub_product.sku)
         messages.success(
             request,
-            f"Removed {sub_product.product.name} from your bag"
+            f"Removed {sub_product.product.name} from your bag",
+            extra_tags='from_bag_view'
         )
 
     request.session['bag'] = bag
@@ -93,7 +99,11 @@ def remove_from_bag(request, item_id):
         bag = request.session.get('bag', {})
         size = request.POST.get('product_size')
         bag.pop(sub_product.sku)
-        messages.success(request, f"Removed {sub_product.product.name} from your bag")
+        messages.success(
+            request,
+            f"Removed {sub_product.product.name} from your bag",
+            extra_tags='from_bag_view'
+        )
         request.session['bag'] = bag
         return redirect('view_bag')
     except Exception as e:
