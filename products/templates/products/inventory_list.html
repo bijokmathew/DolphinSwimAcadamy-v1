@@ -30,7 +30,7 @@
                         <label for="id_sku" class="form-label">SKU:</label>
                       </div>
                       <div class="col">
-                        <input type="text" name="sku">
+                        <input class="rounded border-ocean-blue" type="text" name="sku">
                       </div>
                     </div>
                     <div class="row">
@@ -38,15 +38,15 @@
                         <label for="id_product__name" class="form-label">Product Name:</label>
                       </div>
                       <div class="col">
-                        <input type="text" name="product-name">
+                        <input class="rounded border-ocean-blue" type="text" name="product-name">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <div class="col-4"></div>
                       <div class="col">
                         <span>
-                            <input type="submit" class="btn btn-ocean-blue rounded-0" name="query"></button>
-                            <input type="submit" class="btn btn-ocean-blue rounded-0" value="Reset"> </button>
+                            <input type="submit" class="btn btn-ocean-blue rounded-0" name="query" value="Search"></button>
+                            <input type="submit" class="btn btn-secondary rounded-0" value="Reset"> </button>
                         </span>  
                       </div>
                     </div>
@@ -116,7 +116,7 @@
                             <td>{{ sub_product.product }}</td>
                             <td>{{ sub_product.size }}</td>
                             <td>{{ sub_product.units }}</td>
-                            <td><a class = "btn-sm btn-ocean-blue rounded text-decoration-none" href="{%url 'edit_inventory' sub_product.id %}">Adjust Qty</a></td>
+                            <td><a class = "btn-sm btn-ocean-blue rounded-0 text-decoration-none" href="{%url 'edit_inventory' sub_product.id %}">Adjust Qty</a></td>
                         </tr>
                     {% endfor %}                
                 </tbody>
