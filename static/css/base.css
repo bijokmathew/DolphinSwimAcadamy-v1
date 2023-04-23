@@ -10,7 +10,7 @@
     --nav-color:#1FD6FF;
     --light-blue:#5065A8;
     --light-ocean-blue:rgba(36,47,109,0.8);
-    --ocean-blue:rgba(36,47,109,1);
+    --ocean-blue:#242f6d;
     --nav-font-weight:800;
     --text-color:#0000;
     --button-brown-color:#663103;
@@ -143,7 +143,7 @@ h6 {
 
 /* ------------ logo and navbar */
 .logo {
-    height: 70px;
+    height: 50px;
 }
 
 .navbar1 {
@@ -153,7 +153,7 @@ h6 {
 /* override nav items default text color */
 .navbar-light .navbar-nav .nav-link
 {
-    color: #5065A8;
+    color:var(--ocean-blue);
 }
 
 .navbar-light 

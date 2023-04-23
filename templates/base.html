@@ -52,7 +52,7 @@
     <div class="row bg-white navbar">
       <!-- logo -->
       <div class="col-lg-2 col-12 d-flex justify-content-center ">
-        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo img-fluid my-1"
+        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo img-fluid my-1 fw-bolder"
             src="{% static 'img/logo.png' %}" alt="logo"></a>
       </div>
       <!-- navibagtion menu -->
@@ -74,10 +74,10 @@
               <div class="col-lg-4 col-xl-5 d-0 p-0">
                 <form method="GET" action="{% url 'products' %}">
                   <div class="input-group my-2">
-                    <input class="form-control border border-light-blue rounded-0" type="text" name="q"
+                    <input class="form-control border-ocean-blue rounded-0" type="text" name="q"
                       placeholder="Search our sites">
                     <div class="input-group-append">
-                      <button class="form-control btn btn-light-blue border border-black rounded-0" aria-label="search" type="submit">
+                      <button class="form-control btn btn-ocean-blue  rounded-0" aria-label="search" type="submit">
                         <span class="icon search">
                           <i class="fas fa-search"></i>
                         </span>
@@ -87,37 +87,38 @@
                 </form>
               </div>
               <div class="col-lg-8 col-xl-7 p-0 m-0">
-                <ul class=" menu-item list-inline list-unstyled my-0 mr-0">
+                <ul class="menu-item list-inline list-unstyled my-0 mr-0">
                   <li class="list-inline-item dropdown p-0 ms-xl-2 ps-xl-2">
                     <a href="#" class="nav-link" id="user-profile-options" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                      <div class="text-center text-light-blue mr-0">
-                        <div><i class="fas fa-user fa-fw"></i></div>
-                        <p class="my-0 font-weight-bold">My Account</p>
+                      <div class="text-center text-ocean-blue mr-0">
+                        <div><i class="fa fa-user fa-sm"></i></div>
+                        <p class="my-0">My Account</p>
                       </div>
                     </a>
                     <div class="dropdown-menu border-0" aria-labelledby="user-profile-options">
                       {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
-                          <a href="{% url 'product_add' %}" class="dropdown-item text-light-blue">Product Managment</a>
+                          <a href="{% url 'product_add' %}" class="dropdown-item text-ocean-blue fw-bolder">Product Managment</a>
+                          <a href="{% url 'inventory_view'%}" class="dropdown-item text-ocean-blue fw-bolder">Inventory Managment</a>
                         {% endif %}
-                        <a href="{% url 'user_profile' %}" class="dropdown-item text-light-blue">My Profile</a>
+                        <a href="{% url 'user_profile' %}" class="dropdown-item text-ocean-blue fw-bolder">My Profile</a>
                         <a href="{% url 'account_logout' %}"
-                        class="dropdown-item text-light-blue font-weight-bold">Logout</a>
+                        class="dropdown-item text-ocean-blue fw-bolder">Logout</a>
                       {% else %}
                         <a href="{% url 'account_signup' %}"
-                        class="dropdown-item text-light-blue font-weight-bold">Register</a>
+                        class="dropdown-item text-ocean-blue fw-bolder">Register</a>
                         <a href="{% url 'account_login' %}"
-                        class="dropdown-item text-light-blue font-weight-bold">Login</a>
+                        class="dropdown-item text-ocean-blue fw-bolder">Login</a>
                       {% endif %}
                     </div>
                   </li>
                   <li class="list-inline-item p-0 ms-sm-2">
                     <a href="{% url 'view_bag' %}"
                       class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
-                      <div class="text-center text-light-blue">
+                      <div class="text-center text-ocean-blue">
                         <div><i class="fas fa-shopping-bag fa-fw"></i></div>
-                        <p class="my-0 font-weight-bold">
+                        <p class="my-0 fw-bolder">
                           {% if grand_total %}
                             ${{grand_total| floatformat:2}}
                           {% else %}
