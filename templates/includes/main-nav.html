@@ -38,10 +38,13 @@
                 Courses
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="courses-link">
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="#">Stage 1- Start to Swim</a>
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="#">Stage 2- Learn to Swim</a>
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="#">Stage 3- Confident swimmers</a>
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="#">All Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Start to Swim">Beginer- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Learn to Swim">Intermediate- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Confident swimmers">Advanced- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-1">Level 1- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-2">Level 2- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-3">Level 3- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses' %}">All Courses</a>
             </div>
         </li>
         <li class="nav-item">

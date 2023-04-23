@@ -26,8 +26,18 @@ class CourseListView(ListView):
     """
     model = Course
 
+    def __init__(self):
+        self.no_search_result = True
+
     def get_queryset(self, **kwargs):
-        return self.model.objects.all()
+        search_results = CourseFilter(
+            self.request.GET, self.queryset
+        )
+        if search_results.qs:
+            self.no_search_result = False
+        # Returns the default queryset if an
+        # empty queryset is returned by the django_filters
+        return search_results.qs.distinct() or self.model.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
