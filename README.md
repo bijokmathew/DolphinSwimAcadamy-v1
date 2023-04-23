@@ -841,7 +841,6 @@ This page covers the following user stories:
 - sqlparse==0.4.3
 - stripe==5.2.0
 
-
 ### Frameworks & Tools
 - [Bootstrap 5.0](https://getbootstrap.com/docs/5.0) - for general site layout, grid, flex, carousel.
 - [Bootstrap Icons 1.8](https://getbootstrap.com/) - for various icons in the site

@@ -8,8 +8,10 @@
 # 3rd Party
 
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.db.models import Q, Max
 from django.views import generic
@@ -46,7 +48,7 @@ def all_products(request):
                 messages.error(
                     request, "You didn't enter any search criteria !!"
                 )
-                redirect(reverse('products'))
+                return redirect(reverse('products'))
             else:
                 queries = (
                     Q(name__icontains=query) | Q(description__icontains=query)
@@ -200,3 +202,47 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, f"Product deleted!")
     return redirect(reverse('products'))
+
+
+def inventory_view(request):
+    """
+    A view to list all products and its subproducts
+    from the inventory model
+    Args:
+        request (object): HTTP request object
+    Returns:
+        return to invetory list view
+    """
+    sub_products = Inventory.objects.all()
+    if 'query' in request.GET:
+        sku_query = request.GET['sku']
+        name_query = request.GET['product-name']
+        if not sku_query and not name_query:
+            messages.error(
+                request, "You didn't enter any search criteria !!"
+            )
+            return redirect(reverse('inventory_view'))
+        else:
+            sub_products = sub_products.filter(
+                Q(sku__icontains=sku_query),
+                Q(product__name__icontains=name_query)
+            )
+            print("query sku::::sub_products =======", sub_products)
+
+    paginator = Paginator(sub_products, 5)
+
+    page_number = request.GET.get('page', 1)
+
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    context = {
+        'page_obj': page_obj
+    }
+    template = 'products/inventory_list.html'
+
+    return render(request, template, context=context)

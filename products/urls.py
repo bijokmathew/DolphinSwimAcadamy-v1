@@ -36,5 +36,10 @@ urlpatterns = [
         'delete/<int:product_id>/',
         views.delete_product,
         name='delete_product'
-    )
+    ),
+    path(
+        'inventory/',
+        views.inventory_view,
+        name='inventory_view'
+    ),
 ]
