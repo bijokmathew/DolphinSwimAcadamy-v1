@@ -18,7 +18,7 @@ from django.views import generic
 
 # internal
 from .models import Inventory, Category, Product
-from .forms import ProductForm
+from .forms import ProductForm, InventoryForm
 # ------------------------------------------------------------------
 
 
@@ -246,3 +246,38 @@ def inventory_view(request):
     template = 'products/inventory_list.html'
 
     return render(request, template, context=context)
+
+
+def edit_inventory(request, inventory_id):
+    """
+    A view to update/edit the inventory model
+    Args:
+        request (object): HTTP request object and
+        inventory id
+    Returns:
+        return to invetory edit view
+    """
+
+    sub_product = get_object_or_404(Inventory, pk=inventory_id)
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, instance=sub_product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Successfully updated the inventory")
+            return redirect(reverse('inventory_view'))
+        else:
+            messages.error(
+                request,
+                f"Failed to update the inventory.\
+                    Plesae ensure the form is valid"
+            )
+    else:
+        form = InventoryForm(instance=sub_product)
+        messages.info(request, f"You are editing {sub_product.product.name}")
+    template = 'products/inventory_edit.html'
+    context = {
+        'sub_product': sub_product,
+        'form': form
+    }
+    return render(request, template, context=context)
+

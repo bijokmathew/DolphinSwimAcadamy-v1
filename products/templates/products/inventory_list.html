@@ -45,10 +45,9 @@
                       <div class="col-4"></div>
                       <div class="col">
                         <span>
-                        <input type="submit" class="btn btn-ocean-blue rounded-0" name="query"></button>
-                        <input type="submit" class="btn btn-ocean-blue rounded-0" value="Reset"> </button>
-                        </span>
-                        
+                            <input type="submit" class="btn btn-ocean-blue rounded-0" name="query"></button>
+                            <input type="submit" class="btn btn-ocean-blue rounded-0" value="Reset"> </button>
+                        </span>  
                       </div>
                     </div>
                 </form>
@@ -111,13 +110,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for object in page_obj %}
+                    {% for sub_product in page_obj %}
                         <tr>
-                            <td>{{ object.sku }}</th>
-                            <td>{{ object.product }}</td>
-                            <td>{{ object.size }}</td>
-                            <td>{{ object.units }}</td>
-                            <td><a class = "btn-sm btn-ocean-blue rounded text-decoration-none" href="#">Adjust Qty</a></td>
+                            <td>{{ sub_product.sku }}</th>
+                            <td>{{ sub_product.product }}</td>
+                            <td>{{ sub_product.size }}</td>
+                            <td>{{ sub_product.units }}</td>
+                            <td><a class = "btn-sm btn-ocean-blue rounded text-decoration-none" href="{%url 'edit_inventory' sub_product.id %}">Adjust Qty</a></td>
                         </tr>
                     {% endfor %}                
                 </tbody>

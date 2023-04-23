@@ -8,8 +8,8 @@ Form module for products models
 from django import forms
 
 # internal
+from .models import Product, Category, Inventory
 from .widgets import CustomClearableFileInput
-from .models import Product, Category
 # ------------------------------------------------------------------
 
 
@@ -55,3 +55,12 @@ class ProductForm(forms.ModelForm):
         required=False,
         widget=CustomClearableFileInput
     )
+
+
+class InventoryForm(forms.ModelForm):
+    """
+    Model Form for Inventory model
+    """
+    class Meta:
+        model = Inventory
+        fields = ['units',]

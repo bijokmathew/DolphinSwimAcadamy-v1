@@ -42,4 +42,9 @@ urlpatterns = [
         views.inventory_view,
         name='inventory_view'
     ),
+    path(
+        'edit-inventory/<int:inventory_id>/',
+        views.edit_inventory,
+        name='edit_inventory'
+    ),
 ]
