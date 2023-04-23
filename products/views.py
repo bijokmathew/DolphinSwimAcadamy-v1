@@ -195,7 +195,8 @@ def delete_product(request, product_id):
         Delete the product and return to ptoduct list
     """
     if not request.user.is_superuser:
-        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        messages.error(request, f"Sorry, You are not autherized to \
+            perform this action")
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -204,6 +205,7 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
 def inventory_view(request):
     """
     A view to list all products and its subproducts
@@ -213,6 +215,11 @@ def inventory_view(request):
     Returns:
         return to invetory list view
     """
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, You are not autherized to \
+            perform this action")
+        return redirect(reverse('home'))
+
     sub_products = Inventory.objects.all()
     if 'query' in request.GET:
         sku_query = request.GET['sku']
@@ -248,6 +255,7 @@ def inventory_view(request):
     return render(request, template, context=context)
 
 
+@login_required
 def edit_inventory(request, inventory_id):
     """
     A view to update/edit the inventory model
@@ -257,6 +265,10 @@ def edit_inventory(request, inventory_id):
     Returns:
         return to invetory edit view
     """
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, You are not autherized to \
+            perform this action")
+        return redirect(reverse('home'))
 
     sub_product = get_object_or_404(Inventory, pk=inventory_id)
     if request.method == 'POST':
@@ -280,4 +292,3 @@ def edit_inventory(request, inventory_id):
         'form': form
     }
     return render(request, template, context=context)
-
