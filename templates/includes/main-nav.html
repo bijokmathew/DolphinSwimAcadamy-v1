@@ -2,10 +2,10 @@
 <div class="collapse navbar-collapse d-lg-none" id="main-nav">
     <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link mr-xl-2 fw-bolder" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link mr-xl-2 fw-bolder" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mr-xl-2 fw-bolder" href="#">About</a>
+            <a class="nav-link mr-xl-2 fw-bolder" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item dropdown">
             <a class="fw-bolder nav-link mr-xl-2" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,9 +38,9 @@
                 Courses
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="courses-link">
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Start to Swim">Beginer- Courses</a>
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Learn to Swim">Intermediate- Courses</a>
-                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Confident swimmers">Advanced- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=beginner">Beginer- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=intermediate">Intermediate- Courses</a>
+                <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=advanced">Advanced- Courses</a>
                 <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-1">Level 1- Courses</a>
                 <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-2">Level 2- Courses</a>
                 <a class="dropdown-item text-ocean-blue fw-bolder" href="{% url 'courses'%}?level=Level-3">Level 3- Courses</a>

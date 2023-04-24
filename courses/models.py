@@ -22,9 +22,9 @@ class Course(models.Model):
         verbose_name_plural = 'Courses'
 
     class CourseLevels(models.TextChoices):
-        BEGINNER = "beginner", "Start to Swim"
-        INTERMEDIATE = "intermediate", "Learn to Swim"
-        ADVANCED = "advanced", "Confident swimmers"
+        BEGINNER = "beginner", "beginner"
+        INTERMEDIATE = "intermediate", "intermediate"
+        ADVANCED = "advanced", "advanced"
         LEVEL_1 = "Level-1", "Level-1"
         LEVEL_2 = "Level-2", "Level-2"
         LEVEL_3 = "Level-3", "Level-3"

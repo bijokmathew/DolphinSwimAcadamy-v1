@@ -32,13 +32,13 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{% static 'img/slide-1.png' %}" class="d-block w-100 hero-img" alt="...">
+                <img src="{% static 'img/slide-1.png' %}" class="d-block w-100 hero-img" alt="slide-1">
               </div>
               <div class="carousel-item">
-                <img src="{% static 'img/slide-2.jpg' %}" class="d-block w-100 hero-img" alt="...">
+                <img src="{% static 'img/slide-2.jpg' %}" class="d-block w-100 hero-img" alt="slide-1">
               </div>
               <div class="carousel-item">
-                <img src="{% static 'img/slide-3.jpg' %}" class="d-block w-100 hero-img" alt="...">
+                <img src="{% static 'img/slide-3.jpg' %}" class="d-block w-100 hero-img" alt="slide-1">
               </div>
             </div>
             
@@ -63,7 +63,7 @@
             <div class="card-body">
             <h5 class="card-title">START TO SWIM</h5>
             <p class="card-text">Let begin your first journey with us...</p>
-            <a href="#" class="btn btn-bg-brown">Try it now</a>
+            <a href="{% url 'courses' %}?level__iexact=intermediate" class="btn btn-bg-brown">Try it now</a>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
           <div class="card-body">
             <h5 class="card-title">LEARN TO SWIM</h5>
             <p class="card-text">Enjoy the swimming with us</p>
-            <a href="#" class="btn btn-bg-brown">Join us</a>
+            <a href="{% url 'courses' %}?level__iexact=advanced" class="btn btn-bg-brown">Join us</a>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
           <div class="card-body">
             <h5 class="card-title">CONFIDENT SWIMMERS</h5>
             <p class="card-text">Work the dream...</p>
-            <a href="#" class="btn btn-bg-brown">Go Pro</a>
+            <a href="{% url 'courses' %}?level__iexact=beginner" class="btn btn-bg-brown">Go Pro</a>
           </div>
         </div>
       </div>
