@@ -30,6 +30,7 @@ def user_profile(request):
     Returns:
        Retun template and context
     """
+    active_tab = 'myaccount'
     user_profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=user_profile)
@@ -45,7 +46,8 @@ def user_profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'active_tab': active_tab
     }
 
     return render(request, template, context=context)

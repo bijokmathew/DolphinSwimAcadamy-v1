@@ -155,10 +155,14 @@ h6 {
 {
     color:var(--ocean-blue);
 }
+.active-menu{
+    color: #271EF6;
+}
 
 .navbar-light 
 .navbar-nav 
-.active>.nav-link {
+.active>a
+ {
     color: #271EF6;
 }
 

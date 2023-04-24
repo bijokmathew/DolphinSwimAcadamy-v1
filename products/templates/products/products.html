@@ -24,14 +24,14 @@
                 <h2 class="fs-6">CATEGORIES</h2>
                 <hr>
                 {% for category in categories %}
-                    <p><a class="text-decoration-none text-reset" href="#">{{category.friendly_name}}</a></p>
+                    <p><a class="text-decoration-none text-reset" href="{% url 'products'%}?category={{category.slug}}">{{category.friendly_name}}</a></p>
                 {% endfor %}
             </div>
             <div class="col">
                 <div class="row mb-0">
                     <div class = "col-12 col-md-6 my-auto d-flex order-md-last justify-content-md-end justify-content-center"> 
                         <div class="sort-select-wrapper w-50">
-                            <select class="form-select form-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info {%else%}black {%endif%}" aria-label="Default select example" id="sort-selector">
+                            <select class="form-select form-select-sm rounded-0  {% if current_sorting != 'None_None' %}border-info{%else%}border-ocean-blue {%endif%}" aria-label="Default select example" id="sort-selector">
                                 <option value="reset" {% if current_sorting == 'None_None' %} selected {% endif %}>Sort by ...</option>
                                 <option value="price_asc" {% if current_sorting == 'price_asc' %} selected {% endif %}>Price (low to high)</option>
                                 <option value="price_desc" {% if current_sorting == 'price_desc' %} selected {% endif %}>Price (high to low)</option>
@@ -45,8 +45,8 @@
                         </div>
                     </div> 
                     <div class = "col-12 col-md-6 order-md-first justify-content-md-start"> 
-                        <p class="text-muted text-center text-md-start fs-8 font-weight-bold">
-                            <span class=""><a href="{% url 'products' %}">Products Home</a>|</span>
+                        <p class="text-muted text-center text-md-start fs-8 fw-bolder">
+                            <span><a class="text-ocean-blue" href="{% url 'products' %}">Products Home</a> | </span>
                             {{products| length }} Products {% if serch_term %} found for <strong>{{ search_term}}</strong>{% endif %}
                         </p>
                     </div> 
@@ -112,7 +112,7 @@
                                 <div class="card-footer bg-white border-0 text-start pt-0">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-start fw-bold">
+                                            <p class="lead mb-0 text-start fw-bolder">
                                                 ${{product.price}}
                                             </p>
                                             {% if product.rating %}

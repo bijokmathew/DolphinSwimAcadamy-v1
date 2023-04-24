@@ -33,13 +33,17 @@ def all_products(request):
     category_list = None
     sort = None
     direction = None
-
+    active_tab = None
     if request.GET:
 
         if 'category' in request.GET:
             category_list = request.GET['category'].split(',')
             products = Product.objects.filter(category__slug__in=category_list)
             print('category_list =', category_list)
+            if category_list == ['mens'] or category_list == ['womens'] or category_list == ['kids']:
+                active_tab = 'category'
+            else:
+                active_tab = 'products'
             category_list = Category.objects.filter(slug__in=category_list)
 
         if 'q' in request.GET:
@@ -85,6 +89,7 @@ def all_products(request):
     context = {
         'products': page_obj,
         'categories': categories,
+        'active_tab': active_tab,
         'current_category': category_list,
         'current_sorting': current_sorting
     }
@@ -124,6 +129,7 @@ def product_add(request):
     This function create a view for adding the product
     to the database
     """
+    active_tab = 'myaccount'
     if not request.user.is_superuser:
         messages.error(request, f"Sorry, You are not autherized to perform this action")
         return redirect(reverse('home'))
@@ -148,7 +154,8 @@ def product_add(request):
     template = 'products/product_add.html'
 
     context = {
-        'form': form
+        'form': form,
+        'active_tab': active_tab
     }
     return render(request, template, context=context)
 
@@ -225,6 +232,7 @@ def inventory_view(request):
     Returns:
         return to invetory list view
     """
+    active_tab = 'myaccount'
     if not request.user.is_superuser:
         messages.error(request, f"Sorry, You are not autherized to \
             perform this action")
@@ -257,7 +265,8 @@ def inventory_view(request):
         page_obj = paginator.page(paginator.num_pages)
 
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'active_tab': active_tab
     }
     template = 'products/inventory_list.html'
 

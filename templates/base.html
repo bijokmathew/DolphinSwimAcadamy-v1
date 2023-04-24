@@ -88,10 +88,10 @@
               </div>
               <div class="col-lg-8 col-xl-7 p-0 m-0">
                 <ul class="menu-item list-inline list-unstyled my-0 mr-0">
-                  <li class="list-inline-item dropdown p-0 ms-xl-2 ps-xl-2">
+                  <li class="list-inline-item dropdown p-0 ms-xl-2 ps-xl-2 ">
                     <a href="#" class="nav-link" id="user-profile-options" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                      <div class="text-center text-ocean-blue mr-0">
+                      <div class="text-center text-ocean-blue mr-0 {% if active_tab == 'myaccount' %} active-menu {% endif %}">
                         <div><i class="fa fa-user fa-sm"></i></div>
                         <p class="my-0">My Account</p>
                       </div>
@@ -116,7 +116,7 @@
                   <li class="list-inline-item p-0 ms-sm-2">
                     <a href="{% url 'view_bag' %}"
                       class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
-                      <div class="text-center text-ocean-blue">
+                      <div class="text-center text-ocean-blue {% if request.resolver_match.url_name == 'view_bag' %} active-menu {% endif %}">
                         <div><i class="fas fa-shopping-bag fa-fw"></i></div>
                         <p class="my-0 fw-bolder">
                           {% if grand_total %}
