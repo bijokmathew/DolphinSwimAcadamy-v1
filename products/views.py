@@ -71,9 +71,19 @@ def all_products(request):
                     sort_key = f'-{sort_key}'
             products = products.order_by(sort_key)
 
+    paginator = Paginator(products, 12)
+    page_number = request.GET.get('page', 1)
+
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
     current_sorting = f'{sort}_{direction}'
     context = {
-        'products': products,
+        'products': page_obj,
         'categories': categories,
         'current_category': category_list,
         'current_sorting': current_sorting
@@ -237,7 +247,6 @@ def inventory_view(request):
             print("query sku::::sub_products =======", sub_products)
 
     paginator = Paginator(sub_products, 5)
-
     page_number = request.GET.get('page', 1)
 
     try:
