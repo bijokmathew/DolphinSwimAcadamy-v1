@@ -445,6 +445,11 @@ h6 {
     }
 }
 
+@media (max-width: 992px) {
+    .contact-container {
+        padding-top: 75px;
+    }
+}
 
 @media (max-width: 576px) {
 
@@ -457,6 +462,9 @@ h6 {
     }
     .col-12 {
         padding-right: 5px;
+    }
+    .contact-container {
+        padding-top: 25px;
     }
 }
 

@@ -19,7 +19,7 @@
                 <div class="transparent-bg overlay rounded">
                   <h1 class="hero-text">LEARN TO SWIM WITH US</h1>
                   <p class="hero-text">START POOL FUN</p>
-                  <a href="" class="btn ms-3 me-auto btn-bg-brown">Browse Now</a>
+                  <a href="{% url 'courses' %}" class="btn ms-3 me-auto btn-bg-brown">Browse Now</a>
                 </div>
               </div>
               <div class="col-12 col-lg-7 d-none"></div>
@@ -63,7 +63,7 @@
             <div class="card-body">
             <h5 class="card-title">START TO SWIM</h5>
             <p class="card-text">Let begin your first journey with us...</p>
-            <a href="{% url 'courses' %}?level__iexact=intermediate" class="btn btn-bg-brown">Try it now</a>
+            <a href="{% url 'courses' %}?level__iexact=beginner" class="btn btn-bg-brown">Try it now</a>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@
           <img class="card-img-top" src="{% static 'img/slide-3.jpg' %}" alt="swiming image">
           <div class="card-body">
             <h5 class="card-title">LEARN TO SWIM</h5>
-            <p class="card-text">Enjoy the swimming with us</p>
-            <a href="{% url 'courses' %}?level__iexact=advanced" class="btn btn-bg-brown">Join us</a>
+            <p class="card-text">Enjoy the swimming with us...</p>
+            <a href="{% url 'courses' %}?level__iexact=intermediate" class="btn btn-bg-brown">Join us</a>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
           <div class="card-body">
             <h5 class="card-title">CONFIDENT SWIMMERS</h5>
             <p class="card-text">Work the dream...</p>
-            <a href="{% url 'courses' %}?level__iexact=beginner" class="btn btn-bg-brown">Go Pro</a>
+            <a href="{% url 'courses' %}?level__iexact=advanced" class="btn btn-bg-brown">Go Pro</a>
           </div>
         </div>
       </div>
@@ -96,12 +96,12 @@
   <hr>
 </div>
 <!--Contact us-->
-<div class="container-fluid mb-3 pb-3">
+<div class="container-fluid pb-3">
   <div class="row bg-img-contact-home justify-content-start">
     <div class="col-10 col-sm-3 mt-4 ms-3 my-auto transparent-bg rounded">
       <h2 class="pt-5 text-center hero-text">GET IN TOUCH WITH US</h2>
       <p class="hero-text text-center">WE'D LOVE TO HEAR FROM YOU</p>
-      <a href="#" class="btn btn-bg-brown mt-3 mb-2">Contact Us</a>
+      <a href="{% url 'contact' %}" class="btn btn-bg-brown mt-3 mb-2">Contact Us</a>
     </div>
     <div class="col-sm-9 col-12 d-none"></div>
   </div>
