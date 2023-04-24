@@ -468,6 +468,12 @@ h6 {
     }
 }
 
+@media (max-width: 310px) {
+    .nav-text-smaller {
+        font-size: x-small;
+    }
+}
+
 /* No padding for small screen topbar items */
 
 @media (max-width: 576px) {
