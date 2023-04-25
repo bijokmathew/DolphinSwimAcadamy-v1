@@ -198,7 +198,7 @@ Note: Environment variable values are not exposed in the source code, they are s
 #### Physical database model
 
 Database models contains all fields stored in the database collections with their data type and mimics the structure of what is actually stored in the Postgres database 
-<br>![Database model](readme/misc/)
+<br>![Database model](/readme/misc/dolphinacademy_database_schema.png)
 
 #### Models
 - The following models were created to represent the database model structure for the website
