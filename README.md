@@ -359,7 +359,7 @@ The fonts are bold, clear and modern, with clear headings to enable easy navigat
 </details>
 
 <details><summary>Course Details</summary>
-<img src="readme/wireframes/course-details.png">
+<img src="readme/wireframes/course_detail_resp.png">
 </details>
 
 <details><summary>Register</summary>
