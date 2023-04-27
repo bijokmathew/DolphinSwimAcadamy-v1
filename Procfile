@@ -1,1 +1,1 @@
-web: gunicorn dolphinswimacadamy.wsgi.application
+web: gunicorn dolphinswimacadamy.wsgi:application
