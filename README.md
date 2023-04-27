@@ -322,80 +322,72 @@ The fonts are bold, clear and modern, with clear headings to enable easy navigat
 
 #### Wireframes
 
-<details><summary>About Us</summary>
-<img src="readme/wireframes/about-us.png">
+<details><summary>Home</summary>
+<img src="readme/wireframes/home_resp.png">
 </details>
 
-<details><summary>All-course</summary>
-<img src="readme/wireframes/all-courses.png">
+<details><summary>About Us</summary>
+<img src="readme/wireframes/about_resp.png">
 </details>
 
 <details><summary>All-Products</summary>
-<img src="readme/wireframes/all-products.png">
+<img src="readme/wireframes/product_resp.png">
+</details>
+
+<details><summary>Product Details</summary>
+<img src="readme/wireframes/product_detail_resp.png">
+</details>
+
+<details><summary>Shopping Bag</summary>
+<img src="readme/wireframes/shopping_bag_resp.png">
 </details>
 
 <details><summary>Checkout</summary>
-<img src="readme/wireframes/checkout.png">
+<img src="readme/wireframes/payment_resp.png">
+</details>
+
+<details><summary>Payment Confirmation</summary>
+<img src="readme/wireframes/confirmation_resp.png">
 </details>
 
 <details><summary>Contact Us</summary>
-<img src="readme/wireframes/contact-us.png">
+<img src="readme/wireframes/contact_resp.png">
+</details>
+
+<details><summary>All-course</summary>
+<img src="readme/wireframes/course_resp.png">
 </details>
 
 <details><summary>Course Details</summary>
 <img src="readme/wireframes/course-details.png">
 </details>
 
-<details><summary>Error Page</summary>
-<img src="readme/wireframes/error.png">
-</details>
-
-<details><summary>Home</summary>
-<img src="readme/wireframes/home-page.png">
-</details>
-
-<details><summary>Order History</summary>
-<img src="readme/wireframes/order-history.png">
-</details>
-
-<details><summary>Payment Confirmation</summary>
-<img src="readme/wireframes/payment-confirmation.png">
-</details>
-
-<details><summary>Product Details</summary>
-<img src="readme/wireframes/product-details.png">
-</details>
-
-<details><summary>Profile Edit</summary>
-<img src="readme/wireframes/profile-edit.png">
-</details>
-
-<details><summary>Profile</summary>
-<img src="readme/wireframes/profile.png">
-</details>
-
 <details><summary>Register</summary>
-<img src="readme/wireframes/register.png">
-</details>
-
-<details><summary>Cart</summary>
-<img src="readme/wireframes/shopping-cart.png">
+<img src="readme/wireframes/signup_resp.png">
 </details>
 
 <details><summary>Sign-in</summary>
-<img src="readme/wireframes/sign-in.png">
+<img src="readme/wireframes/signin_resp.png">
 </details>
 
 <details><summary>Sign-out</summary>
-<img src="readme/wireframes/sign-out.png">
+<img src="readme/wireframes/signout_resp.png">
 </details>
 
-<details><summary>Manage Categories</summary>
-<img src="readme/wireframes/staff-manage-categories.png">
+<details><summary>Profile</summary>
+<img src="readme/wireframes/myprofile_resp.png">
 </details>
 
-<details><summary>Manage Brands</summary>
-<img src="readme/wireframes/staff-manage-brands.png">
+<details><summary>Product Manage </summary>
+<img src="readme/wireframes/product_mgt_resp.png">
+</details>
+
+<details><summary>Inventory Manage </summary>
+<img src="readme/wireframes/inventory_mgt_resp.png">
+</details>
+
+<details><summary>Error Page</summary>
+<img src="readme/wireframes/error.png">
 </details>
 
 #### Colours
