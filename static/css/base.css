@@ -437,6 +437,13 @@ h6 {
 .contact-container {
     min-height: 100vh;
 }
+
+/* ----------allauth--- */
+.auth-pages-dm {
+    min-height: 250px;
+    margin-top: 4rem;
+}
+
 /* ---------Media query */
 
 /* Container width should be max for smaller screen */
@@ -487,7 +494,11 @@ h6 {
     .col-12 {
         padding-right: 5px;
     }
+    .auth-pages-dm {
+        margin-top: 75px;
+    }
 }
+
 
 /* ----------allauth--- */
 @media only screen and (min-width : 992px) {

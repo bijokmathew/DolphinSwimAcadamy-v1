@@ -6,10 +6,10 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block inner_content %}
-  <div class="col-12 col-lg-6 py-4 px-4 d-flex flex-column mt-5 auth-pages-border bg-white">
+  <div class="col-11 col-lg-5 py-4 px-4 d-flex flex-column mb-5 auth-pages-border bg-white auth-pages-dm">
     <div class="w-100 d-flex align-items-center pb-3">
       <h2 class="fs-4 text-uppercase w-75">{% trans "Sign Up" %}</h2>
-      <img class="w-25" src="{% static 'img/logo.png' %}" alt="dolphin-logo">
+      <img class="w-25 img-fluid d-none d-lg-block" src="{% static 'img/logo.png' %}" alt="dolphin-logo">
     </div>
     <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
@@ -22,5 +22,4 @@
       <button type="submit">{% trans "Sign Up" %} &raquo;</button>
     </form>
   </div>
-
 {% endblock %}
