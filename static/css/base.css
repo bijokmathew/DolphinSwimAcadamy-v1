@@ -48,7 +48,7 @@ h6 {
 .search-icon,
 .nav-link p,
 .navbar-nav a{
-    font-weight:var(--nav-font-weight);
+    
     font-family: var(--body-font);
 }
 
@@ -438,6 +438,11 @@ h6 {
     min-height: 100vh;
 }
 
+/* -- mobile navbar */
+.mobile-nav-space {
+    padding-top: 2rem;
+}
+
 /* ----------allauth--- */
 .auth-pages-dm {
     min-height: 250px;
@@ -460,6 +465,9 @@ h6 {
     .contact-container {
         padding-top: 75px;
     }
+    .auth-pages-dm {
+        margin-top: 110px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -478,7 +486,7 @@ h6 {
         padding-top: 25px;
     }
 }
-
+/* not used */
 @media (max-width: 310px) {
     .nav-text-smaller {
         font-size: x-small;
@@ -493,6 +501,9 @@ h6 {
     }
     .col-12 {
         padding-right: 5px;
+    }
+    .nav-text-smaller {
+        font-size: x-small;
     }
     .auth-pages-dm {
         margin-top: 75px;

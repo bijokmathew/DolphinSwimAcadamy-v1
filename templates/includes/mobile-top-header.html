@@ -1,10 +1,10 @@
 <div class="flex-grow-1">
-  <ul class="d-inline-flex d-lg-none justify-content-around w-100">
-    <li class="list-inline-item">
+  <ul class="d-inline-flex d-lg-none justify-content-around w-100 ">
+    <li class="list-inline-item ">
       <a href="#" class="nav-link text-ocean-blue d-block d-lg-none" id="mobile-search" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-        <div class="text-center">
+        <div class="text-center mobile-nav-space">
           <div><i class="fas fa-search"></i></div>
-          <p class="my-0 nav-text-smaller">Search</p>
+          <small class="my-0 nav-text-smaller1 fw-bolder d-none d-sm-flex">Search</small>
         </div>
       </a>
       <div class="dropdown-menu border-0 p-4 mt-3 rounded-0 my-0 w-75 w-md-100" aria-labelledby="mobile-search">
@@ -26,9 +26,9 @@
     <li class="list-inline-item dropdown p-0 d-block d-lg-none text-end">
       <a href="#" class="nav-link" id="user_options" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        <div class="text-center text-ocean-blue mr-0">
+        <div class="text-center text-ocean-blue mr-0 mobile-nav-space">
           <div><i class="fas fa-user"></i></div>
-          <p class="my-0 nav-text-smaller">My Account</p>
+          <small class="my-0 nav-text-smaller1 fw-bolder d-none d-sm-flex">My Account</small>
         </div>
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="user_options">
@@ -50,15 +50,15 @@
     <li class="list-inline-item p-0 d-block d-lg-none text-end">
       <a href=""
         class="{% if grand_total %} text-info {% else %}text-black{% endif %} nav-link">
-        <div class="text-center text-ocean-blue">
+        <div class="text-center text-ocean-blue mobile-nav-space">
           <div><i class="fas fa-shopping-bag"></i></div>
-          <p class="my-0 nav-text-smaller">
+          <small class="my-0 nav-text-smaller1 fw-bolder">
             {% if grand_total %}
               ${{grand_total| floatformat:2}}
             {% else %}
               $0.00
             {% endif %}
-          </p>
+          </small>
         </div>
       </a>
     </li>

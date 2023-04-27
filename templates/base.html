@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-lg-7 col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-white d-sm-flex ">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+              <button class="navbar-toggler nav-text-smaller" type="button" data-toggle="collapse" data-target="#main-nav"
                 aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -92,7 +92,7 @@
                       aria-expanded="false">
                       <div class="text-center text-ocean-blue mr-0 {% if active_tab == 'myaccount' %} active-menu {% endif %}">
                         <div><i class="fa fa-user fa-sm"></i></div>
-                        <p class="my-0">My Account</p>
+                        <small class="my-0 fw-bolder">My Account</small>
                       </div>
                     </a>
                     <div class="dropdown-menu border-0" aria-labelledby="user-profile-options">
@@ -117,13 +117,13 @@
                       class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
                       <div class="text-center text-ocean-blue {% if request.resolver_match.url_name == 'view_bag' %} active-menu {% endif %}">
                         <div><i class="fas fa-shopping-bag fa-fw"></i></div>
-                        <p class="my-0 fw-bolder">
+                        <small class="my-0 fw-bolder">
                           {% if grand_total %}
                             ${{grand_total| floatformat:2}}
                           {% else %}
                             $0.00
                           {% endif %}
-                        </p>
+                        </small>
                       </div>
                     </a>
                   </li>
