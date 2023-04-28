@@ -244,7 +244,7 @@ Database models contains all fields stored in the database collections with thei
 
 - The project was developed by using agile methodology. During the design process collect the project requirements and write epics broken down into user stories with well defined acceptance criteria and tasks list. Based on the priority move those user stories in to different project sprint cycle like First cycle, Second cycle and Third Cycle in order to achieve MNP.Once finished the user stories changed the status of specific stories into closed state and if all issues related to the sprint closed then move the sprint cycle also in to closed state. During the development time comming up with an enhancement ideas, create stories and epic for those enhancement ideas and moved in to backlog with priorities.
   
-![image of user stories](static/docs/images/)
+![image of user stories](/readme/agile/project_issues.png)
 
 #### **Product Backlog**
 - The product backlog for the project can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/1)
@@ -252,20 +252,21 @@ Database models contains all fields stored in the database collections with thei
     * Project's all user stories on board can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/issues)
     * Project all spring cycle can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestones)
   
- ![image of the product backlog](static/docs/images/)
+ ![image of the product backlog](/readme/agile/first_product_backlog.png)
+ ![image of the product backlog](/readme/agile/product_backlog.png)
    
 - **First Cycle**
     * The First Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/2)
   
-    ![image of the First Cycle board](static/docs/images/)
+    ![image of the First Cycle board](/readme/agile/first_cycle.png)
 
 - **Second Cycle**
     * The Second Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/3)
-      ![image of the iteration 2 board](static/docs/images/)
+      ![image of the iteration 2 board](/readme/agile/second_cycle.png)
 
 - **Third Cycle**
     * The Third Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/4)
-    ![image of the iteration 3 board](static/docs/images/)
+    ![image of the iteration 3 board](/readme/agile/)
 
 - **Fourth Cycle**
     * The fourth Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/5)
