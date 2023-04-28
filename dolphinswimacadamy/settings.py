@@ -29,9 +29,9 @@ else:
     SECRET_KEY = 'django-insecure-62e3lh4zx0cby*-f9c4tlrm_8%um8ih=48knzd_i8z-l_0l##i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = os.environ.get('DEVELOPMENT')
+    # DEBUG = os.environ.get('DEVELOPMENT')
 
-
+DEBUG = True
 ALLOWED_HOSTS = ['dolphinswimacademy.herokuapp.com', 'localhost']
 
 
@@ -135,17 +135,17 @@ DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 
-# if 'DATABASE_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
