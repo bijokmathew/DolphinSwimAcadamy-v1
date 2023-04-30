@@ -466,27 +466,12 @@ h6 {
     .contact-container {
         padding-top: 75px;
     }
+    .contact-container,
     .auth-pages-dm {
         margin-top: 110px;
     }
 }
 
-@media (max-width: 576px) {
-
-    .container, 
-    .container-sm {
-        max-width: 100%;
-    }
-    .navbar {
-        padding: 0px;
-    }
-    .col-12 {
-        padding-right: 5px;
-    }
-    .contact-container {
-        padding-top: 25px;
-    }
-}
 /* not used */
 @media (max-width: 310px) {
     .nav-text-smaller {
@@ -496,16 +481,25 @@ h6 {
 
 /* No padding for small screen topbar items */
 
-@media (max-width: 576px) {
-    .navbar {
-        padding: 0px;
+@media (max-width: 580px) {
+
+    .container, 
+    .container-sm {
+        max-width: 100%;
     }
     .col-12 {
         padding-right: 5px;
     }
+    .navbar {
+        padding: 0px;
+    }
     .nav-text-smaller {
         font-size: x-small;
     }
+    .contact-background {
+        background-image:none
+    }
+    .contact-container,
     .auth-pages-dm {
         margin-top: 75px;
     }
