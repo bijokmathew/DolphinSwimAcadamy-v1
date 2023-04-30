@@ -434,8 +434,10 @@ h6 {
     background-position: center center;
     background-size: cover;
 }
+
+.bag-container,
 .contact-container {
-    min-height: 100vh;
+    min-height: 60vh;
 }
 
 /* -- mobile navbar */
@@ -473,9 +475,12 @@ h6 {
 }
 
 /* not used */
-@media (max-width: 310px) {
+@media (max-width: 400px) {
     .nav-text-smaller {
         font-size: x-small;
+    }
+    .message-container {
+        width: 200px;
     }
 }
 
@@ -492,9 +497,6 @@ h6 {
     }
     .navbar {
         padding: 0px;
-    }
-    .nav-text-smaller {
-        font-size: x-small;
     }
     .contact-background {
         background-image:none
