@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container bag-container">
+    <div class="container bag-container mb-5">
         <div class="row">
             <div class="col">
                 <hr>
@@ -23,11 +23,46 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    <div class="table-responsive rounded">
+                    <div class="d-block d-md-none px-2">
+                        <div class="row">
+                            <div class="col">
+                                {% include 'bag/bag-total.html' %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {% include 'bag/checkout-button.html' %}
+                                <p class="text-muted mb-5">
+                                    A summery of bag contents is below
+                                </p>
+                            </div>
+                        </div>
+                        {% for item in bag_items %}
+                            <div class="row">
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include 'bag/product-image.html' %}
+                                </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include 'bag/product-info.html' %}
+                                </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                    <p class="my-0">Price Each: ${{item.sub_product.product.price}}</p>
+                                    <p> <strong>Subtotal:</strong>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
+                                </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                    {% include 'bag/quantity-mob-form.html' %}
+                                </div>
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="table-responsive rounded d-none d-md-block">
                         <table class="table-sm table-borderless table align-top">
                             <thead>
                                 <tr>
-                                  <th scope="col" class="">Item</th>
+                                  <th scope="col" class="text-center">Item</th>
                                   <th scope="col"></th>
                                   <th scope="col">Price</th>
                                   <th scope="col" class="text-center">Qty</th>
@@ -37,48 +72,20 @@
                               <tbody>
                                 {% for item in bag_items %}
                                     <tr>
-                                        <td class="w-25 py-3 px-0 ps-0">
-                                            {% if item.sub_product.product.image %}
-                                                <img  class="img-thumbnail border-0 my-0 py-0" style="height: 150px;"  src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
-                                            {% else %}
-                                                <img class="img-thumbnail border-0 my-0 py-0" src="{{MEDIA_URL}}noimage.png" alt="{{item.sub_product.product.name}}">
-                                            {% endif %}
+                                        <td class="w-25 py-3 px-0 ">
+                                            {% include 'bag/product-image.html' %}
                                         </td>
                                         <td class="py-3">
-                                            <p class="fw-bold fs-6 my-0">{{item.sub_product.product.name}}</p>
-                                            <p class="my-2"><strong>Size: </strong>{% if item.sub_product.size != 'None' %} {{item.sub_product.size|upper}} {% else %} N/A {% endif %}</p>
-                                            <p class="text-muted">{{item.sub_product.sku | upper}}</p>
+                                            {% include 'bag/product-info.html' %}
                                         </td>
                                         <td class="py-3">
-                                            <p class="my-0">{{item.sub_product.product.price}}</p>
+                                            <p class="my-0">${{item.sub_product.product.price}}</p>
                                         </td>
                                         <td class="py-3 w-25">
-                                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.sub_product.id %}">
-                                                {% csrf_token %}
-                                                <div class="input-group justify-content-center">
-                                                    <span>
-                                                        <button class="btn-md btn-lg rounded-0 btn-ocean-blue decrement-qty"
-                                                            data-item_id="{{item.item_id}}" id="decrement-qty-{{item.sub_product.sku}}">
-                                                            <span><i class="fa fa-minus fa-sm"></i></span>
-                                                        </button>
-                                                    </span>
-                                                    <input class="form-control-sm border-ocean-blue qty-input" type="number" name="quantity" data-view_type="bag"
-                                                        value="{{item.quantity}}" min="1" max="99" data-quantity="{{item.sub_product.units}}"
-                                                        id="id_qty_{{item.sub_product.sku}}" data-sku="{{item.sub_product.sku}}">
-                                                    <span>
-                                                        <button class="btn-md btn-lg btn btn-ocean-blue rounded-0 increment-qty" 
-                                                            id="increment-qty-{{item.sub_product.sku}}" data-item_id="{{item.item_id}}">
-                                                            <span><i class="fa fa-plus fa-sm"></i></span>
-                                                        </button>
-                                                    </span>
-                                                    {% if s %}
-                                                        <input type="hidden" name="product_size" value="{{item.sub_product.size}}">
-                                                    {% endif %}
-                                                </div>
-                                            </form>
+                                            {% include 'bag/quantity-form.html' %}
                                         </td>
                                         <td class="py-3">
-                                            <p>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
+                                            <p>${{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
                                         </td>
                                         <td class="py-3">
                                             <a class="my-0" href="{% url 'remove_from_bag' item.sub_product.id  %}" 
@@ -98,24 +105,14 @@
                                 </tr>
                                 <tr>
                                     <td colspan="5" class="text-end">
-                                        <a href="{% url 'products' %}" class="btn btn-outline-ocean-blue rounded-0">
-                                            <span class="icon">
-                                                <i class="fas fa-chevron-left" ></i>
-                                            </span>
-                                            <span class="text-uppercase">Keep shopping</span>
-                                        </a>
-                                        <a href="{% url 'checkout' %}" class="btn btn-ocean-blue rounded-0"> 
-                                            <span class="text-uppercase">Secure Checkout</span>
-                                            <span class="icon">
-                                                <i class="fas fa-lock" ></i>
-                                            </span>
-                                        </a>
+                                       {% include 'bag/checkout-button.html' %}
                                     </td>
                                 </tr>
                               </tbody>
                         </table>
                     </div>
                 {% else %}
+                    <div class="bag_container_empty">
                     <p class="mb-5 lead">Your bag is empty</p>
                     <a href="{% url 'products' %}" class="btn btn-lg rounded-0">
                         <span class="icon">
@@ -123,6 +120,7 @@
                         </span>
                         <span class="text-uppercase">Keep shopping</span>
                     </a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -130,22 +128,5 @@
 {% endblock %}
 {% block postloadjs %}
     {{ block.super}}
-    {% include 'products/includes/product_quantity_script.html' %}
-    <script type="text/javascript">
-        // remove an item from the shopping bag
-        $('.remove-link').click(function(e){
-            var csrfToken = "{{csrf_token}}";
-            var size = $(this).data('product_size');
-            var itemId = $(this).attr('id').split('remove_')[1];
-            var url = `/bag/remove/${itemId}/`;
-            var data = {
-                'csrfmiddlewaretoken': csrfToken,
-                'product_size': size,
-            }
-            $.post(url,data)
-                .done(function(){
-                    location.reload()
-                })
-        })
-    </script>
+    <script src="{% static 'bag/js/bag.js' %}"></script>
 {% endblock %}

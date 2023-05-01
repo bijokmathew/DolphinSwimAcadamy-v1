@@ -1,0 +1,20 @@
+<form class="form update-form" method="POST" action="{% url 'adjust_bag' item.sub_product.id %}">
+    {% csrf_token %}
+    <div class="input-group justify-content-md-center justify-content-start">
+        <span>
+            <button class="btn btn-lg rounded-0 btn-ocean-blue mob-decrement-qty"
+                data-item_id="{{item.item_id}}" id="mob-decrement-qty-{{item.sub_product.sku}}">
+                <span><i class="fa fa-minus fa-sm"></i></span>
+            </button>
+        </span>
+        <input class="form-control-sm border-ocean-blue qty-input" type="number" name="quantity" data-view_type="mobile"
+            value="{{item.quantity}}" min="1" max="{{item.sub_product.units}}" data-quantity="{{item.sub_product.units}}"
+            id="id_qty_{{item.sub_product.sku}}" data-sku="{{item.sub_product.sku}}">
+        <span>
+            <button class="btn btn-lg btn btn-ocean-blue rounded-0 mob-increment-qty" 
+                id="mob-increment-qty-{{item.sub_product.sku}}" data-item_id="{{item.item_id}}">
+                <span><i class="fa fa-plus fa-sm"></i></span>
+            </button>
+        </span>
+    </div>
+</form>

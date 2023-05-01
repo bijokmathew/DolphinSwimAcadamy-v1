@@ -435,9 +435,9 @@ h6 {
     background-size: cover;
 }
 
-.bag-container,
+.bag_container_empty,
 .contact-container {
-    min-height: 60vh;
+    min-height: 40vh;
 }
 
 /* -- mobile navbar */
@@ -464,13 +464,13 @@ h6 {
 }
 
 @media (max-width: 992px) {
-    .product-container,
-    .contact-container {
-        padding-top: 75px;
+    .auth-pages-dm,
+    .product-container{
+        padding-top: 100px;
     }
-    .contact-container,
-    .auth-pages-dm {
-        margin-top: 110px;
+    .bag-container,
+    .contact-container {
+        margin-top: 70px;
     }
 }
 
@@ -500,10 +500,6 @@ h6 {
     }
     .contact-background {
         background-image:none
-    }
-    .contact-container,
-    .auth-pages-dm {
-        margin-top: 75px;
     }
 }
 
