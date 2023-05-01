@@ -12,9 +12,9 @@
 
 {% block content %}
     <div class="product-container mx-5">
-        <div class="row  mt-3 pt-3 pt-sm-0 mt-sm-5 mt-lg-0">
+        <div class="row">
             <div class="col">
-                <h1 class="my-5">
+                <h1 class="fs-3 mt-3 mt-md-2">
                     INVENTORY
                 </h1>
             </div>
@@ -23,32 +23,28 @@
     <div class="container">
         <div class="row">
             <div class="col"></div>
-            <div class="col-6">
+            <div class="col-12 col-md-8 mt-4 mt-md-0">
                 <form method="GET" action="{% url 'inventory_view' %}">
                     <div class="row">
-                      <div class="col-4">
-                        <label for="id_sku" class="form-label">SKU:</label>
-                      </div>
-                      <div class="col">
+                      <div class="col-12 text-center">
+                        <label for="id_sku" class="form-label w-25">SKU:</label>
                         <input class="rounded border-ocean-blue" type="text" name="sku">
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-4">
-                        <label for="id_product__name" class="form-label">Product Name:</label>
-                      </div>
-                      <div class="col">
+                      <div class="col-12 text-center">
+                        <label for="id_product__name" class="form-label w-25">Product Name:</label>
                         <input class="rounded border-ocean-blue" type="text" name="product-name">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <div class="col-4"></div>
-                      <div class="col">
-                        <span>
-                            <input type="submit" class="btn btn-ocean-blue rounded-0" name="query" value="Search"></button>
-                            <input type="submit" class="btn btn-secondary rounded-0" value="Reset"> </button>
-                        </span>  
-                      </div>
+                        <div class="col-6"></div>
+                        <div class="col-6 text-start">
+                            <span>
+                                <input type="submit" class="btn btn-ocean-blue rounded-0" name="query" value="Search"></button>
+                                <input type="submit" class="btn btn-secondary rounded-0" value="Reset"> </button>
+                            </span>  
+                        </div>
                     </div>
                 </form>
             </div>

@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container product-container mt-sm-3">
         <div class="row">
             <div class="col">
                 <hr>
@@ -41,7 +41,7 @@
                           <tbody>
                             {% for item in bag_items %}
                                 <tr>
-                                    <td class="w-25 p-3">
+                                    <td class="w-25">
                                         <a href="{% url 'product_detail' item.sub_product.product.id %}">
                                             {% if item.sub_product.product.image %}
                                                 <img  class="img-fluid my-0 py-0"  src="{{item.sub_product.product.image.url}}" alt="{{item.sub_product.product.name}}">
@@ -51,17 +51,17 @@
                                         </a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{item.sub_product.product.name}}</strong></p>
+                                        <p class="my-0 text-smaller"><strong>{{item.sub_product.product.name}}</strong></p>
                                         <p class="my-2 small"><strong>Size: </strong>{% if item.sub_product.size != 'None' %} {{item.sub_product.size|upper}} {% else %} N/A {% endif %}</p>
-                                        <p class="lead text-muted">{{item.product.sku}}</p>
+                                        <p class="lead text-muted text-smaller">{{item.product.sku}}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 small ms-3">{{item.sub_product.product.price}}</p>
+                                        <p class="my-0 text-smaller ms-3" text-smaller>{{item.sub_product.product.price}}</p>
                                     </td>
                                     <td class="py-3 w-25 px-lg-4">
-                                        <p class="my-0 small text-muted text-center ">{{item.quantity}}</p>
+                                        <p class="my-0 text-muted text-center text-smaller">{{item.quantity}}</p>
                                     </td>
-                                    <td class="py-3 text-center">
+                                    <td class="py-3 text-center text-smaller">
                                         <p>{{item.sub_product.product.price | calc_subtotal:item.quantity}}</p>
                                     </td>
                                 </tr>

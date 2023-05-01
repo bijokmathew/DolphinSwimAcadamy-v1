@@ -470,13 +470,13 @@ h6 {
     }
     .bag-container,
     .contact-container {
-        margin-top: 70px;
+        margin-top: 75px;
     }
 }
 
 /* not used */
 @media (max-width: 400px) {
-    .nav-text-smaller {
+    .text-smaller {
         font-size: x-small;
     }
     .message-container {

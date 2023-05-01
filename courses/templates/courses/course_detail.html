@@ -13,20 +13,20 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container product-container">
         <div class="row">
-            <div class="col-8 my-5 offset-3">
+            <div class="col-8 my-sm-3 offset-3">
                 <h1 class="fs-3">
                     COURSE DETAILS
-                    <hr class="w-50 mb-1">
+                    <hr class="w-75 mb-1">
                 </h1>
             </div>
         </div>
     </div>
-<!-- Product Details image container -->
+<!-- Course Details image container -->
 <div class="content container">
     <div class="row">
-        <!-- Product image or placeholder text -->
+        <!-- Course image or placeholder text -->
         <div class="col-12 col-md-6">
             {% if not object.image %}
                 <img src="{{MEDIA_URL}}noimage.png" class="img-responsive w-100 mt-3" alt="{{object.friendly_name}}">
@@ -48,7 +48,7 @@
             <p><strong>Price:</strong> ${{object.price}} </p>
             <div class = "align-self-start">
                 <a class="btn btn-secondary me-3" href = "../">Back</a>
-                <a class = "btn btn-ocean-blue me-3" href="#">Contact now!</a>
+                <a class = "btn btn-ocean-blue me-3" href="{% url 'contact' %}">Contact now!</a>
             </div>
         </div>
     </div>
