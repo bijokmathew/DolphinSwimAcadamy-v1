@@ -39,7 +39,7 @@
                         </div>
                         {% for item in bag_items %}
                             <div class="row">
-                                <div class="col-12 col-sm-6 mb-2">
+                                <div class="col-12 col-sm-6 mb-4">
                                     {% include 'bag/product-image.html' %}
                                 </div>
                                 <div class="col-12 col-sm-6 mb-2">
@@ -72,10 +72,10 @@
                               <tbody>
                                 {% for item in bag_items %}
                                     <tr>
-                                        <td class="w-25 py-3 px-0 ">
+                                        <td class="py-3 bag-img-container" >
                                             {% include 'bag/product-image.html' %}
                                         </td>
-                                        <td class="py-3">
+                                        <td class="py-3 ps-3">
                                             {% include 'bag/product-info.html' %}
                                         </td>
                                         <td class="py-3">
