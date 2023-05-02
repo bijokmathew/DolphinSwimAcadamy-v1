@@ -432,6 +432,11 @@ h6 {
     color: #17a2b8;
 }
 
+.auth-pages-dm {
+    min-height: 250px;
+    margin-top: 4rem;
+}
+
 
 /* -------------   style for contact page */
 .contact-background{
@@ -451,10 +456,20 @@ h6 {
     padding-top: 2rem;
 }
 
-/* ----------allauth--- */
-.auth-pages-dm {
-    min-height: 250px;
-    margin-top: 4rem;
+/* ----floating button */
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--button-brown-color);
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
 }
 
 /* ---------Media query */

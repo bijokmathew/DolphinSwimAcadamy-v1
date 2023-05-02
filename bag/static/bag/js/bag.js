@@ -62,3 +62,8 @@ $('.remove-link').click(function(e){
         location.reload()
     })
 })
+
+// float button
+$('.btt-link').click(function(e) {
+        window.scrollTo(0,0)
+})
