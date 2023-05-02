@@ -52,6 +52,12 @@
                                 <div class="col-12 col-sm-6 mb-2">
                                     {% include 'bag/quantity-mob-form.html' %}
                                 </div>
+                                <div class="col-12 col-sm-6 mb-2">
+                                        <a class="my-2 rounded-0" href="{% url 'remove_from_bag' item.sub_product.id  %}" 
+                                            id="remove_{{item.item_id}}">
+                                            Remove
+                                        </a>
+                                </div>
                                 <div class="col-12">
                                     <hr>
                                 </div>

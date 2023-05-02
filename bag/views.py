@@ -73,8 +73,8 @@ def adjust_bag(request, item_id):
         bag[sub_product.sku] = quantity
         messages.success(
             request,
-            f"Updated {sub_product.product.name}quantity"
-            "to {bag[sub_product.sku]}",
+            f"Updated {sub_product.product.name} quantity "
+            f"to {bag[sub_product.sku]}",
             extra_tags='from_bag_view'
         )
     else:
