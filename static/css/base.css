@@ -213,7 +213,7 @@ h6 {
 
 .bg-img-contact-home {
     min-height: 300px;
-    background-image: url(../img/contact.png);
+    background-image: url(../img/contact.webp);
     background-repeat: no-repeat;
     background-position: center;
     background-position: center;
@@ -429,7 +429,7 @@ h6 {
 
 /* -------------   style for contact page */
 .contact-background{
-    background-image: url(../img/slide-1.png);
+    background-image: url(../img/slide-1.webp);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -511,7 +511,7 @@ h6 {
         border-radius: 10px;
     }
     .auth-background {
-        background-image: url(../img/slide-1.png);
+        background-image: url(../img/slide-1.webp);
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;

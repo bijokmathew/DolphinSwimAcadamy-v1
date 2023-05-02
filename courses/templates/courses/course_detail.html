@@ -29,7 +29,7 @@
         <!-- Course image or placeholder text -->
         <div class="col-12 col-md-6">
             {% if not object.image %}
-                <img src="{{MEDIA_URL}}noimage.png" class="img-responsive w-100 mt-3" alt="{{object.friendly_name}}">
+                <img src="{{MEDIA_URL}}noimage.webp" class="img-responsive w-100 mt-3" alt="{{object.friendly_name}}">
             {% else %}
                 <img src="{{ object.image.url }}" alt="{{ object.friendly_name }}" class="img-responsive w-100 mt-3">
             {% endif %}
