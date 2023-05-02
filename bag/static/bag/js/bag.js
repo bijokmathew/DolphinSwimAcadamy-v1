@@ -1,10 +1,14 @@
 
  // Populate with proper value for size and quantity while loading the page  
 window.onload = function(){
-    var sku = $('.qty-input').attr('data-sku');
-    handleEnableDisable(sku);
+    // Ensure proper enabling/disabling of all inputs on page load
+    var allQtyInputs = $('.qty-input');
+    for(var i = 0; i < allQtyInputs.length; i++){
+        var sku = $(allQtyInputs[i]).attr('data-sku');
+        handleEnableDisable(sku);
+    }
 }
-    
+
 //  Disable +/- buttons ouside the range 1 - available quantity for both destop 
 //  and smaller screen
 function handleEnableDisable(sku){       
@@ -20,7 +24,7 @@ function handleEnableDisable(sku){
     $(`#increment-qty-${sku}`).prop('disabled', plusDisable);     
 }
     
-// Decrement product quatity 
+// Desktop decrement product quatity 
 $('.decrement-qty').click(function(e){
     e.preventDefault();
     var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
@@ -34,8 +38,37 @@ $('.decrement-qty').click(function(e){
     form.submit();    
 })
 
-// Increment product quantity
+// Desktop increment product quantity
 $('.increment-qty').click(function(e){      
+    var sku = $('.qty-input').attr('data-sku');
+    e.preventDefault();
+    currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+    currentValue = parseInt($(currentPos).val());
+
+    if(currentValue < parseInt($(currentPos).attr('max'))){
+        $(currentPos).val(currentValue+1);
+    }
+    handleEnableDisable(sku);
+    var form = $(this).closest('.update-form')[0];
+    form.submit();    
+})
+
+//Mobile  Decrement product quatity 
+$('.mob-decrement-qty').click(function(e){
+    e.preventDefault();
+    var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+    var sku = $('.qty-input').attr('data-sku');
+    currentValue = parseInt($(currentPos).val());
+    if( currentValue >1 ){
+        $(currentPos).val(currentValue-1);
+    }
+    handleEnableDisable(sku);  
+    var form = $(this).closest('.update-form')[0];
+    form.submit();    
+})
+
+// Mobile Increment product quantity
+$('.mob-increment-qty').click(function(e){      
     var sku = $('.qty-input').attr('data-sku');
     e.preventDefault();
     currentPos = $(this).closest('.input-group').find('.qty-input')[0];
