@@ -34,7 +34,7 @@
                     <a class="btn btn-ocean-blue rounded-0" href="{% url 'course_detail' object.slug %}">More Details</a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 order-first order-md-last">
                     {% if not object.image %}
                         <img src="{{MEDIA_URL}}noimage.webp" alt="blank image" class="img-responsive my-3 w-100">
                     {% else %}
@@ -46,5 +46,19 @@
                 <hr class="my-3">
             </div>
         {% endfor %}
+        <div class="btt-button shadow-sm rounded-0 border border-ocean-blue">
+            <a class="btt-link d-flex h-100 text-white">
+                <i class="fas fa-arrow-up text-white mx-auto my-auto"></i>
+            </a>	
+        </div>
     </div>
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super}}
+    <script type="text/javascript">
+        // float button
+        $('.btt-link').click(function(e) {
+                window.scrollTo(0,0)
+        })
+    </script>
 {% endblock %}
