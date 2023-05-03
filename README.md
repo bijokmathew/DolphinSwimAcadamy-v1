@@ -93,6 +93,16 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [Testing user stories](#testing-user-stories)
   - [Fixed Issues](#fixed-issues)
   - [Remaining Issues](#remaining-issues)
+- [Gmail and Stripe configuration](#gmail-and-stripe-configuration)
+  - [Google emails](#google-emails)
+  - [Stripe](#stripe)
+- [Deployment](#deployment)
+  - [Amazon WebServices](#amazon-webservices)
+  - [Local Deployment](#local-deployment)
+  - [Heroku and Postgres Database](#heroku-and-postgres-database)
+  - [Credits](#credits)
+    - [Media](#media)
+    - [Acknowledgements:](#acknowledgements)
 
 # User Experience
 ## Strategy
@@ -1139,4 +1149,209 @@ This page covers the following user stories:
 ## Remaining Issues
   - No known ssues
 
+# Gmail and Stripe configuration
+
+## Google emails
+To set up the project to send emails used Gmail as SMTP server. To use Google account as an SMTP server, the following steps are required
+1. Create an email account at google.com, login, navigate to Settings in your gmail account and then click on Other Google Account Settings
+2. Turn on 2-step verification and follow the steps to enable
+3. Click on app passwords, select Other as the app and give the password a name, for example Django
+<br>![App password](readme/misc/gmail_app_password.png)
+4. Click create and a 16 digit password will be generated, note the password down
+5. In the env.py file, create an environment variable called EMAIL_HOST_PASS with the 16 digit password
+6. In the env.py file, create an environment variable called EMAIL_HOST_USER with the email address of the gmail account
+7. Set and confirm the following values in the settings.py file to successfully send emails
+    <br><code>EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'</code>
+    <br><code>EMAIL_USE_TLS = True</code>
+    <br><code>EMAIL_PORT = 587</code>
+    <br><code>EMAIL_HOST = 'smtp.gmail.com'</code>
+    <br><code>EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')</code>
+    <br><code>EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')</code>
+    <br><code>DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')</code>
+8. You will also need to set the variables EMAIL_HOST_PASS and EMAIL_HOST_USER in your production instance like Heroku
+
+## Stripe
+1. Register for an account at stripe.com
+2. Select Developers option of your account once logged in
+3. Under Developers, select API keys section
+    <br>![API keys](readme/misc/stripe_keys1.png)
+4. Note the values for the publishable and secret keys
+5. In your local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
+    <br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_VALUE_GOES_HERE')</code>
+    <br><code>os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_VALUE_GOES_HERE')</code>
+6. In the Developers section of your stripe account select Webhooks
+7. Create a webhook with the url of your website <url>/checkout/wh/, for example:https://dolphinswimacademy.herokuapp.com/checkout/wh/
+8. Select the payment_intent.payment_failed and payment_intent.succeeded as events to send
+    <br>![Webhook](readme/misc/stripe_keys2.png)
+9. Note the key created for this webhook
+10. In your local environment(env.py) and heroku, create environment variable STRIPE_WH_SECRET with the secret values
+<code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_VALUE_GOES_HERE')</code>
+
+# Deployment
+There are a number of applications that need to be configured to run this application locally or on a cloud based service like Heroku
+
+## Amazon WebServices
+1. Create an account at aws.amazon.com
+2. Open the S3 application and create an S3 bucket named "dolphinswimacademy"
+3. Select ACLs enabled under Object ownership
+4. Select bucket owner preferred
+5. Uncheck the "Block All Public access setting"
+6. In the Properties section, navigate to the "Static Website Hosting" section and click edit
+7. Enable the setting, and set the index.html and the error.html values
+8. In the Permissions section, click edit on the CORS configuration and set the below configuration.
+
+-------
+
+
+    [
+      {
+        "AllowedHeaders": [
+        "Authorization"
+        ],
+        "AllowedMethods": [
+        "GET"
+        ],
+        "AllowedOrigins": [
+        "*"
+        ],
+        "ExposeHeaders": []
+      }
+    ]
+------
+9.  In the permissions section, click edit on the bucket policy and generate and set the below configuration(or similar to your settings)
+------
+    {
+        "Version": "2012-10-17",
+        "Id": "Policy1682673791732",
+        "Statement": [
+            {
+                "Sid": "Stmt1682673766530",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::dolphinswimacademy/*"
+            }
+        ]
+    }
+
+------
+10. In the permissions section, click edit on the Access control list(ACL) and enable List for Everyone (public access) and
+  accept the warning box
+11.  Set Read access for the Bucket ACL for Everyone(Public Access)
+12.  The bucket is created, the next step is to open the IAM application to set up access
+13.  Create a new user group named "manage-dolphinswimacademy"
+14.  Add the "AmazonS3FullAccess" policy permission for the user group
+    <br>![AWS Bucket Policy](readme/misc/aws_user_group.png)
+15.  Go to "Policies" and click "Create New Policy"
+16.  Click "Import Managed Policy" and select "AmazonS3FullAccess" > Click 'Import'.
+17.   In the JSON editor, update the policy "Resource" to the following
+    <br><code>"Resource": [</code>
+    <br><code>"arn:aws:s3:::dolphinswimacademy",</code>
+    <br><code>"arn:aws:s3:::dolphinswimacademy/*"</code>
+    <br><code>]</code>
+18.  Give the policy dolphinswimacademy-policy name and click "Create Policy"
+19.   Add the newly created policy to the user group
+    <br>![AWS Bucket Policy](readme/misc/aws_policy.png)
+20. Go to Users and create a new user
+21. Add the user to the user group manage-scubasport
+22. Select "Programmatic access" for the access type
+23. Note the AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID variables, they are used for local deployment and Heroku setup
+24.  The user is now created with the correct user group and policy
+    <br>![AWS Bucket Policy](readme/misc/aws_user.png)
+25. With the help of 'USE_AWS' enviromet variable, check the website using development enviroment or heroku enviroment
+26. These settings set up a cache policy, set the bucket name, and the environment variables AWS_ACCESS_KEY_ID and    AWS_SECRET_ACCESS_KEY that you set in your aws account
+27. The configuration also requires the media/static folders that must be setup in the AWS S3 bucket to store the media and static files 
+
+## Local Deployment
+To run this project locally, you will need to clone the repository
+1. Login to GitHub (https://wwww.github.com)
+2. Select the repository bijokmathew/DolphinSwimAcademy-v1
+3. Click the Code button and copy the HTTPS url, for example: https://github.com/bijokmathew/DolphinSwimAcademy-v1.git
+4. In your IDE, open a terminal and run the git clone command, for example 
+
+    ```git clone https://github.com/bijokmathew/DolphinSwimAcademy-v1.git```
+
+5. The repository will now be cloned in your workspace
+6. Create an env.py file(do not commit this file to source control) in the root folder in your project, and add in the following code with the relevant key, value pairs, and ensure you enter the correct key values<br>
+  <br><code>import os</code>
+  <br><code>os.environ["SECRET_KEY"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["STRIPE_PUBLIC_KEY"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["STRIPE_SECRET_KEY"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["STRIPE_WH_SECRET"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["AWS_ACCESS_KEY_ID"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["AWS_SECRET_ACCESS_KEY"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["EMAIL_HOST_USER"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["EMAIL_HOST_PASS"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["USE_AWS"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["DATABASE_URL"]= 'TO BE ADDED BY USER'</code>
+  <br><code>os.environ["DEVELOPMENT"] ='True'</code>
+
+7. Install the relevant packages as per the requirements.txt file
+8. In the settings.py ensure the connection is set to either the Heroku postgres database or the local sqllite database
+9. Ensure debug is set to true in the settings.py file for local development
+10. Add localhost/127.0.0.1 to the ALLOWED_HOSTS variable in settings.py
+11. Run "python3 manage.py showmigrations" to check the status of the migrations
+12. Run "python3 manage.py migrate" to migrate the database
+13. Run "python3 manage.py createsuperuser" to create a super/admin user
+14. Run manage.py loaddata 'json file name' to load the product data into the database
+15. Start the application by running <code>python3 manage.py runserver</code>
+16. Open the application in a web browser, for example: http://127.0.0.1:8000/
+
+## Heroku and Postgres Database
+To deploy this application to Heroku, run the following steps.
+1. Create an account at heroku.com
+2. Create an app, give it a name for example dolphinswimacademy, and select a region
+3. Under resources search for postgres, and add a Postgres database to the app
+
+![Heroku Postgres](readme/misc/heroku_postgres.png)
+    
+4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and your local deployment(env.py)
+5. Install the plugins dj-database-url and psycopg2-binary.
+6. Run pip3 freeze > requirements.txt so both are added to the requirements.txt file
+7. Create a Procfile with the text: web: gunicorn dolphinswimacadamy.wsgi:application for example
+8. In the settings.py ensure the connection is to the Heroku postgres database
+9. Ensure debug is set to false in the settings.py file
+10. Add 'localhost/127.0.0.1', and 'dolphinswimacademy.herokuapp.com' to the ALLOWED_HOSTS variable in settings.py
+11. Run "python3 manage.py showmigrations" to check the status of the migrations
+12. Run "python3 manage.py migrate" to migrate the database
+13. Run "python3 manage.py createsuperuser" to create a super/admin user
+14. Run python3 manage.py loaddata 'json file name'
+16. Install gunicorn and add it to the requirements.tx file using the command pip3 freeze > requirements.txt
+17. From the CLI, login to Heroku using the command heroku git:remote -a DolphinSwimAcademy-v1
+18. Disable collectstatic in Heroku before any code is pushed using the command heroku config:set DISABLE_COLLECTSTATIC=1 -a scubasport
+19. Push the code to Heroku using the command git push heroku master
+20. Ensure the following environment variables are set in Heroku
+    <br>![Heroku Env variables](readme/misc/heroku_env_variables.png)
+21. Connect the app to GitHub, and enable automatic deploys from main
+    <br>![Heroku Postgres](readme/misc/heroku_deployment.png)
+22. Select deploy to deploy your application to Heroku for the first time
+23. Select the link provided to access the application
+
+## Credits
+- [Django Documenation](https://www.djangoproject.com/) was used to provide examples of code solutions and Django functionality.
+- [Bootstrap Documenation](https://getbootstrap.com/) was used to provide examples of Bootstrap functionality
+- [Code Institute walkthrough](https://codeinstitute.net/) as inspiration and code examples, the code institute walkthroughs 'Boutique-ado' was used.It is one of the refrence for this project especially  bag and checkout, profile apps etc
+- CSS Tricks for much help with flex
+- Many issues or features fixed with the help of google search, stackoverflow, many youtube django, DB videos 
+
+*All credit also included in the page files.*
+
+### Media
+
+Media from the following was used throughout the site.
+
+- [Adobe Stock Images](www.stock.adobe.com)
+- [Creative Market](https://creativemarket.com/)
+- [Unsplash](https://unsplash.com/)
+- [Barcode Look Up](https://www.barcodelookup.com/)
+- [zoggs](https://www.zoggs.com/)
+- [Pexels](https://www.pexels.com/)
+- [Shutterstock](https://www.shutterstock.com/discover/stock-assets-uk-0220?kw=free%20images&c3apidt=p44044564070&gclid=CjwKCAjwloCSBhAeEiwA3hVo_aWCMHb_myvjFHu9hDOK2H8NkLvJ2OUMurc0or0G-aCEET7y-l4RdhoCnyQQAvD_BwE&gclsrc=aw.ds)
+- Code for comments adapted from Code Institute Django blog
+
+### Acknowledgements: 
+
+For code inspiration, design inputs, help and advice. Many thanks to:
+  - My mentor Martina Terlevic at Code Institute and she guided me throught the project. 
+  - The Code Institute Slack community and friends.
 
