@@ -91,6 +91,8 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
   - [Testing](#testing)
     - [Manual Testing](#manual-testing)
     - [Testing user stories](#testing-user-stories)
+  - [Fixed Issues](#fixed-issues)
+  - [Remaining Issues](#remaining-issues)
 
 # User Experience
 ## Strategy
@@ -1122,3 +1124,17 @@ This page covers the following user stories:
  **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Navbar     | verified selected navigation link is highlighted     | selected navigation link should highlighted in blue color  | Works as expected |
+
+## Fixed Issues
+
+|**Issues Details** | **Solution** | **Status** |
+|----|:---------|:-------|
+|Confirmation emails not sent to real life mail addresses| development uses back end  | N/A |
+|quantity incr/dcr buttons on shopping bag, not greyed out on larger screen| used seperate quantity form for mobile and larger screen  | Fixed |
+|some of the website pages like contact, shopping bag etc are not displayed properly on mobile screen  | Added media query propery on css  | Fixed |
+|Data from the postgresql db are not displaying | Executed dB migrations and loaded data using fixtures | Fixed |
+
+## Remaining Issues
+  - No known ssues
+
+
