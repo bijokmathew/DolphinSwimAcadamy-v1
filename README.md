@@ -88,6 +88,9 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [Languages](#languages)
       - [Python Libraries](#python-libraries)
     - [Frameworks \& Tools](#frameworks--tools)
+  - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
+    - [Testing user stories](#testing-user-stories)
 
 # User Experience
 ## Strategy
@@ -856,3 +859,266 @@ This page covers the following user stories:
 - [Facebook](https://www.facebook.com) - for social media marketing
 - [Stripe](https://stripe.com/gb) - For payments
 - [Amazon Web Services](https://aws.amazon.com/) - For static file hosting
+
+## Testing
+
+### Manual Testing
+### Testing user stories
+
+1. As an unauthenticated user, I want to be able to navigate the website quickly and easily 
+
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|   nav bar   | Select any nav link from the main nav bar           |     selected page is displayed with images and information | Works as expected |
+
+2. As an unauthenticated user, I want to have the option to view all products on the site
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  nav bar           |  from any page, select all products from product link in nav bar         |  all products page is displayed            | Works as expected |
+|  footer          | from any page, select the products link in the footer          |  all products page is displayed                   | Works as expected |
+
+3. As an unauthenticated user, I want to be able to search the website for specific products
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  search bar          |   from any page enter a keyword relating to a product into the search bar        |    products matching keywords are displayed                 | Works as expected |
+
+4. As an unauthenticated user, I want to be able to view detailed descriptions and prices of the products
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product listing page            | From any product listing page, select the details button            | taken to product details page, images and description displayed                    | Works as expected |
+
+5.	As an unauthenticated user, I want to be able to order the product pages by price, rating, category and alphabetically
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product listing page            | select order by button and choose option in which to sort and view products, then select search          | products are organised in the selected order               | Works as expected |
+
+6.	As an unauthenticated user, I want to be able to sort and view products by category
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| nav bar          | From any page, select the shop button in the header           | product catergories are displayed in dropdown menu, when selected taken to the correct page                   | Works as expected |
+| product listing page            | select any product category listed in side category menu         | correct product category page is displayed               | Works as expected |
+
+7.	As user, I want to be able to view total number of available products 
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| nav bar            | select any shop option from dropdown menu in header          | products matching filter criteria and the number of products are displayed on the page                   | Works as expected |
+
+8.	As an unauthenticated user, I want to be able to add a product to my bag
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details page           |  when product size and quantity have been selected, select add to cart         | product is added to bag and success message is displayed                   | Works as expected |
+
+9.	As an unauthenticated user, I want to be able to quickly navigate through product listing pages
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  product listing page           | selected desired pagination buttons            | taken to first or last page and can easily skip to next or previous page        | Works as expected |
+
+10.	As an unauthenticated user, I want to be able to view how many products are in my shopping bag at all times
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| nav bar           | add product to cart and observe shopping icon on any page          | cart icon and product count is displayed in header         | Works as expected |
+
+11.	As an unauthenticated user, I want to be able to navigate back to the products page after viewing product details
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details        | from product details page, select continue shopping          | taken back to all products page         | Works as expected |
+
+12.	As an unauthenticated user, I want to be able to view products added to my shopping bag
+    
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| nav bar - shopping cart           | From any page, select shopping cart icon in nav bar           | shopping bag is displayed with added products                     | Works as expected |
+
+13.	As an unauthenticated user, I want to be able to increase quantities and remove items from my shopping bag
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| shopping cart            | when in shopping cart, select the increase or decrease buttons to adjust product quantity           | product quantity is updated                     | Works as expected |
+| shopping cart            | when in shopping cart, decrease buttons to adjust product quantity to zero         | product is removed from bag and visual confirmation message appears                     | Works as expected |
+| shopping cart            | when in shopping cart, select the bin icon to remove product from bag           | product is removed from bag and visual confirmation message appears                    | Works as expected |
+
+14.	As an unauthenticated user, I want to be able to checkout and purchase products
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| checkout     | from shopping cart, select proceed to checkout          | checkout page is displayed                    | Works as expected |
+| checkout     | from checkout page, complete all required fields and select complete order       | order confirmation page is displayed showing order has been successful, confirmation email sent to user                   | Works as expected |
+
+15.  As an unauthenticated user, I want to be able to create an account
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| account            | From any page observe profile icon in navbar and select register, sign up page is displayed and complete required fields           | account is created and verification email sent to user            | Works as expected |
+| account            | From any page select register link in footer, sign up page displayed and complete required fields           | account is created and verification email sent to user            | Works as expected |
+| account            | From the checkout page select option to register link, sign up page displayed and complete required fields           | account is created and verification email sent to user            | Works as expected |    
+
+16.  As an unauthenticated user, I want to be able to log in to / sign out of an existing account
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| account     | From navbar select profile icon and enter details in sign in page        | User is logged in and success message displayed                  | Works as expected |
+| account     | From navbar select profile icon, select sign out buton on sign out page        | User is logged out and success message displayed                  | Works as expected |
+
+17.  As an authenticated user, I want to be able to view and update my personal information in my profile
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  profile           | From update section of profile page, change personal details and select save          | details saved and confirmation displayed that details have been updated                    | Works as expected |
+| profile           | From any page, select profile icon           | profile page is displayed with user details visible                   | Works as expected |
+
+18.  As an authenticated user, I want to be able to view my order history
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| profile         | Logined first and select my profile from profile icon, profile page is displayed and observe order history           | all order history is displayed                    | Works as expected |
+
+19. As an unauthenticated user, I want to be able contact the business
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|    nav bar         | from any page select the contact link in the header         | contact form is displayed                    | Works as expected |
+
+20.	As an unauthenticated user, I want to be able to view the business location
+    
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| footer            | From any page, observe business address in footer            | business address is displayed                    | Works as expected |
+
+21.	As a site owner, I want users to be able to checkout selected product easily
+    
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| checkout     | from shopping cart, select proceed to checkout          | checkout page is displayed                    | Works as expected |
+| checkout     | from checkout page, complete all required fields and select complete order       | order confirmation page is displayed showing order has been successful, confirmation email sent to user                   | Works as expected |
+
+22.	As a site owner, I want users to be able to view the business social media
+    
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| footer           | From any page, select any social media link in footer          | taken to correct social media page        | Works as expected |
+
+23.	As a admin, I want to be able to add product
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product managment           |  select product managment from my accpunt on navbar and add product page is displayed          | able to update required fields, once saved product is added to database and confirmation message is displayed                 | Works as expected |
+
+24.	As a admin, I want to be able to view and update products 
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details page          | from product details page, select update, edit required fields and select save           | confirmation message is displayed that product has been updated                    | Works as expected |
+
+26.	As a admin, I want to be able to delete products
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details page            | from product details page, select remove option       | product is deleted and confirmation message is displayed                   | Works as expected |
+
+27.  As a admin, I want to be able to manage product inventory
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  Inventory management           |   select inventory management from my profile on navbar, select product to update or search for product using search function, select adjust inventory to adjust quantity          |   inventory quantity is updated and confirmation message is displayed                 | Works as expected |
+
+28. As an authenticated user, I want confirmation that I have signed out of my account
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  account           | from profile icon in header, select sign out and confirm on sign out page that is displayed          | user is signed out and confirmation message is displayed                    | Works as expected |
+
+29. As a site owner, I want to make sure that customers aren’t able to purchase more products than what is listed in the inventory
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details page            | from the product details page, using the increase button you are unable to increase the quantity past the max inventory           | observe product quantity will increment no further than inventory                   | Works as expected |
+
+30. As a site owner, I want to make sure that customers can see which products are out of stock
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| product details page             | from product details page, select sizing options, observe any sizes that are out of stock            | sizes that are out of stock are displayed and unable to be added to bag                    | Works as expected |
+
+31. As an unauthenticated user, I want to be able to browse available courses
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| nav bar          | from any page, select course link in nav bar and observe courses        | available courses are displayed in dropdown menu                   | Works as expected |
+
+32.  As an unauthenticated user, I want to be able to view course details and request a booking
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| courses         | from courses page select more details, course details are displayed and select Enquire now button to book        | detailed course description is displayed, taken to contact form after selecting Enquire now                  | Works as expected |
+| courses         | from courses page select enquire now, contact form displayed      | contact form page displayed to complete                  | Works as expected |
+
+33. As a admin, I want to be able to view and update the courses listed
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| course Management        | from course details page, select update details, complete required fields and select save      | course details are updated and confirmation message  is displayed                   | Works as expected |
+
+34.  As a admin, I want to be able to add a course
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| courses managment         | select Add a course from course list page, complete required fields and select save      | course is created and confirmation message is displayed                   | Works as expected |
+
+35. As a admin user, I want to be able to delete a course
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| course management         | from course details page, select delete course, confirm deletion when prompted      | after confirmation course is deleted and confirmation message is displayed                   | Works as expected |
+
+36. As an unauthenticated user, I want to be able to find details of the website
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| about page         | select about option from navbar      | About page is displayed                | Works as expected |
+
+37. As a user, I want to have confirmation that my order has been successful
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| checkout     | from checkout page, complete all required fields and select complete order       | order confirmation page is displayed showing order has been successful, confirmation email sent to user                   | Works as expected |
+
+38. As a user, I want to be shown messages that my actions have been successful and unsuccessful
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| account     | on any page where fields are required, if completed incorrectly form won't be submitted      | error message displayed and form isn't submitted                   | Works as expected |
+
+39. As a user, I want to be able to reset my password if I have forgotten it
+
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| account     | on sign in page, select forgotten password link and enter recovery email into password reset page      | email is sent to recover email to reset password                   | Works as expected |
+
+40. As a user, I want to see all the apps pages should display clearly on all type of devices like mobile, destop and tab etc  
+    
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| responsive test     | verified all the pages belongs to this website on different screen      | pages should display clearly according to the screen size| Works as expected |
+
+41. As a user, I want to see all the apps funtionality should work on all type of devices like mobile, destop and tab etc  
+    
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| responsive test     | verified all the functionalities belongs to this website on different screen      | all functionalities should work for all the screen size| Works as expected |
+
+42. As a user, I want to see selected nav option in highlighted   
+    
+ **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Navbar     | verified selected navigation link is highlighted     | selected navigation link should highlighted in blue color  | Works as expected |
