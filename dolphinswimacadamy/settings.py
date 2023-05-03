@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+if os.path.isfile('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,9 +31,8 @@ else:
     SECRET_KEY = 'django-insecure-62e3lh4zx0cby*-f9c4tlrm_8%um8ih=48knzd_i8z-l_0l##i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-    # DEBUG = os.environ.get('DEVELOPMENT')
+DEBUG = os.environ.get('DEVELOPMENT')
 
-DEBUG = True
 ALLOWED_HOSTS = ['dolphinswimacademy.herokuapp.com', 'localhost']
 
 

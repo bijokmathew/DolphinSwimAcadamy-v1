@@ -36,7 +36,6 @@ def contact(request):
         if request.user.is_authenticated:
             try:
                 user_profile = UserProfile.objects.get(user=request.user)
-                print("saved profile contact, addrees",  user_profile.default_street_address1)
                 contact_form = ContactForm(initial={
                     'full_name': user_profile.user.get_full_name(),
                     'email': user_profile.user.email,

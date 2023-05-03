@@ -46,7 +46,6 @@ card.addEventListener('change', function(event){
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
-  console.log("form addEventListener")
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
@@ -54,7 +53,6 @@ form.addEventListener('submit', function(ev) {
     $('#payment-form').fadeToggle(100);
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
-    console.log("saveInfo---", saveInfo);
     // form using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
@@ -65,9 +63,6 @@ form.addEventListener('submit', function(ev) {
     var url = '/checkout/cache_checkout_data/'
     // Post the request to cache_checkout_data
     $.post(url, postData).done(function(){
-        console.log("form addEventListener==---bkm-------Done");
-        console.log("bijo");
-        console.log('form,' , form.street_address1.val);
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -97,7 +92,6 @@ form.addEventListener('submit', function(ev) {
                 }
             }
         }).then(function(result) {
-            console.log("submit--result", result);
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
@@ -113,14 +107,12 @@ form.addEventListener('submit', function(ev) {
                 card.update({ 'disabled': false});                
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log("submit")
                     form.submit();
                 }
             }
         });
     }).fail(function(){
         // Just reload the page, the error will be in the django messages
-        console.log("submit-fail");
         location.reload()
     })
 });

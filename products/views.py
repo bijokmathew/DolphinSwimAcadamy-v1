@@ -39,8 +39,9 @@ def all_products(request):
         if 'category' in request.GET:
             category_list = request.GET['category'].split(',')
             products = Product.objects.filter(category__slug__in=category_list)
-            print('category_list =', category_list)
-            if category_list == ['mens'] or category_list == ['womens'] or category_list == ['kids']:
+            if category_list == ['mens'] or category_list == ['womens'] or \
+               category_list == ['kids']:
+
                 active_tab = 'category'
             else:
                 active_tab = 'products'
@@ -70,7 +71,6 @@ def all_products(request):
                 products = products.annotate(max_category=Max('category'))
             if 'direction' in request.GET:
                 direction = request.GET['direction']
-                print("sort_ky==", sort_key)
                 if direction == 'desc':
                     sort_key = f'-{sort_key}'
             products = products.order_by(sort_key)
@@ -106,15 +106,11 @@ def product_detail(request, product_id):
         Render of products page with context
     """
     product = get_object_or_404(Product, id=product_id)
-    print("BKM p-->", product)
     sub_products = product.inventories.all()
-    print("BKM sub--", sub_products)
     product_attr = {}
     has_size = False
     has_color = False
     has_style = False
-    for sub in sub_products:
-        print("sub-val", sub.product.name, sub.size, sub.units)
 
     context = {
         'product': product,
@@ -131,7 +127,9 @@ def product_add(request):
     """
     active_tab = 'myaccount'
     if not request.user.is_superuser:
-        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        messages.error(
+            request, f"Sorry, You are not autherized to perform this action"
+        )
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -173,7 +171,9 @@ def product_edit(request, product_id):
         Render of product edit page with context
     """
     if not request.user.is_superuser:
-        messages.error(request, f"Sorry, You are not autherized to perform this action")
+        messages.error(
+            request, f"Sorry, You are not autherized to perform this action"
+        )
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -252,8 +252,6 @@ def inventory_view(request):
                 Q(sku__icontains=sku_query),
                 Q(product__name__icontains=name_query)
             )
-            print("query sku::::sub_products =======", sub_products)
-
     paginator = Paginator(sub_products, 5)
     page_number = request.GET.get('page', 1)
 

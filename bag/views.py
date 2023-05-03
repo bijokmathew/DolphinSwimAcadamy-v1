@@ -25,7 +25,6 @@ def view_bag(request):
     """
     This view render and return the bag conetnts page
     """
-    print("view bag")
     return render(request, 'bag/bag.html')
 
 
@@ -35,11 +34,11 @@ def add_to_bag(request, item_id):
     the shopper to the shopper bag
     """
     sku = request.POST.get('sku')
+    quantity = int(request.POST.get('quantity'))
     item = get_object_or_404(Inventory, sku=sku)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect-url')
     bag = request.session.get('bag', {})
-
     if sku in list(bag.keys()):
         bag[sku] += quantity
         messages.success(
@@ -67,8 +66,6 @@ def adjust_bag(request, item_id):
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
     product_size = request.session.get('product_size')
-    print("adjust_bag product_size= ", product_size)
-
     if quantity > 0:
         bag[sub_product.sku] = quantity
         messages.success(
@@ -84,7 +81,6 @@ def adjust_bag(request, item_id):
             f"Removed {sub_product.product.name} from your bag",
             extra_tags='from_bag_view'
         )
-
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
@@ -93,7 +89,6 @@ def remove_from_bag(request, item_id):
     """
     Remove sepecified product from the bag
     """
-    print('remove_from_bag')
     try:
         sub_product = get_object_or_404(Inventory, pk=item_id)
         bag = request.session.get('bag', {})

@@ -33,7 +33,6 @@ class StripeWHHandler:
         This method used to send the order confirmation
         mail to the customer.
         """
-        print("_send_confirmation_mail")
         to_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -48,7 +47,6 @@ class StripeWHHandler:
                 'contact_email': settings.DEFAULT_FROM_EMAIL
             }
         )
-
         send_mail(
             subject,
             body,
@@ -71,8 +69,6 @@ class StripeWHHandler:
         Handle payment_intent.succeeded webhook
         event from stripe
         """
-        print("handle_payment_intent_succeeded")
-
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -90,8 +86,6 @@ class StripeWHHandler:
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
-        print("handler", shipping_details.address.line1)
-        print("handler county", shipping_details.address.state)
         attempt = 1
         order_exits = False
         while attempt < 5:
@@ -161,15 +155,16 @@ class StripeWHHandler:
         username = intent.metadata.username
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
-            print("********-----handler county save_info-----********", shipping_details.address.state, save_info)
             if save_info:
-                print("********handler county save_info********", shipping_details.address.state, save_info)
                 profile.default_phone_number = shipping_details.phone,
                 profile.default_country = shipping_details.address.country,
-                profile.default_postcode = shipping_details.address.postal_code,
+                profile.default_postcode = \
+                    shipping_details.address.postal_code,
                 profile.default_town_or_city = shipping_details.address.city,
-                profile.default_street_address1 = shipping_details.address.line1,
-                profile.default_street_address2 = shipping_details.address.line2,
+                profile.default_street_address1 = \
+                    shipping_details.address.line1,
+                profile.default_street_address2 = \
+                    shipping_details.address.line2,
                 profile.default_county = shipping_details.address.state,
                 profile.save()
 

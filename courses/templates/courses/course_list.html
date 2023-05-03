@@ -18,8 +18,13 @@
 {% block content %}
     <div class="product-container mx-5 mt-3">
         <div class="row">
-            <div class="col">
-                <h1 class="mb-5">COURSES</h1>
+            <div class="col mb-5">
+                <h1 class="">COURSES</h1>
+                {% if request.user.is_superuser %}
+                <small class="">
+                    <a href="{% url 'add_course' %}">Add Course</a>
+                </small>
+            {% endif %}
             </div>
         </div>
         {% for object in object_list %}
@@ -35,10 +40,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 order-first order-md-last">
-                    {% if not object.image %}
-                        <img src="{{MEDIA_URL}}noimage.webp" alt="blank image" class="img-responsive my-3 w-100">
-                    {% else %}
+                    {% if object.image %}
                         <img src="{{ object.image.url }}" alt="{{ object.friendly_name }}" class="course-list-image img-responsive w-100 my-3">
+                    {% else %}
+                        <img src="{{MEDIA_URL}}noimage.webp" alt="blank image" class="course-list-image img-responsive w-100 my-3">
                     {% endif %}
                 </div>
             </div>

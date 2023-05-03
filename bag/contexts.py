@@ -1,5 +1,5 @@
 """
- Context module for bag app 
+ Context module for bag app
 """
 
 # Imports
@@ -60,5 +60,4 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'product_count': product_count
     }
-
     return context

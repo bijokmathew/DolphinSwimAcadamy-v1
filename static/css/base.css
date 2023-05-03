@@ -35,7 +35,7 @@ body {
     font-family: var(--body-font);
     font-weight: var(--body-weight);
 }
-
+/*--------- header style */
 h1,
 h2,
 h3,
@@ -45,96 +45,9 @@ h6 {
     font-weight: var(--heading-weight);
 }
 
-.search-icon,
-.nav-link p,
-.navbar-nav a{
-    
-    font-family: var(--body-font);
-}
-
+/* ---------- general style */
 .bg-theme1 {
     background-color: var(--theme-1);
-}
-
-.text-uppercase {
-    text-transform: uppercase;
-}
-
-.text-black {
-    color: #0000;
-}
-
-.text-ocean-blue {
-    color: var(--ocean-blue);
-}
-
-.text-light-blue {
-    color: var(--light-blue);
-}
-
-.border-black {
-    border: 1px solid black;
-}
-
-.border-ocean-blue {
-    border: 1px solid var(--ocean-blue);
-}
-
-.btn-outline-light-blue {
-    background-color: white;
-    color: var(--light-blue);
-    border: solid 1px var(--light-blue) ;
-}
-
-.btn-light-blue-nhover,
-.btn-light-blue {
-    background:var(--light-blue);
-    color: white;
-}
-
-.btn-light-blue:hover {
-    background: white;
-    color:var(--light-blue);
-}
-
-.border {
-    border: 1px solid white
-}
-
-/* from bluma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-.btn-bg-brown {
-    background: var(--button-brown-color);
-    color: white;
-}
-
-.btn-bg-brown:hover {
-    background-color: var(--button-brown-hover-color);
-    color:whitesmoke; 
-}
-
-.btn-ocean-blue {
-    background-color: var(--ocean-blue);
-    color: white;
-    border:var(--ocean-blue);
-}
-
-.btn-ocean-blue:hover {
-    color: #fff;
-    background-color: var(--light-ocean-blue)
-}
-
-.btn-outline-ocean-blue {
-    background-color: white;
-    color: var(--ocean-blue);
-    border: solid 1px var(--ocean-blue) ;
 }
 .transparent-bg {
     background:rgba(31, 214, 255, 0.4);
@@ -178,6 +91,114 @@ h6 {
     color: #a1b0e1;
 }
 
+.search-icon,
+.nav-link p,
+.navbar-nav a{
+    
+    font-family: var(--body-font);
+}
+
+/* ----------text and border style */
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-black {
+    color: #0000;
+}
+
+.text-ocean-blue {
+    color: var(--ocean-blue);
+}
+
+.text-light-blue {
+    color: var(--light-blue);
+}
+.border {
+    border: 1px solid white
+}
+.border-black {
+    border: 1px solid black;
+}
+
+.border-ocean-blue {
+    border: 1px solid var(--ocean-blue);
+}
+
+/* ------- btn style */
+.btn-outline-light-blue {
+    background-color: white;
+    color: var(--light-blue);
+    border: solid 1px var(--light-blue) ;
+}
+
+.btn-light-blue-nhover,
+.btn-light-blue {
+    background:var(--light-blue);
+    color: white;
+}
+
+.btn-light-blue:hover {
+    background: white;
+    color:var(--light-blue);
+}
+.btn-bg-brown {
+    background: var(--button-brown-color);
+    color: white;
+}
+
+.btn-bg-brown:hover {
+    background-color: var(--button-brown-hover-color);
+    color:whitesmoke; 
+}
+
+.btn-ocean-blue {
+    background-color: var(--ocean-blue);
+    color: white;
+    border:var(--ocean-blue);
+}
+
+.btn-ocean-blue:hover {
+    color: #fff;
+    background-color: var(--light-ocean-blue)
+}
+
+.btn-outline-ocean-blue {
+    background-color: white;
+    color: var(--ocean-blue);
+    border: solid 1px var(--ocean-blue) ;
+}
+.btn-primary{
+    background-color:var(--ocean-blue);
+    border:var(--ocean-blue);
+}
+
+.btn-primary:hover{
+    background-color:var(--spume);
+    border:var(--spume);
+}
+
+.btn-outline-success{
+    border-color:var(--spume);
+    color: var(--spume);
+}
+
+.btn-outline-success:hover{
+    background-color:var(--spume);
+    border:var(--spume);
+    color:white;
+}
+
+
+/* from bluma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 /* ---------- hero section */
 .header-container {
     padding-top: 100px;
@@ -219,6 +240,19 @@ h6 {
     background-position: center;
     background-size: 99% 100%;
 } 
+
+/* -------------   style for contact page */
+.contact-background{
+    background-image: url(../img/slide-1.webp);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.bag_container_empty,
+.contact-container {
+    min-height: 40vh;
+}
 
 .bg-img-holder-home {
     align-items: center;
@@ -298,26 +332,6 @@ h6 {
     font-family: inherit;
   }
 
-.btn-primary{
-    background-color:var(--ocean-blue);
-    border:var(--ocean-blue);
-}
-
-.btn-primary:hover{
-    background-color:var(--spume);
-    border:var(--spume);
-}
-
-.btn-outline-success{
-    border-color:var(--spume);
-    color: var(--spume);
-}
-
-.btn-outline-success:hover{
-    background-color:var(--spume);
-    border:var(--spume);
-    color:white;
-}
 
 /* message style */
 .toast-capper {
@@ -438,18 +452,6 @@ h6 {
 }
 
 
-/* -------------   style for contact page */
-.contact-background{
-    background-image: url(../img/slide-1.webp);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.bag_container_empty,
-.contact-container {
-    min-height: 40vh;
-}
 
 /* -- mobile navbar */
 .mobile-nav-space {

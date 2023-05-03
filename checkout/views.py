@@ -50,7 +50,6 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user
         })
-        print("retun 200 cache_checkout_data save_info")
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, "Sorry!, your payment cannot be processed \
@@ -81,9 +80,6 @@ def checkout(request):
     if not bag:
         messages.error(request, "There is nothing in your bag at the momemt!")
         return redirect(reverse('products'))
-    print('request.method', request.method)
-    print('stripePublicKey', settings.STRIPE_PUBLIC_KEY)
-    print('clientSecret', settings.STRIPE_SECRET_KEY)
     if request.method == 'POST':
         form_data = {
             'street_address1': request.POST['street_address1'],
@@ -98,7 +94,6 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            print('order form is valid')
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -114,7 +109,6 @@ def checkout(request):
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    print('order form Product.DoesNotExist')
                     messages.error(request, "One of the product in your bag \
                         was not found in our database. \
                         Please call us for assistance!")
@@ -137,8 +131,6 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY
         )
-        print("intent.client_secret", intent.client_secret)
-        print('clientSecret', settings.STRIPE_SECRET_KEY)
         if not stripePublicKey:
             messages.warning(request, "Stripe public key is missing. \
                             Did you forget to set it in to your enviroment")
@@ -147,7 +139,6 @@ def checkout(request):
         if request.user.is_authenticated:
             try:
                 user_profile = UserProfile.objects.get(user=request.user)
-                print("saved profile checkout, addrees",  user_profile.default_street_address2)
                 order_form = OrderForm(initial={
                     'full_name': user_profile.user.get_full_name(),
                     'email': user_profile.user.email,
@@ -162,7 +153,6 @@ def checkout(request):
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
-            print("....else orderForm")
             order_form = OrderForm()
         template = 'checkout/checkout.html'
 
@@ -191,7 +181,6 @@ def checkout_success(request, order_number):
         order.save()
         # save user profile
         if save_info:
-            print("checkout_success default_street_address2 , save_info", order.street_address2, save_info)
             profile_data = {
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,

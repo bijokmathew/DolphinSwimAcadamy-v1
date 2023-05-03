@@ -17,12 +17,10 @@
     function handleEnableDisable(sku){
         var currentValue = parseInt($(`#id_qty_${sku}`).val());
         var maxValue = parseInt(parseInt($('.qty-input').attr('max')));
-        console.log('handleEnableDisable maxValue, currentValue', maxValue, currentValue);
         var minusDisable = currentValue < 2 ;
         var plusDisable = currentValue > maxValue-1;
         $(`#decrement-qty-${sku}`).prop('disabled', minusDisable);
         $(`#increment-qty-${sku}`).prop('disabled', plusDisable);
-
     }
 
     // update product size  with proper value
@@ -40,7 +38,6 @@
 
     // populate product quantity with proper value
     function updatedProductQuatity(){
-        console.log('updatedProductQuatity');
         var quatity_in_bag = parseInt($('option:selected').attr('data-session-quantity'))
         if( isNaN(quatity_in_bag)){
             if( view_type == 'bag'){
@@ -56,13 +53,9 @@
 
     // Populate with proper value for size and quantity while loading the page  
     window.onload = function(){
-        view_type = $('.qty-input').attr('data-view_type');
         var sku = $('.qty-input').attr('data-sku');
-        console.log('view_type and sku', view_type, sku);
-        if (view_type != 'bag'){
-            updateProductSizeOption()
-            updateProductSku()
-        }
+        updateProductSizeOption()
+        updateProductSku()
         updatedProductQuatity()
         handleEnableDisable(sku)
         
@@ -78,11 +71,6 @@
             $(currentPos).val(currentValue-1);
         }
         handleEnableDisable(sku);
-        if( view_type == 'bag' ){
-            var form = $(this).closest('.update-form')[0];
-            console.log("submit", form)
-            form.submit();
-        }
     })
 
     // Increment product quantity
@@ -91,18 +79,10 @@
         var sku = $('.qty-input').attr('data-sku');
         e.preventDefault();
         currentPos = $(this).closest('.input-group').find('.qty-input')[0];
-        console.log("increment-qty", currentPos)
         currentValue = parseInt($(currentPos).val());
-        console.log("increment-qty currentValue=", currentValue)
-        console.log('max val', parseInt($(currentPos).attr('max')))
         if(currentValue < parseInt($(currentPos).attr('max'))){
             $(currentPos).val(currentValue+1);
         }
-        handleEnableDisable(sku);
-        if( view_type == 'bag' ){
-            var form = $(this).closest('.update-form')[0];
-            console.log("submit", form)
-            form.submit();
-        }
+        handleEnableDisable(sku); 
     })
 </script>
