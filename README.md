@@ -1156,7 +1156,7 @@ To set up the project to send emails used Gmail as SMTP server. To use Google ac
 1. Create an email account at google.com, login, navigate to Settings in your gmail account and then click on Other Google Account Settings
 2. Turn on 2-step verification and follow the steps to enable
 3. Click on app passwords, select Other as the app and give the password a name, for example Django
-<br>![App password](readme/misc/gmail_app_password.png)
+  <br>![App password](readme/misc/gmail_app_password.png)
 4. Click create and a 16 digit password will be generated, note the password down
 5. In the env.py file, create an environment variable called EMAIL_HOST_PASS with the 16 digit password
 6. In the env.py file, create an environment variable called EMAIL_HOST_USER with the email address of the gmail account
@@ -1174,7 +1174,6 @@ To set up the project to send emails used Gmail as SMTP server. To use Google ac
 1. Register for an account at stripe.com
 2. Select Developers option of your account once logged in
 3. Under Developers, select API keys section
-    <br>![API keys](readme/misc/stripe_keys1.png)
 4. Note the values for the publishable and secret keys
 5. In your local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
     <br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_VALUE_GOES_HERE')</code>
@@ -1182,7 +1181,6 @@ To set up the project to send emails used Gmail as SMTP server. To use Google ac
 6. In the Developers section of your stripe account select Webhooks
 7. Create a webhook with the url of your website <url>/checkout/wh/, for example:https://dolphinswimacademy.herokuapp.com/checkout/wh/
 8. Select the payment_intent.payment_failed and payment_intent.succeeded as events to send
-    <br>![Webhook](readme/misc/stripe_keys2.png)
 9. Note the key created for this webhook
 10. In your local environment(env.py) and heroku, create environment variable STRIPE_WH_SECRET with the secret values
 <code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_VALUE_GOES_HERE')</code>
@@ -1241,7 +1239,7 @@ There are a number of applications that need to be configured to run this applic
 12.  The bucket is created, the next step is to open the IAM application to set up access
 13.  Create a new user group named "manage-dolphinswimacademy"
 14.  Add the "AmazonS3FullAccess" policy permission for the user group
-    <br>![AWS Bucket Policy](readme/misc/aws_user_group.png)
+    <br>![AWS Bucket Policy](readme/deployment/aws_user_group.png)
 15.  Go to "Policies" and click "Create New Policy"
 16.  Click "Import Managed Policy" and select "AmazonS3FullAccess" > Click 'Import'.
 17.   In the JSON editor, update the policy "Resource" to the following
@@ -1251,13 +1249,13 @@ There are a number of applications that need to be configured to run this applic
     <br><code>]</code>
 18.  Give the policy dolphinswimacademy-policy name and click "Create Policy"
 19.   Add the newly created policy to the user group
-    <br>![AWS Bucket Policy](readme/misc/aws_policy.png)
+    <br>![AWS Bucket Policy](readme/deployment/aws_policy.png)
 20. Go to Users and create a new user
 21. Add the user to the user group manage-scubasport
 22. Select "Programmatic access" for the access type
 23. Note the AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID variables, they are used for local deployment and Heroku setup
 24.  The user is now created with the correct user group and policy
-    <br>![AWS Bucket Policy](readme/misc/aws_user.png)
+    <br>![AWS Bucket Policy](readme/deployment/aws_user.png)
 25. With the help of 'USE_AWS' enviromet variable, check the website using development enviroment or heroku enviroment
 26. These settings set up a cache policy, set the bucket name, and the environment variables AWS_ACCESS_KEY_ID and    AWS_SECRET_ACCESS_KEY that you set in your aws account
 27. The configuration also requires the media/static folders that must be setup in the AWS S3 bucket to store the media and static files 
@@ -1301,10 +1299,7 @@ To run this project locally, you will need to clone the repository
 To deploy this application to Heroku, run the following steps.
 1. Create an account at heroku.com
 2. Create an app, give it a name for example dolphinswimacademy, and select a region
-3. Under resources search for postgres, and add a Postgres database to the app
-
-![Heroku Postgres](readme/misc/heroku_postgres.png)
-    
+3. Under resources search for postgres, and add a Postgres database to the app    
 4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and your local deployment(env.py)
 5. Install the plugins dj-database-url and psycopg2-binary.
 6. Run pip3 freeze > requirements.txt so both are added to the requirements.txt file
@@ -1321,9 +1316,8 @@ To deploy this application to Heroku, run the following steps.
 18. Disable collectstatic in Heroku before any code is pushed using the command heroku config:set DISABLE_COLLECTSTATIC=1 -a scubasport
 19. Push the code to Heroku using the command git push heroku master
 20. Ensure the following environment variables are set in Heroku
-    <br>![Heroku Env variables](readme/misc/heroku_env_variables.png)
+    <br>![Heroku Env variables](readme/deployment/heroku_env_variables.png)
 21. Connect the app to GitHub, and enable automatic deploys from main
-    <br>![Heroku Postgres](readme/misc/heroku_deployment.png)
 22. Select deploy to deploy your application to Heroku for the first time
 23. Select the link provided to access the application
 
