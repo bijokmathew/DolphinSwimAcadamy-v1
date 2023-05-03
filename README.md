@@ -806,11 +806,13 @@ This page covers the following user stories:
 *38 As a user, I want to be shown messages that my actions have been successful and unsuccessful*
 
 ## Future Features
- add brand
- create category, size managment
- add color option
- add option to purchase for course
- add f/q in about page
+
+ - In future need to enhance the website making more user friendly by grouping products based on brands and color.
+ - In future provide more control to admin by adding category, brand, color and size managment
+ - In futute give an option to the user for checkout the course by online
+ - In future give an option to the user for add review and comments about the purchased product
+ - In future provide help section in about page 
+
 ## Technologies Used
 
 ### Languages
