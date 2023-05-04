@@ -167,11 +167,11 @@ Long tag and short tag keyword were searched for in regards to SEO using Google 
 ### Facebook Business Page
 
 For marketing the website, it has a link to its own social media page in the footer and that has a recipricol link to the site.
+This page may be removed by Facebook in future 
 
-Facebook site can be viewed [here](https://www.facebook.com/). 
+Facebook site can be viewed [here](https://www.facebook.com/profile.php?id=100092040174392). 
 
-![Facebook Screenshot](readme/misc/)
-![Facebook Screenshot2](readme/misc/)
+![Facebook Screenshot](readme/misc/fb-page.png)
 
 [Return to Table of Contents](#table-of-content)
 
@@ -331,6 +331,7 @@ Database models contains all fields stored in the database collections with thei
 39. As a user, I want to be able to reset my password if I have forgotten it
 40. As a user, I want to be see the small details about the business
 41. As an admin, I want to be able to manage product inventory
+    
 [Return to Table of Contents](#table-of-content)
 
 #### Error Flow
@@ -839,6 +840,8 @@ This page covers the following user stories:
  - In future give an option to the user for add review and comments about the purchased product
  - In future provide help section in about page 
 
+[Return to Table of Contents](#table-of-content)
+
 ## Technologies Used
 
 ### Languages
@@ -889,6 +892,8 @@ This page covers the following user stories:
 - [Facebook](https://www.facebook.com) - for social media marketing
 - [Stripe](https://stripe.com/gb) - For payments
 - [Amazon Web Services](https://aws.amazon.com/) - For static file hosting
+  
+[Return to Table of Contents](#table-of-content)
 
 ## Testing
 
@@ -1165,6 +1170,8 @@ This page covers the following user stories:
 ## Remaining Issues
   - No known ssues
 
+[Return to Table of Contents](#table-of-content)
+
 # Gmail and Stripe configuration
 
 ## Google emails
@@ -1200,6 +1207,8 @@ To set up the project to send emails used Gmail as SMTP server. To use Google ac
 9. Note the key created for this webhook
 10. In your local environment(env.py) and heroku, create environment variable STRIPE_WH_SECRET with the secret values
 <code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_VALUE_GOES_HERE')</code>
+
+[Return to Table of Contents](#table-of-content)
 
 # Deployment
 There are a number of applications that need to be configured to run this application locally or on a cloud based service like Heroku
@@ -1337,6 +1346,8 @@ To deploy this application to Heroku, run the following steps.
 22. Select deploy to deploy your application to Heroku for the first time
 23. Select the link provided to access the application
 
+[Return to Table of Contents](#table-of-content)
+
 ## Credits
 - [Django Documenation](https://www.djangoproject.com/) was used to provide examples of code solutions and Django functionality.
 - [Bootstrap Documenation](https://getbootstrap.com/) was used to provide examples of Bootstrap functionality
@@ -1365,3 +1376,4 @@ For code inspiration, design inputs, help and advice. Many thanks to:
   - My mentor Martina Terlevic at Code Institute and she guided me throught the project. 
   - The Code Institute Slack community and friends.
 
+[Return to Table of Contents](#table-of-content)
