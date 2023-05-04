@@ -57,7 +57,7 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [Products](#products)
       - [All products](#all-products)
       - [Product details](#product-details)
-      - [Managing product](#managing-product)
+      - [Sorting products](#sorting-products)
       - [Page order](#page-order)
       - [Pagination](#pagination)
       - [Create product](#create-product)
@@ -159,7 +159,7 @@ For the nature of this project, the stock is held pysically in the business.
 
 Long tag and short tag keyword were searched for in regards to SEO using Google tools and other online resources. These tags have been used in the main HTML head and throughout the project to name images and within main body text.
 
-![SEO keywords HTML](readme/misc/)
+![SEO keywords HTML](readme/misc/seo.png)
 
 ## Marketing
 
@@ -286,6 +286,7 @@ Database models contains all fields stored in the database collections with thei
 - **Fourth Cycle**
     * The fourth Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/5)
     ![image of the iteration 3 board](static/docs/images/)
+
 ### User stories:
 
 1. As an unauthenticated user, I want to be able to navigate the website quickly and easily 
@@ -328,6 +329,8 @@ Database models contains all fields stored in the database collections with thei
 38. As a user, I want to be shown messages that my actions have been successful and unsuccessful
 39. As a user, I want to be able to reset my password if I have forgotten it
 40. As a user, I want to be see the small details about the business
+41. 
+[Return to Table of Contents](#table-of-content)
 
 #### Error Flow
 1.  As a site owner, I want error pages that enables users to be able to return to valid areas of the site without using browser controls.
@@ -423,6 +426,8 @@ Poller One is the font uses for the logo, this font is from the Google Fonts.
 Urbanist is the font used across all of the headings and text across the website, it has been used in different 
 weights and different cases to highlight titles. This font is from the Google Fonts Library.
 
+[Return to Table of Contents](#table-of-content)
+
 ## Features
 
 The site consists of 11 pages, with the features detailed under each page.
@@ -440,7 +445,7 @@ The site consists of 11 pages, with the features detailed under each page.
 11. Shopping Cart
 
 ### Home page
-<br>![Home page](readme/features/home-page-nav-bar.png)
+<br>![Home page](readme/features/nav-bar.png)
 
 The home page consists of the following features:
 
@@ -477,7 +482,7 @@ This feature covers the following user stories:
 *3 As an unauthenticated user, I want to be able to search the website for specific products.*
 
 #### Image carousel
-<br>![Home page](readme/features/home-page-carousel.png)
+<br>![Home page](readme/features/home-page-hero.png)
 
 The image carousel is the first image the user is presented with, the carousel provides an aesthetic to engage the user through activity, rather than just having static images
 
@@ -509,7 +514,7 @@ This feature covers the following user stories:
 The product listing menu consists of the following features:
 
 #### All products
-<br>![products page](readme/features/all-products-menu.png)
+<br>![products page](readme/features/shop-menu.png)
 <br>![products page](readme/features/all-products.png)
 
 When the user first selects the shop link, they have an option to view ‘all products’ or select one of the product categories. On selecting the all products page, every product listing appears in an automatic alphabetical order.
@@ -521,7 +526,7 @@ This feature covers the following user stories:
 *2 As an unauthenticated user, I want to have the option to view all products on the site*
 
 #### Product details
-<br>![products page](readme/features/product-details.png)
+<br>![products page](readme/features/product-detail.png)
 
 The user has the option to view details of any product from the product list. From the product detail page customer has an option to add the product to cart for purchase. The product details appear in a new window and gives the user the product name, rating, price, detailed product description, an option to select size and quantity. The user can then add the product to their cart, and either go to the bag or continue shopping.
 
@@ -541,7 +546,7 @@ This feature covers the following user stories:
 
 *32 As a site owner, I want to make sure that customers can see which products are out of stock*
 
-#### Managing product
+#### Sorting products
 
 When logged in as admin, the admin has the ability to delete or update any product from the product details page or product list page. Admin can edit the title, description, category, size options, price and image. 
 
@@ -552,9 +557,9 @@ This feature covers the following user stories.
 *28 As a site owner, I want to be able to delete products*
 
 #### Page order
-<br>![products page](readme/features/product-order.png)
+<br>![products page](readme/features/product-sorting.png)
 
-The user has the option to select the order in which to view the products are listed. They can order by price (ascending or descending) or alphabetically (ascending or descending). 
+The user has the option to select the order in which to view the products are listed. They can order by price (ascending or descending), alphabetically (ascending or descending), categories (ascending or descending), rating (ascending or descending). 
 
 This feature covers the following user stories:
 
@@ -572,7 +577,7 @@ This feature covers the following user stories:
 *10 As an unauthenticated user, I want to be able to quickly navigate through product listing pages*
 
 #### Create product
-<br>![products page](readme/features/create-product.png)
+<br>![products page](readme/features/add-product.png)
 
 The option to create a product appears in the shop dropdown menu when logged in as a admin. It allows admin user to create a new product with blank required fields. 
 
@@ -582,7 +587,7 @@ This feature covers the following user stories:
 
 
 #### Update product
-<br>![products page](readme/features/update-product.png)
+<br>![products page](readme/features/edit-product.png)
 
 When logged in as a admin, edit option available on product list and product details page, the user has the ability to update the selected item.
 
@@ -601,8 +606,7 @@ This feature covers the following user stories:
 *29 As a site owner, I want to be able to delete products*
 
 #### Categories
-<br>![products page](readme/features/categories-header.png)
-<br>![products page](readme/features/categories-all-products.png)
+<br>![products page](readme/features/product-categories.png)
 
 The category list appears when the user selects the cetegories link in the navbar, as well as on the all products page. The categories allow the user to filter and browse certain products.
 
@@ -634,7 +638,7 @@ This feature covers the following user stories:
 *35 As a site owner, I want to be able to delete a course*
 
 #### Course details
-<br>![course page](readme/features/course-details.png)
+<br>![course page](readme/features/course-detail.png)
 
 The course details page shows the selected course with a more detailed description, and options to reserve or go back to the previous page.
 
@@ -647,7 +651,7 @@ This feature covers the following user stories:
 *20 As an unauthenticated user, I want to be able to view course details and request a booking*
 
 #### Update courses
-<br>![courses page](readme/features/update-course.png)
+<br>![courses page](readme/features/edit-course.png)
 
 When logged in as a admin, edit option available on course details page, update option allows admin to update the course.
 
@@ -656,7 +660,7 @@ This feature covers the following user stories:
 *33 As a site owner, I want to be able to view and update the courses listed.*
 
 #### Add courses
-<br>![courses page](readme/features/create-course.png)
+<br>![courses page](readme/features/add-course.png)
 
 When logged in as a admin, admin can selects create a course from the dropdown menu in the navbar and admin can add course.
 
@@ -716,8 +720,7 @@ This page covers the following user stories:
 ### Profile page
 
 #### Profile information 
-<br>![profile page](readme/features/profile-info.png)
-<br>![profile page](readme/features/edit-profile.png)
+<br>![profile page](readme/features/profile.png)
 
 When the user is logged in, they are able to view their profile and purchase history. User can also update their profile info.
 
@@ -726,8 +729,7 @@ This feature covers the following user stories:
 *23. As an authenticated user, I want to be able to view and update my personal information in my profile*
 
 #### Order history 
-<br>![profile page](readme/features/profile-info.png)
-<br>![profile page](readme/features/order-history.png)
+<br>![profile page](readme/features/profile.png)
 
 When the user is logged in, they are able to view their previous order history. After selecting the order number, user can veiw order in more detail. This page includes order number, product and cost, delivery address and billing information.
 
@@ -744,8 +746,7 @@ This page covers the following user stories:
 The shopping cart is always visible in the Navbar on each page. The quantity is always visible and updates whenever product is added.
 
 #### Shopping cart
-<br>![shopping page](readme/features/shopping-cart.png)
-<br>![shopping page](readme/features/cart-item-removed.png)
+<br>![shopping page](readme/features/shopping-bag.png)
 
 When the user select cart from Navbar and it takes user to car view, user can adjust the quantities of the products by selecting minus to take the quantity to zero removes the item from the bag altogether. The user has confirmation that the product has then been removed.
 
@@ -765,10 +766,9 @@ User can go to checkout page by selecting checkout option from bag or from succe
 When the user is already logged in, payment form is prepopulated with user saved delivery and contact information.
 
 When the user is not logged in, payment form is empty for the user to complete their details and they are given the option to create an account or log in.
-<br>![shopping page](readme/features/checkout-unauthenticated.png)
 
 When the card details have been entered correctly a confirmation page is displayed and the order confirmation is sent the to the user’s email address.
-<br>![shopping page](readme/features/order-confirmation.png)
+<br>![shopping page](readme/features/confirmation.png)
 
 This feature covers the following user stories:
 
@@ -778,7 +778,7 @@ This feature covers the following user stories:
 
 
 ### Contact
-<br>![contact page](readme/features/contact.png)
+<br>![contact page](readme/features/contact-us.png)
 
 The contact page contains a contact form for user to complete their details to contact the business. User can go to contact page from Navbar as well as from course enquire option. It features different subject matters for the user to select from which helps the admin can easily deal with customer messages.
 
@@ -807,7 +807,7 @@ This page covers the following user stories:
 
 
 ### Messages
-<br>![admin page](readme/features/success-message.png)
+<br>![admin page](readme/features/message.png)
 
 User should get the feedback about his action like success, error, info, warning messages.Feedback messages are shown at below my account in Navbar to confirm the user's action has been applied.
 After certain actions, error messages are shown below my account in Navbar to confirm the user's action has been not been applied.
