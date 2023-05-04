@@ -15,4 +15,4 @@ from django.shortcuts import render
 def handler404(request, exception):
     """ Error Handler 404 - Page Not Found """
     print("======handler404=========")
-    return render(request, "error/404.html", status=404)
+    return render(request, "errors/404.html", status=404)
