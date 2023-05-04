@@ -261,6 +261,7 @@ Database models contains all fields stored in the database collections with thei
 - The project was developed by using agile methodology. During the design process collect the project requirements and write epics broken down into user stories with well defined acceptance criteria and tasks list. Based on the priority move those user stories in to different project sprint cycle like First cycle, Second cycle and Third Cycle in order to achieve MNP.Once finished the user stories changed the status of specific stories into closed state and if all issues related to the sprint closed then move the sprint cycle also in to closed state. During the development time comming up with an enhancement ideas, create stories and epic for those enhancement ideas and moved in to backlog with priorities.
   
 ![image of user stories](/readme/agile/project_issues.png)
+![image of user stories labels](/readme/agile/labels.png)
 
 #### **Product Backlog**
 - The product backlog for the project can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/1)
@@ -282,11 +283,11 @@ Database models contains all fields stored in the database collections with thei
 
 - **Third Cycle**
     * The Third Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/4)
-    ![image of the iteration 3 board](/readme/agile/)
+    ![image of the iteration 3 board](/readme/agile/third_cycle.png)
 
 - **Fourth Cycle**
     * The fourth Cycle milestone can be found [here](https://github.com/bijokmathew/DolphinSwimAcademy-v1/milestone/5)
-    ![image of the iteration 3 board](static/docs/images/)
+    ![image of the iteration 4 board](/readme/agile/fourth_cycle.png)
 
 ### User stories:
 
@@ -413,15 +414,13 @@ The fonts are bold, clear and modern, with clear headings to enable easy navigat
 
 #### Colours
 The colour scheme is primarily blues to represent water which matches the business theme. 
-#FFFFFF – Titles & subtitles
-#FFFFFF - Body text
-##315673- Buttons
-##5392C2– Button highlight & search bar
+#00000 – Titles & subtitles
+#242f6d - Body text
+#663103- Buttons
 #000000 – Image overlay text
 insert colour palette image
 After choosing a colour scheme I tested a number of palette options to make sure the it met accessibility standards.
-<br>![Color](readme/misc/color.png)
-<br>![Accessible Color](readme/misc/accessible-color.png)
+<br>![Color](readme/misc/color-wheel.png)
 
 #### Typography
 Poller One is the font uses for the logo, this font is from the Google Fonts.
@@ -838,7 +837,10 @@ This page covers the following user stories:
  - In future provide more control to admin by adding category, brand, color and size managment
  - In futute give an option to the user for checkout the course by online
  - In future give an option to the user for add review and comments about the purchased product
- - In future provide help section in about page 
+ - In future provide help section in about page
+
+![Future features](/readme/agile/future_features.png)
+
 
 [Return to Table of Contents](#table-of-content)
 
