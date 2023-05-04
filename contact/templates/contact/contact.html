@@ -35,7 +35,7 @@
                         {{ form | crispy }}
                         <br>
                         <button class="btn btn-ocean-blue me-3" type="submit">Send message</button>
-                        <a class="btn btn-secondary"href="{{request.META.HTTP_REFERER|escape}}">Cancel</a>
+                        <a class="btn btn-secondary" href="{{request.META.HTTP_REFERER|escape}}">Cancel</a>
                     </form>
                 {% endif %}
             </div>

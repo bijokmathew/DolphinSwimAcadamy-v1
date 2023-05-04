@@ -203,9 +203,6 @@ h6 {
 .header-container {
     padding-top: 100px;
 }
-.carsol-image-container {
-    box-sizing: content-box;
-}
 
 .hero-img {
     height: calc(100vh - 100px);
