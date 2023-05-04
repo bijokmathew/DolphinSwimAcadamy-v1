@@ -32,7 +32,7 @@ else:
 if 'DEVELOPMENT' in os.environ:
     DEBUG = True
 else:
-    DEBUG = True
+    DEBUG = False
 
 
 ALLOWED_HOSTS = ['dolphinswimacademy.herokuapp.com', 'localhost']
