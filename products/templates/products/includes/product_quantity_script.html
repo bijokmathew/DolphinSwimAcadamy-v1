@@ -3,15 +3,15 @@
     var view_type = '';
     // update the product sku
     function updateProductSku(){
-        $('#sku').val($('option:selected').attr('data-sku'))
+        $('#sku').val($('option:selected').attr('data-sku'));
     }
 
     //  Handle product size select option
     $('select').change(function(){
-        updateProductSizeOption()
-        updatedProductQuatity()
-        updateProductSku()
-    })
+        updateProductSizeOption();
+        updatedProductQuatity();
+        updateProductSku();
+    });
 
     // Disable +/- buttons ouside the range 1 - available quantity
     function handleEnableDisable(sku){
@@ -33,20 +33,20 @@
                 $(this).removeAttr('disabled');
                 $(this).text($(this).attr('value'));
             }
-        })
+        });
     }
 
     // populate product quantity with proper value
     function updatedProductQuatity(){
-        var quatity_in_bag = parseInt($('option:selected').attr('data-session-quantity'))
+        var quatity_in_bag = parseInt($('option:selected').attr('data-session-quantity'));
         if( isNaN(quatity_in_bag)){
             if( view_type == 'bag'){
-                $('.qty-input').attr('max', parseInt($('.qty-input').attr('data-quantity')))
+                $('.qty-input').attr('max', parseInt($('.qty-input').attr('data-quantity')));
             } else {
-                $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')))
+                $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')));
             }
         } else {
-            $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')) - quatity_in_bag)
+            $('.qty-input').attr('max', parseInt($('option:selected').attr('data-quantity')) - quatity_in_bag);
         }
 
     }
@@ -54,35 +54,34 @@
     // Populate with proper value for size and quantity while loading the page  
     window.onload = function(){
         var sku = $('.qty-input').attr('data-sku');
-        updateProductSizeOption()
-        updateProductSku()
-        updatedProductQuatity()
-        handleEnableDisable(sku)
-        
-    }
+        updateProductSizeOption();
+        updateProductSku();
+        updatedProductQuatity();
+        handleEnableDisable(sku);
+    };
 
     // Decrement product quatity 
     $('.decrement-qty').click(function(e){
         e.preventDefault();
         var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
         var sku = $('.qty-input').attr('data-sku');
-        currentValue = parseInt($(currentPos).val());
+        var currentValue = parseInt($(currentPos).val());
         if( currentValue >1 ){
             $(currentPos).val(currentValue-1);
         }
         handleEnableDisable(sku);
-    })
+    });
 
     // Increment product quantity
     $('.increment-qty').click(function(e){
         
         var sku = $('.qty-input').attr('data-sku');
         e.preventDefault();
-        currentPos = $(this).closest('.input-group').find('.qty-input')[0];
-        currentValue = parseInt($(currentPos).val());
+        var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+        var currentValue = parseInt($(currentPos).val());
         if(currentValue < parseInt($(currentPos).attr('max'))){
             $(currentPos).val(currentValue+1);
         }
         handleEnableDisable(sku); 
-    })
+    });
 </script>

@@ -7,7 +7,8 @@ window.onload = function(){
         var sku = $(allQtyInputs[i]).attr('data-sku');
         handleEnableDisable(sku);
     }
-}
+};
+
 
 //  Disable +/- buttons ouside the range 1 - available quantity for both destop 
 //  and smaller screen
@@ -29,21 +30,21 @@ $('.decrement-qty').click(function(e){
     e.preventDefault();
     var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
     var sku = $('.qty-input').attr('data-sku');
-    currentValue = parseInt($(currentPos).val());
+    var currentValue = parseInt($(currentPos).val());
     if( currentValue >1 ){
         $(currentPos).val(currentValue-1);
     }
     handleEnableDisable(sku);  
     var form = $(this).closest('.update-form')[0];
     form.submit();    
-})
+});
 
 // Desktop increment product quantity
 $('.increment-qty').click(function(e){      
     var sku = $('.qty-input').attr('data-sku');
     e.preventDefault();
-    currentPos = $(this).closest('.input-group').find('.qty-input')[0];
-    currentValue = parseInt($(currentPos).val());
+    var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+    var currentValue = parseInt($(currentPos).val());
 
     if(currentValue < parseInt($(currentPos).attr('max'))){
         $(currentPos).val(currentValue+1);
@@ -51,35 +52,35 @@ $('.increment-qty').click(function(e){
     handleEnableDisable(sku);
     var form = $(this).closest('.update-form')[0];
     form.submit();    
-})
+});
 
 //Mobile  Decrement product quatity 
 $('.mob-decrement-qty').click(function(e){
     e.preventDefault();
     var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
     var sku = $('.qty-input').attr('data-sku');
-    currentValue = parseInt($(currentPos).val());
+    var currentValue = parseInt($(currentPos).val());
     if( currentValue >1 ){
         $(currentPos).val(currentValue-1);
     }
     handleEnableDisable(sku);  
     var form = $(this).closest('.update-form')[0];
     form.submit();    
-})
+});
 
 // Mobile Increment product quantity
 $('.mob-increment-qty').click(function(e){      
     var sku = $('.qty-input').attr('data-sku');
     e.preventDefault();
-    currentPos = $(this).closest('.input-group').find('.qty-input')[0];
-    currentValue = parseInt($(currentPos).val());
+    var currentPos = $(this).closest('.input-group').find('.qty-input')[0];
+    var currentValue = parseInt($(currentPos).val());
     if(currentValue < parseInt($(currentPos).attr('max'))){
         $(currentPos).val(currentValue+1);
     }
     handleEnableDisable(sku);
     var form = $(this).closest('.update-form')[0];
     form.submit();    
-})
+});
 
 // remove an item from the shopping bag
 $('.remove-link').click(function(e){
@@ -90,13 +91,13 @@ $('.remove-link').click(function(e){
     var data = {
         'csrfmiddlewaretoken': csrfToken,
         'product_size': size,
-    }
+    };
     $.post(url,data).done(function(){
-        location.reload()
-    })
-})
+        location.reload();
+    });
+});
 
 // float button
 $('.btt-link').click(function(e) {
-        window.scrollTo(0,0)
-})
+        window.scrollTo(0,0);
+});

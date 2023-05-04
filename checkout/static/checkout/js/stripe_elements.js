@@ -38,7 +38,7 @@ card.addEventListener('change', function(event){
       `;
       $(errorDiv).html(html);
     } else {
-      errorDiv.textContent= ''
+      errorDiv.textContent= '';
     }
 });
 
@@ -59,8 +59,8 @@ form.addEventListener('submit', function(ev) {
         'csrfmiddlewaretoken':csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
-    }
-    var url = '/checkout/cache_checkout_data/'
+    };
+    var url = '/checkout/cache_checkout_data/';
     // Post the request to cache_checkout_data
     $.post(url, postData).done(function(){
         stripe.confirmCardPayment(clientSecret, {
@@ -113,6 +113,6 @@ form.addEventListener('submit', function(ev) {
         });
     }).fail(function(){
         // Just reload the page, the error will be in the django messages
-        location.reload()
-    })
+        location.reload();
+    });
 });
