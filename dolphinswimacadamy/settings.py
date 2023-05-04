@@ -19,19 +19,21 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
 else:
     SECRET_KEY = 'django-insecure-62e3lh4zx0cby*-f9c4tlrm_8%um8ih=48knzd_i8z-l_0l##i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEVELOPMENT')
+if 'DEVELOPMENT' in os.environ:
+    DEBUG = True
+else:
+    DEBUG = False
+
 
 ALLOWED_HOSTS = ['dolphinswimacademy.herokuapp.com', 'localhost']
 
@@ -116,7 +118,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -222,7 +223,18 @@ if 'USE_AWS' in os.environ:
 
 # Stripe
 STRIPE_CURRENCY = 'eur'
-DEFAULT_FROM_EMAIL = "dolphinacadamy@swim.com"
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", '')
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", '')
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", '')
+
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = "dolphinacadamy@swim.com"
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get(EMAIL_HOST_USER)
+    EMAIL_HOST_PASSWORD = os.environ.get(EMAIL_HOST_PASS)
+    DEFAULT_FROM_EMAIL = os.environ.get(EMAIL_HOST_USER)
