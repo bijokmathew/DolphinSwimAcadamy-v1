@@ -64,6 +64,7 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
       - [Update product](#update-product)
       - [Deleting a product](#deleting-a-product)
       - [Categories](#categories)
+      - [Inventory management](#inventory-management)
     - [Courses](#courses)
       - [Course list](#course-list)
       - [Course details](#course-details)
@@ -312,24 +313,24 @@ Database models contains all fields stored in the database collections with thei
 21. As an authenticated user, I want to be able to view my order history
 22. As an authenticated user, I want confirmation that I have signed out of my account
 23. As an authenticated user, I want to be able to view and update my personal information in my profile
-24. As a site owner, I want users to be able to navigate the website quickly and easily
-25. As a site owner, I want users to be able to view the business social media
-26. As a site owner, I want to be able to update and edit product descriptions, details and prices
-27. As a site owner, I want to be able to view and update products 
-28. As a site owner, I want to be able to add products
-29. As a site owner, I want to be able to delete products
-30. As a site owner, I want to be able to manage product inventory
-31. As a site owner, I want to make sure that customers aren’t able to purchase more products than what is listed in the inventory
-32. As a site owner, I want to make sure that customers can see which products are out of stock
-33. As a site owner, I want to be able to view and update the courses listed
-34. As a site owner, I want to be able to add a course
-35. As a site owner, I want to be able to delete a course
-36. As a user, I want to have confirmation that my order has been successful
-37. As admin, I want to be able to create batch actions and manipulate all the data tables in one place
+24. As an admin, I want users to be able to navigate the website quickly and easily
+25. As an admin, I want users to be able to view the business social media
+26. As an admin, I want to be able to update and edit product descriptions, details and prices
+27. As an admin, I want to be able to view and update products 
+28. As an admin, I want to be able to add products
+29. As an admin, I want to be able to delete products
+30. As an admin, I want to be able to manage product inventory
+31. As an admin, I want to make sure that customers aren’t able to purchase more products than what is listed in the inventory
+32. As an admin, I want to make sure that customers can see which products are out of stock
+33. As an admin, I want to be able to view and update the courses listed
+34. As an admin, I want to be able to add a course
+35. As an admin, I want to be able to delete a course
+36. As an admin, I want to have confirmation that my order has been successful
+37. As an admin, I want to be able to create batch actions and manipulate all the data tables in one place
 38. As a user, I want to be shown messages that my actions have been successful and unsuccessful
 39. As a user, I want to be able to reset my password if I have forgotten it
 40. As a user, I want to be see the small details about the business
-41. 
+41. As an admin, I want to be able to manage product inventory
 [Return to Table of Contents](#table-of-content)
 
 #### Error Flow
@@ -614,6 +615,21 @@ This feature covers the following user stories:
 
 *2 As an unauthenticated user, I want to have the option to view all products on the site*
 *6 As an unauthenticated user, I want to be able to sort and view products by category*
+
+#### Inventory management
+<br>![products page](readme/features/inventory-mgt.png)
+<br>![products page](readme/features/edit-inventory.png)
+
+The inventory management features in the shop dropdown menu when logged in as a staff user or admin. It enables the user to view all products listed alphabetically, or they can search by SKU, product name and brand name.
+
+After selecting adjust quantity, the user is taken to an update inventory page where they can adjust the quantity of stock.
+
+This feature covers the following user stories:
+
+*41 As a admin, I want to be able to manage product inventory*
+
+*37 As a admin, I want to make sure that customers aren’t able to purchase more products than what is listed in the inventory*
+
 
 ### Courses
 
