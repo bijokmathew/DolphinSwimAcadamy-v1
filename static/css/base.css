@@ -528,6 +528,9 @@ h6 {
     .contact-background {
         background-image:none
     }
+    .dropdown-menu {
+        font-size: 0.7rem;
+    }
 }
 
 
