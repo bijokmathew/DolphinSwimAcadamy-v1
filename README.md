@@ -89,6 +89,16 @@ For the expiry date, cvc and postal code any series number(s) can be used(once t
     - [Languages](#languages)
       - [Python Libraries](#python-libraries)
     - [Frameworks \& Tools](#frameworks--tools)
+  - [Validation](#validation)
+    - [HTML Validation](#html-validation)
+    - [CSS Validation](#css-validation)
+    - [JS Validation](#js-validation)
+    - [Py Validation](#py-validation)
+      - [Admin py-validation](#admin-py-validation)
+      - [Models py validation](#models-py-validation)
+      - [Views py validation](#views-py-validation)
+    - [Accessibility](#accessibility)
+    - [Performance](#performance)
   - [Testing](#testing)
     - [Manual Testing](#manual-testing)
     - [Testing user stories](#testing-user-stories)
@@ -895,6 +905,155 @@ This page covers the following user stories:
 - [Stripe](https://stripe.com/gb) - For payments
 - [Amazon Web Services](https://aws.amazon.com/) - For static file hosting
   
+[Return to Table of Contents](#table-of-content)
+
+## Validation
+
+### HTML Validation
+The HTML of the each page of the site was validated using [W3C Markup Validation Service](https://validator.w3.org/).  All pages returned a pass with 0 errors and 0 warnings.
+
+<details><summary>Home</summary>
+<img src="readme/validation/html-validation/html-validation-home-index.png">
+</details>
+<details><summary>Products</summary>
+<img src="readme/validation/html-validation/html-validation-products.png">
+</details>
+<details><summary>Courses</summary>
+<img src="readme/validation/html-validation/html-validation-course.png">
+</details>
+<details><summary>Checkout</summary>
+<img src="readme/validation/html-validation/html-validation-checkout.png">
+</details>
+<details><summary>Bag</summary>
+<img src="readme/validation/html-validation/html-validation-bag.png">
+</details>
+<details><summary>Contact Us</summary>
+<img src="readme/validation/html-validation/html-validation-contact.png">
+</details>
+<details><summary>About</summary>
+<img src="readme/validation/html-validation/html-validation-about.png">
+</details>
+
+
+### CSS Validation
+The [W3C CSS Validation Service](http://jigsaw.w3.org/css-validator/validator) was used to validate the CSS of the website. 
+
+The custom CSS file for the site passed with 0 errors.
+
+<details><summary>base.css</summary>
+<img src="readme/validation/css-validation/base-css-validation.png">
+</details>
+
+<details><summary>checkout.css</summary>
+<img src="readme/validation/css-validation/checkout-css-validation.png">
+</details>
+
+<details><summary>contact.css</summary>
+<img src="readme/validation/css-validation/checkout-css-validation.png">
+</details>
+
+<details><summary>products.css</summary>
+<img src="readme/validation/css-validation/bag-css-validation.png">
+</details>
+
+### JS Validation
+The Javascript of the each page of the site was validated using [JSHint validation tool](https://jshint.com/).  All pages returned a pass with 0 errors and 0 warnings.
+
+<details><summary>bag.js</summary>
+<img src="readme/validation/js-validation/js-validation-bag.png">
+</details>
+
+<details><summary>checkout.js</summary>
+<img src="readme/validation/js-validation/js-validation-bag.png">
+</details>
+
+<details><summary>products.js</summary>
+<img src="readme/validation/js-validation/js-validation-product.png">
+</details>
+
+### Py Validation
+The Python of the each page of the site was validated using [Python validation tool](http://pep8online.com/).  All pages returned a pass with 0 errors and 0 warnings.
+
+#### Admin py-validation
+
+<details><summary>about/admin.py</summary>
+<img src="readme/validation/py-validation/py-validation-admin.png">
+</details>
+<details><summary>checkout/admin.py</summary>
+<img src="readme/validation/py-validation/py-validation-checkout-admin.png">
+</details>
+<details><summary>contact/admin.py</summary>
+<img src="readme/validation/py-validation/py-validation-course-admin.png">
+</details>
+<details><summary>courses/admin.py</summary>
+<img src="readme/validation/py-validation/py-validation-product-admin.png">
+</details>
+
+#### Models py validation
+
+<details><summary>about/models.py</summary>
+<img src="readme/validation/py-validation/py-validation-checkout-model.png">
+</details>
+<details><summary>checkout/models.py</summary>
+<img src="readme/validation/py-validation/py-validation-course-model.png">
+</details>
+
+#### Views py validation
+
+<details><summary>about/views.py</summary>
+<img src="readme/validation/py-validation/py-validation-bag-view.png">
+</details>
+<details><summary>bag/views.py</summary>
+<img src="readme/validation/py-validation/py-validation-bag-view.png">
+</details>
+<details><summary>checkout/views.py</summary>
+<img src="readme/validation/py-validation/py-validation-checkout-view.png">
+</details>
+<details><summary>courses/views.py</summary>
+<img src="readme/validation/py-validation/py-validation-course-view.png">
+</details>
+<details><summary>products/views.py</summary>
+<img src="readme/validation/py-validation/py-validation-product-view.png">
+</details>
+
+### Accessibility
+The [WAVE WebAIM web accessibility evaluation tool](https://wave.webaim.org/ was used to ensure the website met high accessibility standards. All pages returned 0 errors.
+
+<details><summary>Home</summary>
+<img src="readme/validation/wave-validation/wave-validation-home.png">
+</details>
+<details><summary>Products</summary>
+<img src="readme/validation/wave-validation/wave-validation-product.png">
+</details>
+<details><summary>About</summary>
+<img src="readme/validation/wave-validation/wave-validation-about.png">
+</details>
+<details><summary>Course</summary>
+<img src="readme/validation/wave-validation/wave-validation-course.png">
+</details>
+<details><summary>Bag/Checkout</summary>
+<img src="readme/validation/wave-validation/wave-validation-bag.png">
+</details>
+
+### Performance 
+[Google Lighthouse](https://developers.google.com/web/tools/lighthouse/) was used to measure the performance and speed of the website -performance, accessibility, best practice and SEO with results below:
+
+<details><summary>Products</summary>
+<img src="readme/validation/lighthouse-validation/lighthouse-validation-product.png">
+</details>
+<details><summary>Courses</summary>
+<img src="readme/validation/lighthouse-validation/lighthouse-validation-course.png">
+</details>
+<details><summary>About</summary>
+<img src="readme/validation/lighthouse-validation/lighthouse-validation-about.png">
+</details>
+<details><summary>Confirmation</summary>
+<img src="readme/validation/lighthouse-validation/lighthouse-validation-confirmation.png">
+</details>
+<details><summary>Checkout</summary>
+<img src="readme/validation/lighthouse-validation/lighthouse-validation-checkout.png">
+</details>
+
 [Return to Table of Contents](#table-of-content)
 
 ## Testing
