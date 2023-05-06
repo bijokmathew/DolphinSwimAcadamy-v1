@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/accounts/login/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/bag/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/about/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=swim-wear</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=towels</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=bags</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=floats-kickboards</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=ear_nose_plugs</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=goggles</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=water-wing-west</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=arm-bands</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=inflatables</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=mens</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=womens</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=junior-6-14-yrs</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=kids</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=beginner</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=intermediate</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=advanced</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=Level-1</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=Level-2</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/?level=Level-3</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/contact/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=swimming-aids</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?category=ear-nose-plugs</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/1/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/3/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/4/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/11/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/12/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/13/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/17/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/18/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/31/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/32/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/33/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/28/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/29/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/30/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/23/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/24/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/25/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/26/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/14/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/15/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/16/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?page=2</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?page=3</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/19/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/21/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/27/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/20/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/22/</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/aqua-skills</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/learn-to-swim-program</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/confident-swimmer-program</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/assistant-coaching-swimming</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/level-1-assistant-swimming-teacher</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/coaching-swimming</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/level-2-swimming-teacher</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/level-2-babies-and-toddlers-swimming-teacher</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/courses/course_detail/level-3-coaching-swimming</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dolphinswimacademy.herokuapp.com/products/?page=1</loc>
+  <lastmod>2023-05-06T03:24:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
